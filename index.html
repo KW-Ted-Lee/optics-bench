@@ -58,7 +58,7 @@
       <h1>視光光學實驗台</h1>
       <div class="en">An optics bench for optometry students</div>
       <p>把課本上的光路圖變成可以拖曳、調整的實驗。每一章都先讓你預測，再動手驗證，最後用觀念題檢查自己。公式收在最後，需要時再看。</p>
-      <div class="stats"><div><b>15</b><span>章節</span></div><div><b>30</b><span>互動實驗</span></div><div><b>90</b><span>觀念題</span></div></div>
+      <div class="stats"><div><b>15</b><span>章節</span></div><div><b>30</b><span>互動實驗</span></div><div><b>90</b><span>觀念題</span></div><div><b>83</b><span>練習題型（隨機出題）</span></div></div>
     </div>
     <div class="hero-bench"><canvas id="cv-hero" aria-label="可拖曳的薄透鏡示範"></canvas><span class="cap">拖曳左邊的物體試試看</span></div>
   </section>
@@ -69,7 +69,7 @@
       <div><b>讀核心觀念</b><p>每章 3–4 張卡片，先抓住這章在講什麼。</p></div>
       <div><b>先預測</b><p>實驗旁的藍色框先作答，不要急著看答案。</p></div>
       <div><b>動手驗證</b><p>拖曳、滑桿、切換，觀察圖形怎麼變，和你的預測比對。</p></div>
-      <div><b>觀念檢核</b><p>6 題不用計算機的觀念題，成績記錄在這台裝置上。</p></div>
+      <div><b>檢核與練習</b><p>先做 6 題觀念題，再做隨機數字的練習題，詳解可以一步一步展開。</p></div>
     </div>
   </section>
 
@@ -83,8 +83,15 @@
     <h2>給老師 <span class="tag">FOR INSTRUCTORS</span></h2>
     <p class="note">每一頁都是獨立的 HTML，沒有任何建置步驟，也不需要後端；放上 GitHub Pages 即可使用，學生用手機或電腦都能操作。可以在課堂上投影某一個實驗、請學生先在「先預測」作答再揭曉，或指定章節的觀念檢核作為課後練習。測驗成績只存在學生自己的瀏覽器中，不會上傳。</p>
   </section>
+
+  <section class="block">
+    <h2>開發者 <span class="tag">CREDITS</span></h2>
+    <div class="cards" id="credits"></div>
+    <p class="note" id="copyright" style="margin-top:14px"></p>
+  </section>
 </main>
 <footer id="footer"></footer>
+<script src="assets/config.js"></script>
 <script src="assets/core.js"></script>
 <script>
 (function () {
@@ -113,6 +120,11 @@
     ["四", "臨床光學工具", "CLINICAL OPTICS", [10, 11, 12, 13]],
     ["五", "反射與影像品質", "REFLECTION & IMAGE QUALITY", [14, 15]],
   ];
+  const cfg = window.OB_CONFIG || {}, esc = (t) => String(t).replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]);
+  document.getElementById("credits").innerHTML = (cfg.developers || []).map((d) =>
+    `<div class="card"><span class="no"><span>${esc(d.role || "開發者")}</span></span><h4>${esc(d.name)}</h4>${d.affiliation ? `<span class="en">${esc(d.affiliation)}</span>` : ""}</div>`).join("");
+  const cp = cfg.copyright || {};
+  document.getElementById("copyright").textContent = cp.holder ? `© ${cp.year} ${cp.holder}。${cp.note || ""}` : "";
   const prog = progress();
   let done = 0;
   document.getElementById("units").innerHTML = UNITS.map(([n, zh, en, list]) => `

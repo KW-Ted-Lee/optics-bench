@@ -207,5 +207,37 @@ table.terms td:first-child { font-family: var(--font-mono); font-size: 14px; whi
 .pager a.next { text-align: right; grid-column: 2; }
 footer.site { border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
 footer.site .wrap { padding-block: 20px; }
+.foot-grid { display: grid; gap: 6px; }
+.foot-grid b { color: var(--ink); font-weight: 700; }
+.foot-grid .copy { color: var(--ink); }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+/* ---------- 練習題 ---------- */
+.practice { display: grid; gap: 16px; }
+.prob { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: grid; gap: 12px; min-width: 0; }
+.prob-head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.prob-head b { font-size: 16px; flex: 1; min-width: 12ch; }
+.prob-id { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 0.06em; }
+.prob-head .btn { font-size: 13px; padding: 4px 10px; }
+.prob-q { font-size: 15.5px; max-width: 75ch; }
+.prob-q .eq, .prob-steps .eq { font-family: var(--font-mono); font-size: 14px; background: var(--surface-2); padding: 1px 6px; border-radius: 5px; white-space: nowrap; }
+.prob-parts { display: grid; gap: 8px; }
+.prob-part { display: grid; grid-template-columns: minmax(0, 15em) auto 1fr; gap: 10px; align-items: center; }
+.prob-part .pl { font-size: 14.5px; }
+.prob-part .inp { display: inline-flex; align-items: center; gap: 6px; }
+.prob-part input { font: inherit; font-family: var(--font-mono); font-size: 15px; width: 8.5em; padding: 5px 8px; border-radius: 7px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+.prob-part .unit { font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+.prob-part .mark { font-size: 13px; }
+.prob-part .mark .ans { font-family: var(--font-mono); color: var(--accent); }
+@media (max-width: 640px) { .prob-part { grid-template-columns: 1fr; gap: 4px; } }
+.prob-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.prob-actions .btn { font-size: 13.5px; padding: 6px 12px; }
+.prob-actions .btn:disabled { opacity: 0.45; cursor: default; }
+.prob-result { font-size: 14px; }
+.linkish { font: inherit; font-size: 13px; background: none; border: 0; color: var(--accent); text-decoration: underline; cursor: pointer; padding: 0; }
+.prob-steps { margin: 0; padding-left: 1.4em; display: grid; gap: 10px; }
+.prob-steps:empty { display: none; }
+.prob-steps li { padding-left: 4px; }
+.prob-steps .sc { font-size: 15px; }
+.prob-steps .se { font-family: var(--font-mono); font-size: 14px; background: var(--surface-2); border-radius: 7px; padding: 6px 10px; margin-top: 4px; overflow-x: auto; white-space: pre-wrap; }

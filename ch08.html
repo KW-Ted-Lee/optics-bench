@@ -122,6 +122,12 @@
   </section>
 
   <section class="block">
+    <h2>練習題 <span class="tag">PRACTICE</span></h2>
+    <p class="sub">依本章習題的題型設計的原創練習。數字每次隨機產生，可以一直換題練習。先自己算，再按「看下一步詳解」一步一步對照；答案容許約 1.5% 的進位誤差，負號可以打 - 或 −。</p>
+    <div id="practice"></div>
+  </section>
+
+  <section class="block">
     <h2>專業英文 <span class="tag">TERMS</span></h2>
     <div class="terms-wrap"><table class="terms">
       <tr><th>English</th><th>中文</th><th>一句話說明</th></tr>
@@ -139,7 +145,11 @@
   <nav id="pager"></nav>
 </main>
 <footer id="footer"></footer>
+<script src="assets/config.js"></script>
 <script src="assets/core.js"></script>
+<script src="assets/practice.js"></script>
+<script src="assets/problems/ch08.js"></script>
+<script>document.addEventListener("DOMContentLoaded", () => OBPractice.mount("practice", "ch08"));</script>
 <script>
 (function () {
   const { Stage, fmt, range, seg, quiz } = OL;

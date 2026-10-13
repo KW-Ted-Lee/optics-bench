@@ -94,9 +94,17 @@
     const foot = document.getElementById("footer");
     if (foot) {
       foot.className = "site";
-      foot.innerHTML = `<div class="wrap">教學用互動教材，內容依 Schwartz《Geometrical and Visual Optics》(2nd ed.) 各章主題設計；模擬採近軸（paraxial）近似。符號慣例：光由左向右行進，距離由光學面量起，左負右正。</div>`;
+      const cfg = window.OB_CONFIG || {};
+      const cp = cfg.copyright || {};
+      const devs = (cfg.developers || []).map((d) => `${esc(d.name)}${d.role ? "（" + esc(d.role) + "）" : ""}`).join("、");
+      foot.innerHTML = `<div class="wrap foot-grid">
+        ${devs ? `<div><b>開發者</b>　${devs}</div>` : ""}
+        ${cp.holder ? `<div class="copy">© ${esc(String(cp.year || new Date().getFullYear()))} ${esc(cp.holder)}${cp.note ? "　" + esc(cp.note) : ""}</div>` : ""}
+        <div>教學用互動教材，內容依 Schwartz《Geometrical and Visual Optics》(2nd ed.) 各章主題設計；模擬採近軸（paraxial）近似。符號慣例：光由左向右行進，距離由光學面量起，左負右正。</div>
+      </div>`;
     }
   }
+  function esc(s) { return String(s).replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]); }
 
   /* ---------- Stage：光學台畫布 ---------- */
   class Stage {
