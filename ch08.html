@@ -52,7 +52,7 @@
           <div class="ctrl"><label for="a-add">近用加入度 <output id="a-add-out"></output></label><input type="range" id="a-add" min="0" max="3" step="0.25" value="0"></div>
           <div class="ctrl"><label for="a-obj">閱讀距離 <output id="a-obj-out"></output></label><input type="range" id="a-obj" min="10" max="100" step="1" value="40"></div>
           <div class="readout">
-            <div class="row"><span>調節幅度（平均值）</span><b id="a-amp">—</b></div>
+            <div class="row"><span>調節幅度（Hofstetter 最小值）</span><b id="a-amp">—</b></div>
             <div class="row"><span>遠點</span><b id="a-fp">—</b></div>
             <div class="row"><span>近點</span><b id="a-np">—</b></div>
             <div class="row"><span>看這個距離需要的調節</span><b id="a-req">—</b></div>
@@ -64,7 +64,7 @@
         <div class="predict" data-answer="1">
           <p class="q">一位 50 歲、遠視力正常（正視）的人，40 cm 看書會怎樣？加上 +1.50 D 後呢？</p>
           <div class="opts"><button>本來就清楚，加了反而模糊</button><button>本來模糊，加了以後近點拉近、可以看清</button><button>加多少都沒用</button></div>
-          <p class="why">50 歲平均調節幅度約 3.5 D，近點約 29 cm，雖然勉強看得到 40 cm，但要用掉大部分調節，持續閱讀會疲勞。加入 +1.50 D 後，整條清晰範圍往近處移，看書只需用少量調節，比較舒適。注意遠點也被拉近了，戴老花眼鏡看遠會模糊。</p>
+          <p class="why">依 Hofstetter 最小值公式，50 歲的調節幅度約 2.5 D，近點約 40 cm，剛好看得到 40 cm，但要用掉全部調節，持續閱讀會模糊又疲勞。加入 +1.50 D 後，整條清晰範圍往近處移，看書只需用少量調節，比較舒適。注意遠點也被拉近了，戴老花眼鏡看遠會模糊。</p>
         </div>
         <h4>觀察重點</h4><ul>
           <li>屈光度尺（上排）上，清晰範圍的寬度永遠等於調節幅度；換成公分（下排）就變得很不均勻。</li>
@@ -111,7 +111,7 @@
     <h2>公式補充 <span class="tag">OPTIONAL</span></h2>
     <details class="formula"><summary>展開看公式（選讀）</summary><div>
       <p>調節的聚散度關係：<span class="eq">F遠點 = L + F調節</span>（皆在角膜面）</p>
-      <p>平均調節幅度（Hofstetter）：<span class="eq">18.5 − 0.3 × 年齡</span></p>
+      <p>Hofstetter 最小調節幅度：<span class="eq">15 − 0.25 × 年齡</span>（臨床上用來判斷調節是否不足）</p>
       <p>近點聚散度 = 遠點聚散度 − 調節幅度（屈光度尺上相減即可）</p>
     </div></details>
   </section>
@@ -166,7 +166,7 @@
   const cmLabel = (D) => D <= 0.001 ? "∞" : (100 / D).toFixed(D >= 4 ? 1 : 0);
 
   function state() {
-    const amp = Math.max(0, 18.5 - 0.3 * age.value);
+    const amp = Math.max(0, 15 - 0.25 * age.value);
     const Keff = (corr.value === "full" ? 0 : K.value) + add.value; // 角膜面剩餘屈光不正（加入度視為正度數）
     const fpD = -Keff;           // 遠點聚散度（正 = 在眼前，以屈光度表示的距離）
     const npD = fpD + amp;
