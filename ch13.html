@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第 13 章 視網膜像大小｜視光光學實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-chapter="ch13">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter 13</div>
+    <h1>視網膜像大小</h1>
+    <div class="en">Retinal Image Size</div>
+    <p class="lede">同一個度數，用眼鏡或隱形眼鏡矯正，看到的世界大小可能不一樣。要預測影像大小，得先知道屈光不正是「軸性」還是「屈光性」。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>能比較未矯正、隱形眼鏡矯正、眼鏡矯正三種情況下的視網膜像大小。</li>
+      <li>理解 Knapp 定律：軸性屈光不正以位於眼睛前焦點的眼鏡矯正，像大小與正視眼相同。</li>
+      <li>理解兩眼度數差異大時，矯正方式可能造成不等像（aniseikonia）。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Axial ametropia</span><h3>軸性：眼睛長度改變</h3><p>軸性近視眼較長，未矯正時（中心）影像比正視眼大；軸性遠視眼較短，影像較小。隱形眼鏡不改變這個差異。</p></div>
+      <div class="concept"><span class="en-term">Refractive ametropia</span><h3>屈光性：長度正常</h3><p>未矯正或戴隱形眼鏡時，影像大小約與正視眼相同。戴眼鏡時，負鏡片縮小、正鏡片放大。</p></div>
+      <div class="concept"><span class="en-term">Spectacle magnification</span><h3>眼鏡放大率</h3><p>由度數與頂點距離（power factor）和鏡片形狀（shape factor）決定。頂點距離越大，效果越明顯。</p></div>
+      <div class="concept"><span class="en-term">Knapp's law</span><h3>Knapp 定律</h3><p>軸性屈光不正，若矯正鏡片放在眼睛的前焦點（約角膜前 15–17 mm），視網膜像大小與正視眼相同。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 13-1</span><h3>三種情況的視網膜像大小</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-ris" aria-label="視網膜像大小比較"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>屈光不正類型</label>
+            <div class="seg" id="r-type"><button data-v="axial" aria-pressed="true">軸性</button><button data-v="ref">屈光性</button></div></div>
+          <div class="ctrl"><label for="r-K">屈光不正（角膜面） <output id="r-K-out"></output></label><input type="range" id="r-K" min="-12" max="10" step="0.25" value="-8"></div>
+          <div class="ctrl"><label for="r-d">眼鏡頂點距離 <output id="r-d-out"></output></label><input type="range" id="r-d" min="8" max="25" step="0.5" value="12"></div>
+          <button class="btn ghost" id="r-knapp" type="button">移到眼睛前焦點（16.67 mm）</button>
+          <div class="readout"><div class="row"><span>眼鏡度數</span><b id="r-Fs">—</b></div></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="2">
+          <p class="q">一位 −8.00 D「屈光性」近視者，戴眼鏡和戴隱形眼鏡，哪一種看到的影像比較接近正視眼大小？</p>
+          <div class="opts"><button>眼鏡</button><button>兩者一樣</button><button>隱形眼鏡</button></div>
+          <p class="why">屈光性近視的眼睛長度正常，問題只在屈光力。隱形眼鏡在角膜上直接把多出來的屈光力抵消，影像大小與正視眼相同。眼鏡的負鏡片離眼睛有距離，會縮小影像。把類型切到「屈光性」驗證。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>軸性：未矯正與隱形眼鏡的影像大小相同；眼鏡越接近 16.67 mm，越接近 100%。</li>
+          <li>屈光性：未矯正與隱形眼鏡都約 100%；眼鏡使近視者影像變小、遠視者影像變大。</li>
+          <li>度數越高，差異越大。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 13-2</span><h3>不等視與不等像</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-aniso" aria-label="兩眼影像大小比較"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="n-1">右眼 OD <output id="n-1-out"></output></label><input type="range" id="n-1" min="-10" max="8" step="0.25" value="-1"></div>
+          <div class="ctrl"><label for="n-2">左眼 OS <output id="n-2-out"></output></label><input type="range" id="n-2" min="-10" max="8" step="0.25" value="-6"></div>
+          <div class="ctrl"><label>不等視類型</label>
+            <div class="seg" id="n-type"><button data-v="axial" aria-pressed="true">軸性</button><button data-v="ref">屈光性</button></div></div>
+          <div class="ctrl"><label>矯正方式</label>
+            <div class="seg" id="n-corr"><button data-v="spec" aria-pressed="true">眼鏡（12 mm）</button><button data-v="cl">隱形眼鏡</button></div></div>
+          <div class="readout"><div class="row"><span>兩眼影像大小差</span><b id="n-diff">—</b></div></div>
+          <div class="verdict" id="n-verdict"></div>
+        </div>
+      </div>
+      <div class="observe"><h4>觀察重點</h4><ul>
+        <li>理論上，軸性不等視用眼鏡、屈光性不等視用隱形眼鏡，兩眼影像比較接近。</li>
+        <li>實務上，軸性不等視者的視網膜也會被拉伸，戴隱形眼鏡的效果常比理論預期好，仍需個別評估。</li>
+        <li>一般而言，兩眼影像差異超過約 3–5% 較容易出現不適。</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>近視的人戴隱形眼鏡，看到的東西一定和正視眼一樣大。</summary><div class="fix">只對屈光性近視成立。軸性近視的眼睛比較長，戴隱形眼鏡時影像仍比正視眼大。</div></details>
+      <details class="myth"><summary>眼鏡放大率只跟度數有關。</summary><div class="fix">還跟頂點距離、鏡片前表面弧度與厚度（形狀因子）有關，所以可以透過鏡片設計來調整。</div></details>
+      <details class="myth"><summary>Knapp 定律說明軸性不等視一定要戴眼鏡。</summary><div class="fix">Knapp 定律是光學上的理論預測；實際上還要考慮視網膜感光細胞的分布、稜鏡效果與舒適度，臨床上隱形眼鏡常是好選擇。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>公式補充 <span class="tag">OPTIONAL</span></h2>
+    <details class="formula"><summary>展開看公式（選讀）</summary><div>
+      <p>眼鏡放大率：<span class="eq">M = [1 / (1 − d·Fv)] × [1 / (1 − (t/n)·F₁)]</span>（本模擬只計算第一項 power factor）</p>
+      <p>本頁模型：簡化眼 +60.00 D、n′ = 1.333；矯正後像大小 ∝ 1 / (眼鏡 + 眼睛系統的等效屈光力)</p>
+    </div></details>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div class="terms-wrap"><table class="terms">
+      <tr><th>English</th><th>中文</th><th>一句話說明</th></tr>
+      <tr><td>retinal image size</td><td>視網膜像大小</td><td>影像在視網膜上的大小</td></tr>
+      <tr><td>spectacle magnification</td><td>眼鏡放大率</td><td>矯正後／未矯正的像大小比</td></tr>
+      <tr><td>power factor / shape factor</td><td>度數因子／形狀因子</td><td>眼鏡放大率的兩個組成</td></tr>
+      <tr><td>Knapp's law</td><td>Knapp 定律</td><td>前焦點處矯正軸性屈光不正</td></tr>
+      <tr><td>anisometropia</td><td>不等視</td><td>兩眼屈光度差異大</td></tr>
+      <tr><td>aniseikonia</td><td>不等像</td><td>兩眼影像大小或形狀不同</td></tr>
+      <tr><td>iseikonic lens</td><td>等像鏡片</td><td>調整形狀以平衡兩眼像大小</td></tr>
+    </table></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/core.js"></script>
+<script>
+(function () {
+  const { Stage, fmt, range, seg, quiz } = OL;
+  const FE = 60, NP = 1.333;
+  /* 相對於正視眼的視網膜像大小 */
+  function sizes(K, axial, dmm) {
+    const d = dmm / 1000;
+    const Feye = axial ? FE : FE - K;
+    const L = axial ? NP / (FE + K) : NP / FE;   // m
+    const un = FE * L / NP;                        // 未矯正（模糊影像中心大小）
+    const cl = FE / (Feye + K);
+    const Fs = K / (1 + d * K);
+    const Fsys = Fs + Feye - d * Fs * Feye;
+    return { un, cl, sp: FE / Fsys, Fs };
+  }
+
+  /* ---------- LAB 13-1 ---------- */
+  const tp = seg("r-type", () => ri.render());
+  const Kr = range("r-K", (v) => fmt.D(v), () => ri.render());
+  const dr = range("r-d", (v) => v.toFixed(1) + " mm", () => ri.render());
+  document.getElementById("r-knapp").addEventListener("click", () => { dr.value = 16.67; ri.render(); });
+  const ri = new Stage("cv-ris", { xmin: 0, xmax: 100, ymin: 0, ymax: 60, aspect: 0.55, minH: 280, maxH: 440, draw: drawRis });
+  function drawRis(s, c) {
+    const r = sizes(Kr.value, tp.value === "axial", dr.value);
+    document.getElementById("r-Fs").textContent = fmt.D(r.Fs);
+    const items = [["正視眼", 1, c.muted], ["未矯正", r.un, c.ray3], ["隱形眼鏡", r.cl, c.ray2], ["眼鏡", r.sp, c.ray]];
+    const ctx = s.ctx;
+    const colW = s.w / 4;
+    items.forEach(([lab, v, col], i) => {
+      const cx = colW * (i + 0.5), cy = s.h * 0.45;
+      const base = Math.min(colW * 0.42, s.h * 0.2);
+      // 正視參考框
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = c.muted; ctx.strokeRect(cx - base, cy - base, base * 2, base * 2); ctx.restore();
+      // 影像
+      const sz = base * v;
+      ctx.save(); ctx.font = `700 ${sz * 2}px ${c.body}`; ctx.fillStyle = col; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("E", cx, cy + sz * 0.08); ctx.restore();
+      s.text(lab, cx, s.h * 0.82, { px: true, size: 13, weight: 700 });
+      s.text((v * 100).toFixed(1) + " %", cx, s.h * 0.82 + 20, { px: true, size: 13, font: c.mono, color: Math.abs(v - 1) < 0.005 ? c.ok : col });
+    });
+    s.text("虛線框 = 正視眼的影像大小", 8, 14, { px: true, align: "left", size: 11, color: c.muted });
+  }
+
+  /* ---------- LAB 13-2 ---------- */
+  const k1 = range("n-1", (v) => fmt.D(v), () => an.render());
+  const k2 = range("n-2", (v) => fmt.D(v), () => an.render());
+  const nt = seg("n-type", () => an.render());
+  const nc = seg("n-corr", () => an.render());
+  const an = new Stage("cv-aniso", { xmin: 0, xmax: 100, ymin: 0, ymax: 60, aspect: 0.5, minH: 260, maxH: 400, draw: drawAn });
+  function drawAn(s, c) {
+    const ax = nt.value === "axial", sp = nc.value === "spec";
+    const a = sizes(k1.value, ax, 12), b = sizes(k2.value, ax, 12);
+    const v1 = sp ? a.sp : a.cl, v2 = sp ? b.sp : b.cl;
+    const ctx = s.ctx, cy = s.h * 0.46, base = Math.min(s.w * 0.15, s.h * 0.24);
+    [[v1, "右眼 OD", s.w * 0.28, c.ray], [v2, "左眼 OS", s.w * 0.72, c.ray2]].forEach(([v, lab, cx, col]) => {
+      ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = c.muted; ctx.strokeRect(cx - base, cy - base, base * 2, base * 2); ctx.restore();
+      ctx.save(); ctx.font = `700 ${base * 2 * v}px ${c.body}`; ctx.fillStyle = col; ctx.globalAlpha = 0.9; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("E", cx, cy + base * v * 0.08); ctx.restore();
+      s.text(lab, cx, s.h * 0.84, { px: true, size: 13, weight: 700 });
+      s.text((v * 100).toFixed(1) + " %", cx, s.h * 0.84 + 20, { px: true, size: 13, font: c.mono });
+    });
+    const diff = Math.abs(v1 - v2) / Math.min(v1, v2) * 100;
+    document.getElementById("n-diff").textContent = diff.toFixed(1) + " %";
+    document.getElementById("n-verdict").innerHTML = diff < 3 ? '<span class="pill ok">差異小</span> 通常可接受' : diff < 5 ? '<span class="pill warn">差異中等</span> 部分人會不適' : '<span class="pill bad">差異大</span> 容易出現不等像症狀';
+  }
+
+  quiz("quiz", "ch13", [
+    { q: "未矯正的軸性近視眼，視網膜像（中心大小）與正視眼相比：", opts: ["較大", "較小", "相同", "無法判斷"], a: 0, exp: "軸性近視眼較長，影像落在較遠的視網膜上，因此較大。" },
+    { q: "屈光性近視戴眼鏡矯正，影像大小與正視眼相比：", opts: ["較大", "較小", "相同", "取決於年齡"], a: 1, exp: "眼睛長度正常，負眼鏡片位於眼前，有縮小效果。" },
+    { q: "Knapp 定律的條件是：", opts: ["屈光性屈光不正、隱形眼鏡矯正", "軸性屈光不正、鏡片位於眼睛前焦點", "任何屈光不正、鏡片位於角膜", "只適用於遠視"], a: 1, exp: "軸性屈光不正，矯正鏡片放在眼睛的前焦點時，系統等效屈光力等於正視眼，像大小相同。" },
+    { q: "高度遠視者從眼鏡換成隱形眼鏡，常覺得東西：", opts: ["變大", "變小", "沒變", "變彎曲"], a: 1, exp: "正眼鏡片有放大效果，換成隱形眼鏡後放大效果消失，因此覺得東西變小。" },
+    { q: "兩眼度數差很多（不等視）時，可能出現的問題是：", opts: ["不等像", "老花", "夜盲", "散光"], a: 0, exp: "兩眼矯正後的影像大小不同，稱為不等像，可能造成融像困難與不適。" },
+    { q: "下列哪一項「不」影響眼鏡放大率？", opts: ["頂點距離", "鏡片度數", "前表面弧度與厚度", "鏡框顏色"], a: 3, exp: "眼鏡放大率由度數因子（度數、頂點距離）與形狀因子（前表面弧度、厚度、折射率）決定。" },
+  ]);
+})();
+</script>
+</body>
+</html>

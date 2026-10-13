@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第 4 章 薄透鏡｜視光光學實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .rules { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .rules td, .rules th { padding: 4px 6px; border-bottom: 1px solid var(--line); text-align: left; }
+  .rules th { color: var(--muted); font-weight: 500; }
+  .rules tr.on td { background: var(--accent-soft); font-weight: 700; }
+</style>
+</head>
+<body data-chapter="ch04">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter 04</div>
+    <h1>薄透鏡</h1>
+    <div class="en">Thin Lenses</div>
+    <p class="lede">眼鏡片可以近似成「沒有厚度」的薄透鏡：屈光力就是前後兩面相加。學會三條主要光線，就能在不計算的情況下判斷任何像的性質。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>能用三條主要光線畫出正、負透鏡的成像。</li>
+      <li>能依物體相對於 F 與 2F 的位置，說出像的虛實、正倒與大小。</li>
+      <li>理解同一個屈光力可以有不同的鏡片形式（雙凸、平凸、新月形）。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">F = F₁ + F₂</span><h3>薄透鏡屈光力</h3><p>忽略厚度時，透鏡屈光力等於前表面加後表面。實際鏡片的厚度會讓它稍有偏差（第 6 章）。</p></div>
+      <div class="concept"><span class="en-term">Three principal rays</span><h3>三條主要光線</h3><p>① 平行入射 → 經過 F′；② 通過光學中心 → 直線前進；③ 經過 F → 平行射出。任兩條就能找到像。</p></div>
+      <div class="concept"><span class="en-term">Plus lens</span><h3>正透鏡看物體位置</h3><p>物體在 F 外 → 倒立實像；在 F 內 → 正立放大虛像（放大鏡）；剛好在 F → 平行光，像在無限遠。</p></div>
+      <div class="concept"><span class="en-term">Minus lens</span><h3>負透鏡永遠一樣</h3><p>實物經負透鏡，一定得到正立、縮小的虛像，位置在透鏡與 F′ 之間。近視眼鏡讓世界看起來變小就是這個原因。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 4-1</span><h3>薄透鏡光線追跡台</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-lens" aria-label="薄透鏡成像"></canvas><span class="hint">拖曳物體頂端</span></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="t-P">透鏡屈光力 <output id="t-P-out"></output></label><input type="range" id="t-P" min="-10" max="10" step="0.25" value="5"></div>
+          <div class="ctrl"><label for="t-x">物距 <output id="t-x-out"></output></label><input type="range" id="t-x" min="-90" max="-3" step="0.5" value="-50"></div>
+          <div class="ctrl"><label>主要光線</label>
+            <label class="check"><input type="checkbox" id="t-r1" checked> ① 平行入射 → 經 F′</label>
+            <label class="check"><input type="checkbox" id="t-r2" checked> ② 經光學中心 → 不偏折</label>
+            <label class="check"><input type="checkbox" id="t-r3" checked> ③ 經 F → 平行射出</label></div>
+          <div class="verdict" id="t-verdict"></div>
+          <table class="rules" id="t-rules"></table>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="2">
+          <p class="q">把屈光力調成負值（例如 −5 D）。不管物體放在哪裡，像都會是？</p>
+          <div class="opts"><button>倒立實像</button><button>有時實像有時虛像</button><button>正立、縮小的虛像</button></div>
+          <p class="why">負透鏡讓光更發散，L′ = L + F 永遠是負的，所以只能形成虛像，而且一定比物體小、位於透鏡與 F′ 之間。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>正透鏡：把物體從遠處慢慢拉近，注意經過 2F 和 F 這兩個「分界點」時像的變化。</li>
+          <li>負透鏡的 F′ 在左側（入射側）：平行光射出後「看起來」來自 F′。</li>
+          <li>屈光力加大（更強），F 和 F′ 更靠近透鏡。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 4-2</span><h3>同樣屈光力，不同鏡片形式</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-form" aria-label="鏡片形式剖面"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>快速範例（總屈光力都是 +4.00 D）</label>
+            <div class="seg" id="g-pre"><button data-v="2,2" aria-pressed="true">雙凸</button><button data-v="4,0">平凸</button><button data-v="8,-4">正新月形</button></div></div>
+          <div class="ctrl"><label for="g-1">前表面 F₁ <output id="g-1-out"></output></label><input type="range" id="g-1" min="-10" max="12" step="0.5" value="2"></div>
+          <div class="ctrl"><label for="g-2">後表面 F₂ <output id="g-2-out"></output></label><input type="range" id="g-2" min="-12" max="10" step="0.5" value="2"></div>
+          <div class="readout">
+            <div class="row"><span>總屈光力 F₁ + F₂</span><b id="g-T">—</b></div>
+            <div class="row"><span>鏡片形式</span><b id="g-form">—</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="observe"><h4>觀察重點</h4><ul>
+        <li>三個範例的總屈光力都是 +4.00 D，薄透鏡觀點下光學效果相同。</li>
+        <li>眼鏡片幾乎都做成新月形（前凸後凹），貼合臉型、減少周邊像差（第 15 章）。</li>
+        <li>負屈光力的鏡片中央薄、邊緣厚；正屈光力相反。</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>放大鏡的原理是讓物體形成更大的實像。</summary><div class="fix">放大鏡使用時物體放在 F 以內，形成的是正立放大的「虛像」。實像會是倒立的。</div></details>
+      <details class="myth"><summary>負透鏡的 F′ 在右側。</summary><div class="fix">負透鏡讓平行光發散，射出的光看起來來自左側的一點，那就是 F′。F′ 的定義是「平行入射光聚焦或看起來發出的點」。</div></details>
+      <details class="myth"><summary>只要兩面加起來屈光力一樣，鏡片就完全一樣。</summary><div class="fix">薄透鏡近似下效果相同，但實際上厚度、形式會影響後頂點屈光力、放大率與像差（第 6、13、15 章）。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>公式補充 <span class="tag">OPTIONAL</span></h2>
+    <details class="formula"><summary>展開看公式（選讀）</summary><div>
+      <p>薄透鏡屈光力：<span class="eq">F = F₁ + F₂</span></p>
+      <p>聚散度關係：<span class="eq">L′ = L + F</span>（空氣中 L = 1/l，L′ = 1/l′）</p>
+      <p>放大率：<span class="eq">M = L / L′ = l′ / l</span></p>
+      <p>牛頓公式：<span class="eq">x x′ = −f′²</span>（x、x′ 由 F、F′ 量起）</p>
+    </div></details>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div class="terms-wrap"><table class="terms">
+      <tr><th>English</th><th>中文</th><th>一句話說明</th></tr>
+      <tr><td>thin lens</td><td>薄透鏡</td><td>忽略厚度的透鏡</td></tr>
+      <tr><td>optical center</td><td>光學中心</td><td>通過時光線不偏折</td></tr>
+      <tr><td>plus / minus lens</td><td>正／負透鏡</td><td>會聚／發散</td></tr>
+      <tr><td>biconvex / plano-convex</td><td>雙凸／平凸</td><td>鏡片形式</td></tr>
+      <tr><td>meniscus</td><td>新月形</td><td>一面凸一面凹，眼鏡片常見</td></tr>
+      <tr><td>lens form</td><td>鏡片形式</td><td>前後表面屈光力的組合</td></tr>
+      <tr><td>magnifier</td><td>放大鏡</td><td>物體在 F 內的正透鏡</td></tr>
+    </table></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/core.js"></script>
+<script>
+(function () {
+  const { Stage, fmt, range, seg, check, trace, quiz } = OL;
+
+  /* ---------- LAB 4-1 ---------- */
+  const PR = range("t-P", (v) => fmt.D(v), () => st.render());
+  const xR = range("t-x", (v) => fmt.num(v, 1, "cm"), () => st.render());
+  const c1 = check("t-r1", () => st.render()), c2 = check("t-r2", () => st.render()), c3 = check("t-r3", () => st.render());
+  let h = 5;
+  const st = new Stage("cv-lens", { xmin: -95, xmax: 95, ymin: -14, ymax: 14, aspect: 0.6, minH: 300, maxH: 540, draw: drawLens });
+  st.addHandle({ pos: () => [xR.value, h], drag: (x, y) => { xR.value = OL.clamp(Math.round(x * 2) / 2, -90, -3); h = OL.clamp(Math.round(y * 2) / 2, 1.5, 9); } });
+
+  function drawLens(s, c) {
+    const P = PR.value, xo = xR.value;
+    s.axis();
+    s.lens(0, 12, P, { label: fmt.D(P) });
+    const el = [{ x: 0, F: P / 100 }];
+    let f = P === 0 ? Infinity : 100 / P;
+    if (P !== 0) {
+      [[f, "F′"], [-f, "F"], [2 * f, "2F′"], [-2 * f, "2F"]].forEach(([x, lb]) => { if (x > s.opt.xmin && x < s.opt.xmax) s.point(x, 0, lb, { dy: 14, color: lb.startsWith("2") ? c.muted : c.ink, r: lb.startsWith("2") ? 2.5 : 3.5 }); });
+    }
+    const L = 100 / xo, Lp = L + P;
+    const xi = Math.abs(Lp) < 1e-6 ? Infinity : 100 / Lp;
+    const m = L / Lp, hi = m * h;
+    const real = isFinite(xi) && xi > 0;
+    const rays = [];
+    if (c1.value) rays.push({ s: 0, col: c.ray });
+    if (c2.value) rays.push({ s: -h / (0 - xo), col: c.ray2 });
+    if (c3.value && P !== 0 && Math.abs(-f - xo) > 0.4) rays.push({ s: (0 - h) / (-f - xo), col: c.ray3, viaF: true });
+    rays.forEach((r) => {
+      const tr = trace({ x: xo, y: h, s: r.s }, el, s.opt.xmax);
+      s.ray(tr.pts, { color: r.col, w: 1.9 });
+      const yL = tr.pts[1][1];
+      // 輔助虛線：經 F 的光線若 F 在物體右邊或在透鏡右邊（負透鏡）
+      if (r.viaF && ((P > 0 && xo > -f) || P < 0)) s.line(xo, h, -f, 0, { color: r.col, dash: [3, 4], w: 1, alpha: 0.7 });
+      if (r.col === c.ray && P < 0) s.line(0, yL, f, 0, { color: r.col, dash: [3, 4], w: 1, alpha: 0.7 });
+      if (isFinite(xi) && !real) s.line(0, yL, Math.max(xi, s.opt.xmin), yL + tr.s * Math.max(xi, s.opt.xmin), { color: r.col, dash: [5, 5], w: 1.2, alpha: 0.85 });
+    });
+    s.arrowObj(xo, h, { label: "物" });
+    if (isFinite(xi) && xi > s.opt.xmin && xi < s.opt.xmax && Math.abs(hi) < 40) s.arrowObj(xi, hi, { color: c.accent, dash: real ? null : [5, 4], label: real ? "實像" : "虛像" });
+    // 判斷
+    const v = document.getElementById("t-verdict");
+    if (P === 0) v.innerHTML = '<span class="pill info">無屈光力</span> 平光鏡片，像與物重合';
+    else if (!isFinite(xi)) v.innerHTML = '<span class="pill info">像在無限遠</span> 物體位於 F';
+    else v.innerHTML = (real ? '<span class="pill ok">實像</span> ' : '<span class="pill warn">虛像</span> ') + (m < 0 ? "倒立" : "正立") + "・" +
+      (Math.abs(m) > 1.02 ? "放大" : Math.abs(m) < 0.98 ? "縮小" : "等大") + `　<span class="mono">M = ${fmt.num(m, 2, "×")}</span>`;
+    // 成像規律表
+    const rows = P > 0 ? [
+      ["物在 2F 以外", "實・倒・縮小", xo < -2 * f - 0.6],
+      ["物在 2F", "實・倒・等大", Math.abs(xo + 2 * f) <= 0.6],
+      ["物在 F 與 2F 之間", "實・倒・放大", xo > -2 * f + 0.6 && xo < -f - 0.3],
+      ["物在 F", "像在無限遠", Math.abs(xo + f) <= 0.3],
+      ["物在 F 以內", "虛・正・放大", xo > -f + 0.3],
+    ] : P < 0 ? [["任何實物位置", "虛・正・縮小", true]] : [];
+    document.getElementById("t-rules").innerHTML = rows.length ? `<tr><th>${P > 0 ? "正透鏡" : "負透鏡"}：物體位置</th><th>像</th></tr>` + rows.map(([a, b, on]) => `<tr class="${on ? "on" : ""}"><td>${a}</td><td>${b}</td></tr>`).join("") : "";
+  }
+
+  /* ---------- LAB 4-2 ---------- */
+  const g1 = range("g-1", (v) => fmt.D(v), () => fm.render());
+  const g2 = range("g-2", (v) => fmt.D(v), () => fm.render());
+  seg("g-pre", (v) => { const [a, b] = v.split(",").map(Number); g1.value = a; g2.value = b; fm.render(); });
+  const fm = new Stage("cv-form", { xmin: -40, xmax: 40, ymin: -27, ymax: 27, aspect: 0.62, minH: 280, maxH: 440, equal: true, draw: drawForm });
+  const n = 1.5, A = 20, EX = 3; // 半徑 20 mm，曲率放大 3 倍示意
+  function sag(F, y) { if (Math.abs(F) < 1e-6) return 0; const r = (n - 1) / F * 1000; /* mm（前表面用）*/ const R = Math.abs(r); const yy = Math.min(Math.abs(y), R * 0.999); return Math.sign(r) * (R - Math.sqrt(R * R - yy * yy)); }
+  function drawForm(s, c) {
+    const F1 = g1.value, F2 = g2.value, T = F1 + F2;
+    // 後表面：F2 = (1 − n)/r2 → r2 = (1 − n)/F2
+    const sag2 = (y) => { if (Math.abs(F2) < 1e-6) return 0; const r = (1 - n) / F2 * 1000; const R = Math.abs(r); const yy = Math.min(Math.abs(y), R * 0.999); return Math.sign(r) * (R - Math.sqrt(R * R - yy * yy)); };
+    const tTrue = Math.max(1.2, 1.2 + sag(F1, A) - sag2(A));
+    const t = Math.max(1.2, 1.2 + EX * (sag(F1, A) - sag2(A)));
+    const x0 = -t / 2;
+    const pts = [];
+    for (let y = -A; y <= A; y += 1) pts.push([x0 + EX * sag(F1, y), y]);
+    for (let y = A; y >= -A; y -= 1) pts.push([x0 + t + EX * sag2(y), y]);
+    s.line(s.wx(0), 0, s.wx(s.w), 0, { color: c.muted, w: 1, dash: [10, 4, 2, 4], alpha: 0.7 });
+    s.poly(pts, { close: true, fill: c.glass, color: c.glassEdge, w: 1.8 });
+    s.text("前表面 F₁", x0 + EX * sag(F1, A), A, { dy: -12, size: 12, color: c.accent, weight: 700 });
+    s.text("後表面 F₂", x0 + t + EX * sag2(A), -A, { dy: 14, size: 12, color: c.accent, weight: 700 });
+    s.text("光 →", -36, 3, { align: "left", size: 12, color: c.ray, weight: 700 });
+    s.text(`中心厚 ${tTrue.toFixed(1)} mm（剖面曲率放大 3 倍示意）`, 0, -A, { dy: 32, size: 11, color: c.muted, font: c.mono });
+    document.getElementById("g-T").textContent = fmt.D(T);
+    const sign = (v) => (Math.abs(v) < 0.01 ? 0 : Math.sign(v));
+    const a = sign(F1), b = sign(F2);
+    let form = "";
+    if (a === 0 && b === 0) form = "平光（雙平）";
+    else if (a >= 0 && b >= 0) form = a && b ? "雙凸" : "平凸";
+    else if (a <= 0 && b <= 0) form = a && b ? "雙凹" : "平凹";
+    else form = T > 0.01 ? "正新月形" : T < -0.01 ? "負新月形" : "新月形（平光）";
+    document.getElementById("g-form").textContent = form;
+  }
+
+  quiz("quiz", "ch04", [
+    { q: "一個前表面 +6.00 D、後表面 −2.00 D 的薄透鏡，屈光力與形式為：", opts: ["+8.00 D 雙凸", "+4.00 D 正新月形", "−4.00 D 負新月形", "+4.00 D 平凸"], a: 1, exp: "F = F₁ + F₂ = +4.00 D；一面凸一面凹，總和為正，是正新月形。" },
+    { q: "通過薄透鏡光學中心的光線會：", opts: ["經過 F′", "平行射出", "方向不變", "反射回來"], a: 2, exp: "光學中心附近兩面近似平行，像一片薄平板，光線方向不變。" },
+    { q: "正透鏡當放大鏡使用時，物體應放在：", opts: ["2F 以外", "F 與 2F 之間", "F 以內", "剛好在 2F"], a: 2, exp: "物體在 F 以內，形成正立、放大的虛像，這就是放大鏡。" },
+    { q: "近視者戴上負透鏡後，看到的景物大小會：", opts: ["變大", "變小", "不變", "上下顛倒"], a: 1, exp: "負透鏡對實物只能形成正立、縮小的虛像。" },
+    { q: "正透鏡的物體位於 F 與 2F 之間，像是：", opts: ["實、倒、縮小", "實、倒、放大", "虛、正、放大", "虛、正、縮小"], a: 1, exp: "這是投影機的配置：倒立放大的實像落在 2F′ 之外。" },
+    { q: "下列哪個說法可以「不用計算」判斷像是實像？", opts: ["L′ 為正", "L′ 為負", "屈光力為負", "物體在 F 以內"], a: 0, exp: "出射聚散度為正，光會聚，因此是實像。" },
+  ]);
+})();
+</script>
+</body>
+</html>

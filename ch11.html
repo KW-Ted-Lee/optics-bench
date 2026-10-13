@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第 11 章 景深｜視光光學實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-chapter="ch11">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter 11</div>
+    <h1>景深</h1>
+    <div class="en">Depth of Field</div>
+    <p class="lede">影像沒有完美對焦，不一定就看不清楚。只要視網膜上的模糊圈夠小，仍然可以辨識。瞳孔越小，模糊圈越小，可以容忍的對焦誤差就越大。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>理解模糊圈大小由「瞳孔直徑」與「離焦量」共同決定。</li>
+      <li>理解針孔為什麼能改善屈光不正者的視力，以及瞳孔太小時繞射反而會降低解析。</li>
+      <li>能說出景深、焦深與超焦距的意義，並在屈光度尺上看出景深範圍。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Blur circle</span><h3>模糊圈</h3><p>光沒有聚在視網膜上時，每一個物點都變成一個小圓斑。圓斑大小約與瞳孔直徑 × 離焦屈光度成正比。</p></div>
+      <div class="concept"><span class="en-term">Pinhole</span><h3>針孔</h3><p>針孔只讓中央一小束光通過，模糊圈變小。針孔下視力明顯進步，代表視力下降主要來自屈光不正。</p></div>
+      <div class="concept"><span class="en-term">Diffraction</span><h3>繞射</h3><p>光通過小孔會散開，形成艾瑞盤（Airy disk）。孔越小，繞射越大。所以瞳孔並不是越小越好。</p></div>
+      <div class="concept"><span class="en-term">Depth of field / focus</span><h3>景深與焦深</h3><p>物體前後移動仍能看清的範圍是景深；對應在視網膜側可容許的影像位移是焦深。對焦在超焦距時，景深一直延伸到無限遠。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 11-1</span><h3>瞳孔大小、模糊圈與繞射</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-blur" aria-label="瞳孔與模糊圈"></canvas><canvas id="cv-letter" aria-label="視網膜影像與模糊大小曲線"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="b-K">離焦量（未矯正屈光不正） <output id="b-K-out"></output></label><input type="range" id="b-K" min="-3" max="3" step="0.25" value="-1"></div>
+          <div class="ctrl"><label for="b-p">瞳孔直徑 <output id="b-p-out"></output></label><input type="range" id="b-p" min="0.5" max="8" step="0.1" value="5"></div>
+          <button class="btn ghost" id="b-pin" type="button">加上 1 mm 針孔</button>
+          <div class="readout">
+            <div class="row"><span>幾何模糊圈</span><b id="b-geo">—</b></div>
+            <div class="row"><span>繞射（艾瑞盤直徑）</span><b id="b-dif">—</b></div>
+            <div class="row"><span>合計（約）</span><b id="b-tot">—</b></div>
+          </div>
+          <div class="predict" data-answer="2">
+            <p class="q">把瞳孔一路縮到 0.5 mm，影像會怎樣？</p>
+            <div class="opts"><button>越來越清楚</button><button>不變</button><button>先變清楚，太小又變模糊</button></div>
+            <p class="why">瞳孔縮小時幾何模糊圈變小，但繞射造成的艾瑞盤變大。兩者相加有一個最佳點（下方曲線最低處）。離焦越少，最佳瞳孔越大；真實眼睛還有像差，一般最佳瞳孔約 2–3 mm。</p>
+          </div>
+        </div>
+      </div>
+      <div class="observe"><h4>觀察重點</h4><ul>
+        <li>離焦量為 0 時，只剩繞射：瞳孔越大越好（但真實眼睛還有像差，見第 15 章）。</li>
+        <li>有 −1.00 D 近視時，把瞳孔從 6 mm 縮到 2 mm，模糊圈縮為三分之一。</li>
+        <li>針孔視力檢查（pinhole acuity）利用的就是這個原理。</li>
+      </ul></div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 11-2</span><h3>景深尺與超焦距</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-dof" aria-label="景深屈光度尺"></canvas><span class="hint">拖曳對焦點</span></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="d-f">對焦距離 <output id="d-f-out"></output></label><input type="range" id="d-f" min="0" max="5" step="0.05" value="1"></div>
+          <div class="ctrl"><label for="d-p">瞳孔直徑 <output id="d-p-out"></output></label><input type="range" id="d-p" min="1" max="8" step="0.1" value="3"></div>
+          <button class="btn ghost" id="d-hyp" type="button">對焦到超焦距</button>
+          <div class="readout">
+            <div class="row"><span>景深（屈光度）</span><b id="d-tot">—</b></div>
+            <div class="row"><span>看得清的最遠處</span><b id="d-far">—</b></div>
+            <div class="row"><span>看得清的最近處</span><b id="d-near">—</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="0">
+          <p class="q">陽光下瞳孔變小，老花眼的人看近會比較輕鬆還是吃力？</p>
+          <div class="opts"><button>比較輕鬆</button><button>比較吃力</button><button>沒影響</button></div>
+          <p class="why">瞳孔小，景深變大，近點往眼睛方向延伸，原本稍微模糊的距離變得可以接受。所以老花者常說「光線充足時看報紙比較清楚」。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>景深的範圍在屈光度尺上是對稱的（對焦點前後各一半），換成公分就不對稱。</li>
+          <li>按「對焦到超焦距」：遠端剛好延伸到無限遠，這是兼顧遠近的最佳對焦點。</li>
+          <li>這裡以「可容許模糊 2.5 角分」示範；實際數值依視標大小與個人而異。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>瞳孔越小，看得越清楚。</summary><div class="fix">太小的瞳孔會增加繞射，也讓視網膜照度下降。最佳瞳孔大小約在 2–3 mm。</div></details>
+      <details class="myth"><summary>針孔可以矯正近視。</summary><div class="fix">針孔只是縮小模糊圈，並沒有把光聚焦到視網膜上；它也讓影像變暗、視野變窄，不適合當作日常矯正。</div></details>
+      <details class="myth"><summary>景深是固定的，跟看哪裡無關。</summary><div class="fix">以屈光度表示時大致固定，但換成距離時，看越近景深（公分）越淺，看遠時景深可以很長。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>公式補充 <span class="tag">OPTIONAL</span></h2>
+    <details class="formula"><summary>展開看公式（選讀）</summary><div>
+      <p>模糊圈角大小（弧度）：<span class="eq">β ≈ 瞳孔直徑(m) × 離焦量(D)</span></p>
+      <p>艾瑞盤半徑：<span class="eq">θ = 1.22 λ / d</span></p>
+      <p>景深半寬（屈光度）：<span class="eq">±(可容許模糊角) / 瞳孔直徑</span></p>
+    </div></details>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div class="terms-wrap"><table class="terms">
+      <tr><th>English</th><th>中文</th><th>一句話說明</th></tr>
+      <tr><td>blur circle</td><td>模糊圈</td><td>離焦物點在視網膜上的圓斑</td></tr>
+      <tr><td>pinhole</td><td>針孔</td><td>縮小光束以減少模糊</td></tr>
+      <tr><td>diffraction</td><td>繞射</td><td>光通過小孔散開</td></tr>
+      <tr><td>Airy disk</td><td>艾瑞盤</td><td>繞射形成的中央亮斑</td></tr>
+      <tr><td>depth of field</td><td>景深</td><td>物方可清楚的前後範圍</td></tr>
+      <tr><td>depth of focus</td><td>焦深</td><td>像方可容許的位移範圍</td></tr>
+      <tr><td>hyperfocal distance</td><td>超焦距</td><td>對焦於此時遠端景深到無限遠</td></tr>
+      <tr><td>minimum angle of resolution (MAR)</td><td>最小解像角</td><td>可分辨的最小細節角</td></tr>
+    </table></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/core.js"></script>
+<script src="assets/eye.js"></script>
+<script>
+(function () {
+  const { Stage, fmt, range, quiz, blurText } = OL;
+  const { drawEye } = OLEye;
+  const ARCMIN = Math.PI / 180 / 60;
+  const LAMBDA = 555e-9;
+
+  /* ---------- LAB 11-1 ---------- */
+  const K = range("b-K", (v) => fmt.D(v), () => all());
+  const P = range("b-p", (v) => v.toFixed(1) + " mm", () => all());
+  document.getElementById("b-pin").addEventListener("click", () => { P.value = 1; all(); });
+  const ey = new Stage("cv-blur", { xmin: -22, xmax: 30, ymin: -14, ymax: 14, aspect: 0.42, minH: 220, maxH: 330, equal: true, draw: drawEyeView });
+  const lt = new Stage("cv-letter", { xmin: 0, xmax: 100, ymin: 0, ymax: 40, aspect: 0.34, minH: 190, maxH: 260, draw: drawLetter });
+  function blurs(p, k) {
+    const geo = (p / 1000) * Math.abs(k) / ARCMIN;            // 角分（直徑）
+    const dif = 2.44 * LAMBDA / (p / 1000) / ARCMIN;          // 艾瑞盤直徑（角分）
+    return { geo, dif, tot: Math.sqrt(geo * geo + dif * dif) };
+  }
+  function drawEyeView(s, c) {
+    const L = 22.22, p = P.value, k = K.value;
+    drawEye(s, c, 0, L, 12);
+    s.axis({ label: false });
+    // 瞳孔（虹膜）
+    s.line(1.2, p / 2, 1.2, 10, { color: c.ink, w: 3 }); s.line(1.2, -p / 2, 1.2, -10, { color: c.ink, w: 3 });
+    // 光錐：焦點相對視網膜偏移（示意：1 D ≈ 0.37 mm，放大顯示 ×6）
+    const fx = L + k * 0.37 * 6;
+    const y0 = p / 2;
+    s.ray([[-22, y0], [1.2, y0], [fx, 0]], { color: c.ray, w: 1.6 });
+    s.ray([[-22, -y0], [1.2, -y0], [fx, 0]], { color: c.ray, w: 1.6 });
+    if (fx < L) { s.line(fx, 0, L, (L - fx) / (fx - 1.2) * y0, { color: c.ray, w: 1.6 }); s.line(fx, 0, L, -(L - fx) / (fx - 1.2) * y0, { color: c.ray, w: 1.6 }); }
+    const half = Math.abs((L - fx) / (fx - 1.2) * y0);
+    s.line(L, -half, L, half, { color: c.warn, w: 5, alpha: 0.85 });
+    s.text("模糊圈", L, half, { dx: 8, dy: -6, align: "left", size: 11, weight: 700, color: c.warn, bg: c.bg });
+    s.text("瞳孔", 1.2, 10, { dy: -10, size: 11, color: c.muted });
+    s.text("離焦量放大顯示", -21, -13, { align: "left", size: 10, color: c.muted });
+  }
+  function drawLetter(s, c) {
+    const p = P.value, k = K.value, b = blurs(p, k);
+    const ctx = s.ctx;
+    // 左：視網膜影像（20/40 的 E，高 10 角分）
+    const boxW = Math.min(s.w * 0.36, 200), pxPerArcmin = Math.min(5, (s.h - 40) / 22);
+    ctx.save(); ctx.fillStyle = c.surface; ctx.fillRect(10, 10, boxW, s.h - 20); ctx.strokeStyle = c.line; ctx.strokeRect(10, 10, boxW, s.h - 20); ctx.restore();
+    const blurPx = b.tot * pxPerArcmin;
+    blurText(ctx, "E", 10 + boxW / 2, s.h / 2 + 4, `700 ${Math.round(10 * pxPerArcmin * 1.35)}px ${c.body}`, c.ink, blurPx);
+    s.text("視網膜上的 E（20/40）", 10 + boxW / 2, 22, { px: true, size: 11, color: c.muted });
+    // 右：模糊大小 vs 瞳孔
+    const gx0 = boxW + 50, gx1 = s.w - 14, gy0 = s.h - 26, gy1 = 18;
+    const X = (pp) => gx0 + (pp - 0.5) / 7.5 * (gx1 - gx0), Y = (am) => gy0 - Math.min(1, am / 30) * (gy0 - gy1);
+    ctx.save(); ctx.strokeStyle = c.muted; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(gx0, gy1); ctx.lineTo(gx0, gy0); ctx.lineTo(gx1, gy0); ctx.stroke();
+    const curve = (fn, col, dash) => { ctx.beginPath(); for (let pp = 0.5; pp <= 8; pp += 0.05) { const y = Y(fn(pp)); pp === 0.5 ? ctx.moveTo(X(pp), y) : ctx.lineTo(X(pp), y); } ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.setLineDash(dash || []); ctx.stroke(); ctx.setLineDash([]); };
+    curve((pp) => blurs(pp, k).geo, c.ray, [5, 4]); curve((pp) => blurs(pp, k).dif, c.ray3, [2, 3]); curve((pp) => blurs(pp, k).tot, c.ink);
+    ctx.beginPath(); ctx.arc(X(p), Y(b.tot), 5, 0, Math.PI * 2); ctx.fillStyle = c.accent; ctx.fill();
+    ctx.restore();
+    [1, 2, 4, 6, 8].forEach((pp) => s.text(pp + "", X(pp), gy0, { px: true, dy: 10, size: 10, color: c.muted, font: c.mono }));
+    s.text("瞳孔直徑 mm", gx1, gy0, { px: true, dy: -10, align: "right", size: 10, color: c.muted });
+    [0, 10, 20, 30].forEach((a) => s.text(a + "′", gx0, Y(a), { px: true, dx: -6, align: "right", size: 10, color: c.muted, font: c.mono }));
+    s.text("— 合計  - - 幾何  ··· 繞射", gx1, gy1, { px: true, align: "right", size: 10, color: c.muted });
+  }
+  function all() {
+    const b = blurs(P.value, K.value);
+    document.getElementById("b-geo").textContent = b.geo.toFixed(1) + " 角分";
+    document.getElementById("b-dif").textContent = b.dif.toFixed(1) + " 角分";
+    document.getElementById("b-tot").textContent = b.tot.toFixed(1) + " 角分";
+    ey.render(); lt.render();
+  }
+  all();
+
+  /* ---------- LAB 11-2 ---------- */
+  const TOL = 2.5 * ARCMIN;
+  const Fd = range("d-f", (v) => v < 0.01 ? "無限遠（0 D）" : `${(100 / v).toFixed(0)} cm（${v.toFixed(2)} D）`, () => df.render());
+  const Pd = range("d-p", (v) => v.toFixed(1) + " mm", () => df.render());
+  document.getElementById("d-hyp").addEventListener("click", () => { Fd.value = TOL / (Pd.value / 1000); df.render(); });
+  const DM = 5;
+  const df = new Stage("cv-dof", { xmin: -0.4, xmax: DM + 0.3, ymin: -4, ymax: 4, aspect: 0.4, minH: 220, maxH: 320, draw: drawDof });
+  df.addHandle({ pos: () => [Fd.value, 1.2], drag: (x) => { Fd.value = OL.clamp(Math.round(x * 20) / 20, 0, 5); } });
+  function drawDof(s, c) {
+    const f = Fd.value, h = TOL / (Pd.value / 1000);
+    const far = Math.max(0, f - h), near = f + h;
+    s.line(0, 0, DM, 0, { color: c.ink, w: 1.5 });
+    for (let D = 0; D <= DM; D += 0.5) {
+      s.line(D, -0.25, D, 0.25, { color: c.ink, w: 1 });
+      if (Number.isInteger(D)) s.text(D + " D", D, 0, { dy: -14, size: 10, color: c.muted, font: c.mono });
+      s.text(D === 0 ? "∞" : (100 / D).toFixed(0), D, 0, { dy: 16, size: 10, font: c.mono });
+    }
+    s.text("cm", DM, 0, { dx: 18, dy: 16, size: 10, color: c.muted, font: c.mono });
+    s.poly([[far, -1.9], [Math.min(near, DM), -1.9], [Math.min(near, DM), -1.0], [far, -1.0]], { close: true, fill: c.ok, color: c.ok, w: 1, alpha: 0.5 });
+    s.text("景深：這段距離都看得清", (far + Math.min(near, DM)) / 2, -1.9, { dy: 12, size: 11, weight: 700, color: c.ok, bg: c.bg });
+    if (f - h < 0) s.text("（理論上延伸超過無限遠）", 0, -3.1, { align: "left", size: 10, color: c.muted });
+    s.line(f, -2.2, f, 1.2, { color: c.accent, w: 2 });
+    s.text("對焦點", f, 1.2, { dy: -14, size: 11, weight: 700, color: c.accent });
+    s.text("← 遠", 0, 3.3, { align: "left", size: 11, color: c.muted }); s.text("近 →", DM, 3.3, { align: "right", size: 11, color: c.muted });
+    document.getElementById("d-tot").textContent = "±" + h.toFixed(2) + " D（共 " + (2 * h).toFixed(2) + " D）";
+    document.getElementById("d-far").textContent = far < 0.005 ? "無限遠" : (100 / far).toFixed(0) + " cm";
+    document.getElementById("d-near").textContent = (100 / near).toFixed(0) + " cm";
+  }
+
+  quiz("quiz", "ch11", [
+    { q: "同樣 −1.00 D 的近視，瞳孔由 6 mm 縮小為 3 mm，視網膜模糊圈：", opts: ["變大一倍", "縮小一半", "不變", "消失"], a: 1, exp: "幾何模糊圈 ≈ 瞳孔直徑 × 離焦量，瞳孔減半，模糊圈減半。" },
+    { q: "病人戴針孔後視力明顯進步，最可能代表：", opts: ["視力下降主要來自屈光不正", "有黃斑部病變", "需要更大的瞳孔", "有繞射問題"], a: 0, exp: "針孔縮小模糊圈，能改善因屈光不正造成的模糊；若是病變造成，針孔通常幫助不大。" },
+    { q: "瞳孔太小時影像反而變差，主要原因是：", opts: ["幾何模糊變大", "繞射變大", "屈光力改變", "調節變差"], a: 1, exp: "孔徑越小，艾瑞盤越大（θ = 1.22λ/d）。" },
+    { q: "對焦在超焦距時：", opts: ["近點延伸到 0 cm", "景深的遠端剛好到無限遠", "景深為 0", "只能看清超焦距那一點"], a: 1, exp: "超焦距的定義：對焦於此，景深遠端延伸到無限遠，同時近端最接近眼睛。" },
+    { q: "景深以屈光度表示時，在對焦點前後的分布是：", opts: ["前多後少", "前少後多", "大致對稱", "全部在對焦點之前"], a: 2, exp: "在屈光度尺上對稱；換算成公分時，遠端距離較長。" },
+    { q: "瞳孔變大時，景深會：", opts: ["變大", "變小", "不變", "先變大後變小"], a: 1, exp: "瞳孔大，模糊圈對離焦更敏感，可容許的離焦範圍變小，景深變淺。" },
+  ]);
+})();
+</script>
+</body>
+</html>

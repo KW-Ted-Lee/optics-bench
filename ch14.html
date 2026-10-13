@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第 14 章 反射｜視光光學實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-chapter="ch14">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter 14</div>
+    <h1>反射</h1>
+    <div class="en">Reflection</div>
+    <p class="lede">鏡面也會改變聚散度，只是光反射後往回走。角膜的反射影像（Purkinje I）是角膜弧度儀、角膜地形圖與 Hirschberg 檢查的基礎；鏡片表面的反射則靠抗反射膜來減少。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>能用光線追跡判斷凹面鏡、凸面鏡、平面鏡的成像性質。</li>
+      <li>理解凸面鏡（例如角膜前表面）永遠形成正立縮小的虛像，曲率越大像越小。</li>
+      <li>理解鏡片表面反射率與折射率的關係，以及抗反射膜利用干涉減少反射的原理。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Mirror power</span><h3>鏡面屈光力</h3><p>凹面鏡會聚（正屈光力），凸面鏡發散（負屈光力）。焦距是曲率半徑的一半。</p></div>
+      <div class="concept"><span class="en-term">Direction reverses</span><h3>反射後方向相反</h3><p>反射光往左走，所以實像在鏡子前方（左側），虛像在鏡子後方（右側）。</p></div>
+      <div class="concept"><span class="en-term">Purkinje images</span><h3>浦肯野影像</h3><p>眼睛四個面的反射：I 角膜前、II 角膜後、III 水晶體前、IV 水晶體後。I–III 為正立虛像，IV（凹面）為倒立實像。調節時 III 變小並前移。</p></div>
+      <div class="concept"><span class="en-term">Antireflection coating</span><h3>抗反射膜</h3><p>膜層上下兩個反射光相差半個波長而互相抵消。理想膜層：折射率 = √(鏡片 n)，厚度 = 四分之一波長。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 14-1</span><h3>面鏡成像</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-mir" aria-label="面鏡成像"></canvas><span class="hint">拖曳物體頂端</span></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>鏡子</label>
+            <div class="seg" id="m-type"><button data-v="cc" aria-pressed="true">凹面鏡</button><button data-v="cv">凸面鏡</button><button data-v="pl">平面鏡</button></div></div>
+          <div class="ctrl"><label for="m-r">曲率半徑大小 <output id="m-r-out"></output></label><input type="range" id="m-r" min="10" max="60" step="1" value="40"></div>
+          <div class="ctrl"><label for="m-x">物距 <output id="m-x-out"></output></label><input type="range" id="m-x" min="-75" max="-3" step="0.5" value="-50"></div>
+          <div class="readout">
+            <div class="row"><span>鏡面屈光力</span><b id="m-P">—</b></div>
+            <div class="row"><span>像的位置</span><b id="m-i">—</b></div>
+          </div>
+          <div class="verdict" id="m-verdict"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="0">
+          <p class="q">角膜前表面就像一面凸面鏡。角膜越陡（曲率半徑越小），角膜弧度儀看到的反射影像會？</p>
+          <div class="opts"><button>越小</button><button>越大</button><button>一樣</button></div>
+          <p class="why">凸面鏡曲率半徑越小、發散力越強，虛像越小越靠近鏡面。角膜弧度儀就是量這個反射影像的大小來推算角膜曲率。切到凸面鏡，改變曲率半徑試試。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>凹面鏡：物體在焦點外 → 倒立實像（在鏡前）；焦點內 → 正立放大虛像（化妝鏡）。</li>
+          <li>凸面鏡：任何位置都是正立縮小虛像（汽車後照鏡、角膜反光）。</li>
+          <li>平面鏡：屈光力 0，像在鏡後同樣距離、等大正立。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 14-2</span><h3>鏡片反射與抗反射膜</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-ar" aria-label="抗反射膜反射率光譜"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>鏡片材質</label>
+            <div class="seg" id="a-n"><button data-v="1.498" aria-pressed="true">CR-39 1.50</button><button data-v="1.586">PC 1.59</button><button data-v="1.67">1.67</button><button data-v="1.74">1.74</button></div></div>
+          <div class="ctrl"><label>膜層</label>
+            <div class="seg" id="a-c"><button data-v="none">無鍍膜</button><button data-v="mgf2" aria-pressed="true">MgF₂ n=1.38</button><button data-v="ideal">理想 n=√n</button></div></div>
+          <div class="ctrl"><label for="a-t">膜層厚度 <output id="a-t-out"></output></label><input type="range" id="a-t" min="0" max="250" step="1" value="100"></div>
+          <div class="readout">
+            <div class="row"><span>無鍍膜反射率（每面）</span><b id="a-R0">—</b></div>
+            <div class="row"><span>鍍膜後 @ 550 nm</span><b id="a-R1">—</b></div>
+          </div>
+          <div class="predict" data-answer="1">
+            <p class="q">把鏡片材質從 1.50 換成 1.74（高折射率），沒有鍍膜時表面反射會？</p>
+            <div class="opts"><button>變少</button><button>變多</button><button>不變</button></div>
+            <p class="why">反射率 = ((n − 1)/(n + 1))²，折射率越高反射越多：1.50 約 4%，1.74 約 7.3%（每一面）。所以高折射率鏡片更需要抗反射膜。</p>
+          </div>
+        </div>
+      </div>
+      <div class="observe"><h4>觀察重點</h4><ul>
+        <li>厚度約 100 nm（MgF₂ 的四分之一波長）時，綠光附近反射最低。</li>
+        <li>光譜兩端（藍、紅）仍有少量反射，所以鍍膜鏡片的反光帶紫綠色。</li>
+        <li>選「理想 n=√n」：中心波長的反射幾乎為 0。</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>凸面鏡的焦點在鏡子前面。</summary><div class="fix">凸面鏡發散光線，反射光看起來從鏡子後方的點發出，那就是它的（虛）焦點。</div></details>
+      <details class="myth"><summary>抗反射膜是把反射的光「吸收」掉。</summary><div class="fix">是利用干涉讓兩道反射光互相抵消，能量轉成穿透光，所以鍍膜鏡片的透光率反而提高。</div></details>
+      <details class="myth"><summary>四個浦肯野影像都是虛像。</summary><div class="fix">I、II、III 由凸面形成，是正立虛像；IV 由水晶體後表面（對反射光是凹面）形成，是倒立實像。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>公式補充 <span class="tag">OPTIONAL</span></h2>
+    <details class="formula"><summary>展開看公式（選讀）</summary><div>
+      <p>鏡面屈光力：<span class="eq">F = −2 / r</span>　焦距：<span class="eq">f = r / 2</span></p>
+      <p>成像：<span class="eq">L′ = L + F</span>，其中 <span class="eq">L′ = −1 / l′</span>（反射後方向相反）</p>
+      <p>表面反射率：<span class="eq">R = ((n′ − n)/(n′ + n))²</span></p>
+      <p>理想抗反射膜：<span class="eq">n膜 = √n鏡片</span>　<span class="eq">厚度 = λ / (4 n膜)</span></p>
+    </div></details>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div class="terms-wrap"><table class="terms">
+      <tr><th>English</th><th>中文</th><th>一句話說明</th></tr>
+      <tr><td>concave / convex mirror</td><td>凹面鏡／凸面鏡</td><td>會聚／發散</td></tr>
+      <tr><td>plane mirror</td><td>平面鏡</td><td>屈光力 0</td></tr>
+      <tr><td>Purkinje images</td><td>浦肯野影像</td><td>眼內四個面的反射影像</td></tr>
+      <tr><td>keratometry</td><td>角膜弧度測量</td><td>由 Purkinje I 大小推算曲率</td></tr>
+      <tr><td>corneal topography</td><td>角膜地形圖</td><td>整片角膜的曲率分布</td></tr>
+      <tr><td>Hirschberg test</td><td>Hirschberg 檢查</td><td>角膜反光點判斷斜視</td></tr>
+      <tr><td>antireflection coating</td><td>抗反射膜</td><td>干涉減少反射</td></tr>
+      <tr><td>destructive interference</td><td>破壞性干涉</td><td>相差半波長而抵消</td></tr>
+    </table></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/core.js"></script>
+<script>
+(function () {
+  const { Stage, fmt, range, seg, quiz } = OL;
+
+  /* ---------- LAB 14-1 ---------- */
+  const tp = seg("m-type", () => mr.render());
+  const rr = range("m-r", (v) => v + " cm", () => mr.render());
+  const xr = range("m-x", (v) => fmt.num(v, 1, "cm"), () => mr.render());
+  let h = 4;
+  const mr = new Stage("cv-mir", { xmin: -80, xmax: 45, ymin: -12, ymax: 12, aspect: 0.55, minH: 280, maxH: 460, draw: drawMir });
+  mr.addHandle({ pos: () => [xr.value, h], drag: (x, y) => { xr.value = OL.clamp(Math.round(x * 2) / 2, -75, -3); h = OL.clamp(y, 1.5, 7); } });
+
+  function drawMir(s, c) {
+    const t = tp.value;
+    const r = t === "cc" ? -rr.value : t === "cv" ? rr.value : Infinity;  // cm，曲率中心在左 = 負
+    const F = isFinite(r) ? -2 / (r / 100) : 0;                           // D
+    const xo = xr.value;
+    const ctx = s.ctx;
+    // 鏡子
+    const bend = t === "pl" ? 0 : (t === "cc" ? 1 : -1) * Math.min(26, 700 / rr.value);
+    ctx.save(); ctx.beginPath();
+    for (let i = 0; i <= 40; i++) { const tt = -1 + i / 20, py = s.Y(0) + tt * (s.Y(-10) - s.Y(0)), px = s.X(0) + bend * tt * tt; i ? ctx.lineTo(px, py) : ctx.moveTo(px, py); }
+    ctx.strokeStyle = c.glassEdge; ctx.lineWidth = 3; ctx.stroke();
+    ctx.globalAlpha = 0.25; ctx.lineWidth = 8; ctx.translate(5, 0); ctx.stroke(); ctx.restore();
+    s.axis({ label: false });
+    if (F !== 0) {
+      const f = -1 / F * 100;  // 焦點位置（cm）：凹面在左（負）、凸面在右（正）
+      s.point(f, 0, "F", { dy: 14 }); s.point(2 * f, 0, "C", { dy: 14, color: c.muted });
+    }
+    // 成像
+    const L = 100 / xo, Lp = L + F;
+    const xi = Math.abs(Lp) < 1e-6 ? Infinity : -100 / Lp;
+    const m = -xi / xo, hi = m * h;
+    const real = isFinite(xi) && xi < 0;
+    // 光線：反射後往左，t 為「每向左一單位的 y 變化」：t = s − yF
+    const rays = [{ s: 0, col: c.ray }];
+    rays.push({ s: (0 - h) / (0 - xo), col: c.ray2 });           // 射向鏡頂點
+    if (F !== 0) { const fx = -100 / F; if (Math.abs(fx - xo) > 0.5) rays.push({ s: (0 - h) / (fx - xo), col: c.ray3 }); } // 經 F
+    rays.forEach((ry) => {
+      const yM = h + ry.s * (0 - xo);
+      const t2 = ry.s - yM * F / 100;
+      const xEnd = s.opt.xmin;
+      s.ray([[xo, h], [0, yM], [xEnd, yM + t2 * (0 - xEnd)]], { color: ry.col, w: 1.8 });
+      if (!real && isFinite(xi)) s.line(0, yM, Math.min(xi, s.opt.xmax), yM - t2 * Math.min(xi, s.opt.xmax), { color: ry.col, dash: [5, 5], w: 1.2, alpha: 0.85 });
+    });
+    s.arrowObj(xo, h, { label: "物" });
+    if (isFinite(xi) && xi > s.opt.xmin && xi < s.opt.xmax && Math.abs(hi) < 30) s.arrowObj(xi, hi, { color: c.accent, dash: real ? null : [5, 4], label: real ? "實像" : "虛像" });
+    s.text("鏡前（實像側）", -79, 11, { align: "left", size: 11, color: c.muted });
+    s.text("鏡後（虛像側）", 44, 11, { align: "right", size: 11, color: c.muted });
+    document.getElementById("m-P").textContent = fmt.D(F);
+    document.getElementById("m-i").textContent = !isFinite(xi) ? "無限遠" : (xi < 0 ? "鏡前 " : "鏡後 ") + Math.abs(xi).toFixed(1) + " cm";
+    const v = document.getElementById("m-verdict");
+    v.innerHTML = !isFinite(xi) ? '<span class="pill info">像在無限遠</span> 物體在焦點' :
+      (real ? '<span class="pill ok">實像</span> ' : '<span class="pill warn">虛像</span> ') + (m < 0 ? "倒立" : "正立") + "・" + (Math.abs(m) > 1.02 ? "放大" : Math.abs(m) < 0.98 ? "縮小" : "等大") + `　<span class="mono">M = ${fmt.num(m, 2, "×")}</span>`;
+  }
+
+  /* ---------- LAB 14-2 ---------- */
+  const an = seg("a-n", () => ar.render());
+  const ac = seg("a-c", () => ar.render());
+  const at = range("a-t", (v) => v + " nm", () => ar.render());
+  const ar = new Stage("cv-ar", { xmin: 380, xmax: 720, ymin: -1, ymax: 9, aspect: 0.55, minH: 260, maxH: 420, draw: drawAR });
+  function Rcoat(n, nc, t, lam) {
+    if (nc == null) return ((n - 1) / (n + 1)) ** 2;
+    const r1 = (1 - nc) / (1 + nc), r2 = (nc - n) / (nc + n), d = 4 * Math.PI * nc * t / lam;
+    return (r1 * r1 + r2 * r2 + 2 * r1 * r2 * Math.cos(d)) / (1 + r1 * r1 * r2 * r2 + 2 * r1 * r2 * Math.cos(d));
+  }
+  function drawAR(s, c) {
+    const n = +an.value, mode = ac.value;
+    const nc = mode === "none" ? null : mode === "mgf2" ? 1.38 : Math.sqrt(n);
+    const t = at.value;
+    // 可見光色帶
+    const ctx = s.ctx;
+    for (let l = 380; l < 720; l += 4) {
+      const hue = l < 440 ? 270 : l < 490 ? 270 - (l - 440) * 1.8 : l < 580 ? 180 - (l - 490) * 1.33 : Math.max(0, 60 - (l - 580) * 0.43);
+      ctx.fillStyle = `hsl(${hue} 80% 55%)`; ctx.globalAlpha = 0.22; ctx.fillRect(s.X(l), s.Y(-0.2), s.X(l + 4) - s.X(l) + 0.5, s.Y(-1) - s.Y(-0.2));
+    }
+    ctx.globalAlpha = 1;
+    for (let v = 0; v <= 8; v += 2) { s.line(380, v, 720, v, { color: c.grid, w: 1 }); s.text(v + "%", 380, v, { dx: 4, align: "left", dy: -7, size: 10, color: c.muted, font: c.mono }); }
+    [400, 500, 600, 700].forEach((l) => s.text(l + " nm", l, -0.6, { size: 10, color: c.ink, font: c.mono }));
+    const R0 = Rcoat(n, null) * 100;
+    s.line(380, R0, 720, R0, { color: c.muted, w: 1.6, dash: [6, 4] });
+    s.text("無鍍膜", 715, R0, { align: "right", dy: -9, size: 11, color: c.muted });
+    if (nc != null) {
+      const pts = [];
+      for (let l = 380; l <= 720; l += 2) pts.push([l, Math.min(8.8, Rcoat(n, nc, t, l) * 100)]);
+      s.poly(pts, { color: c.ray, w: 2.4 });
+    }
+    document.getElementById("a-R0").textContent = R0.toFixed(2) + " %";
+    document.getElementById("a-R1").textContent = nc == null ? "—" : (Rcoat(n, nc, t, 550) * 100).toFixed(2) + " %";
+    s.text("反射率（單一表面）", 715, 8.6, { align: "right", size: 11, color: c.muted });
+  }
+
+  quiz("quiz", "ch14", [
+    { q: "凸面鏡對實物形成的像一定是：", opts: ["倒立實像", "正立縮小虛像", "正立放大虛像", "視距離而定"], a: 1, exp: "凸面鏡發散光線，對實物永遠形成正立、縮小、位於鏡後的虛像。" },
+    { q: "曲率半徑 20 cm 的凹面鏡，焦距為：", opts: ["40 cm", "20 cm", "10 cm", "5 cm"], a: 2, exp: "鏡面焦距 = 曲率半徑的一半。" },
+    { q: "角膜弧度儀量測的是哪一個浦肯野影像？", opts: ["I（角膜前表面）", "II（角膜後表面）", "III（水晶體前表面）", "IV（水晶體後表面）"], a: 0, exp: "角膜前表面的反射最亮，弧度儀由這個影像的大小推算角膜曲率。" },
+    { q: "四個浦肯野影像中，唯一的倒立實像是：", opts: ["I", "II", "III", "IV"], a: 3, exp: "IV 由水晶體後表面形成，對反射光而言是凹面，因此是倒立實像。" },
+    { q: "高折射率鏡片沒有鍍膜時：", opts: ["反射比低折射率鏡片少", "反射比低折射率鏡片多", "完全不反射", "只反射紅光"], a: 1, exp: "R = ((n−1)/(n+1))²，n 越大反射越多。" },
+    { q: "抗反射膜減少反射的原理是：", opts: ["吸收光線", "兩道反射光發生破壞性干涉", "讓光全內反射", "改變鏡片度數"], a: 1, exp: "膜層上下表面的反射光相差半波長而抵消，能量轉為穿透。" },
+  ]);
+})();
+</script>
+</body>
+</html>

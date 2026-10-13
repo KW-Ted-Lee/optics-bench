@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第 3 章 聚散度關係｜視光光學實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .eqn { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 15px; }
+  .eqn .chip { padding: 4px 10px; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--line); display: grid; line-height: 1.3; text-align: center; }
+  .eqn .chip small { font-family: var(--font-body); font-size: 11px; color: var(--muted); }
+  .eqn .chip.in { border-color: var(--ray); } .eqn .chip.pw { border-color: var(--accent); } .eqn .chip.out { border-color: var(--ray-2); }
+</style>
+</head>
+<body data-chapter="ch03">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter 03</div>
+    <h1>聚散度關係</h1>
+    <div class="en">The Vergence Relationship</div>
+    <p class="lede">這是全書最重要的一句話：<b>光學面做的事，就是把屈光力「加」到光的聚散度上。</b>進來多少、加多少、出去就是多少。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>理解「入射聚散度 + 屈光力 = 出射聚散度」的意義，並能預測像的位置變化方向。</li>
+      <li>理解聚散度會隨光行進而連續改變，只有在通過光學面時才會「跳」一下。</li>
+      <li>理解聚散度與介質折射率有關，並能解釋水中物體為什麼看起來比較淺。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">L′ = L + F</span><h3>聚散度相加</h3><p>物體送來的光有聚散度 L（通常是負的發散光），光學面加上它的屈光力 F，射出的光聚散度就是 L′。</p></div>
+      <div class="concept"><span class="en-term">Sign of L′</span><h3>L′ 的正負決定實像或虛像</h3><p>L′ 為正：光會聚 → 實像在右側。L′ 為負：光仍發散 → 虛像在左側。L′ 為 0：平行光，像在無限遠。</p></div>
+      <div class="concept"><span class="en-term">Reduced vergence</span><h3>聚散度要乘上折射率</h3><p>L = n / l。同樣距離，在折射率高的介質中，聚散度數值較大。</p></div>
+      <div class="concept"><span class="en-term">Linear sign convention</span><h3>直線符號慣例</h3><p>以光學面為原點，光由左向右行進；在右邊的距離為正，在左邊為負。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 3-1</span><h3>聚散度軌跡：光一路走、一路變</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-ray" aria-label="光線與波前圖"></canvas><canvas id="cv-track" aria-label="聚散度隨位置變化圖"></canvas><span class="hint">拖曳物點</span></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="v-x">物距 l <output id="v-x-out"></output></label><input type="range" id="v-x" min="-80" max="-4" step="1" value="-25"></div>
+          <div class="ctrl"><label for="v-F">表面屈光力 F <output id="v-F-out"></output></label><input type="range" id="v-F" min="-15" max="25" step="0.5" value="10"></div>
+          <div class="ctrl"><label>右側介質 n′</label>
+            <div class="seg" id="v-n"><button data-v="1" aria-pressed="true">1.000 空氣</button><button data-v="1.336">1.336 房水</button><button data-v="1.5">1.500 樹脂</button></div></div>
+          <div class="eqn" id="v-eqn"></div>
+          <div class="verdict" id="v-verdict"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="0">
+          <p class="q">表面屈光力不變，把物體從 25 cm 拉到 50 cm（更遠），像會往哪裡移動？</p>
+          <div class="opts"><button>靠近表面</button><button>遠離表面</button><button>不動</button></div>
+          <p class="why">物體越遠，入射光越不發散（L 從 −4 D 變成 −2 D），加上同樣的 +10 D 後 L′ 變大（+6 → +8 D），聚散度越大代表像越近。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>下方圖：左段是發散光（負），越走越接近 0；在表面處「跳」了 F；右段會聚光越走越大，在像點趨向無限大。</li>
+          <li>把 F 調成負值，觀察 L′ 仍為負，像變成虛像（在左側）。</li>
+          <li>只改 n′：同樣的 L′，在折射率高的介質中，像距較遠（l′ = n′ / L′）。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 3-2</span><h3>平面折射與視深（apparent depth）</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-depth" aria-label="視深模擬"></canvas><span class="hint">拖曳物體改變深度</span></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="d-d">實際深度 <output id="d-d-out"></output></label><input type="range" id="d-d" min="20" max="100" step="1" value="80"></div>
+          <div class="ctrl"><label>物體所在介質</label>
+            <div class="seg" id="d-n"><button data-v="1.333" aria-pressed="true">水 1.333</button><button data-v="1.523">玻璃 1.523</button><button data-v="2.42">鑽石 2.42</button></div></div>
+          <div class="readout">
+            <div class="row"><span>看起來的深度</span><b id="d-app">—</b></div>
+            <div class="row"><span>看起來 / 實際</span><b id="d-ratio">—</b></div>
+            <div class="row"><span>平面屈光力</span><b>0.00 D</b></div>
+          </div>
+          <div class="predict" data-answer="1">
+            <p class="q">從空氣中往下看水底 1 m 深的硬幣，它看起來在多深？</p>
+            <div class="opts"><button>比 1 m 深</button><button>比 1 m 淺</button><button>剛好 1 m</button></div>
+            <p class="why">平面的屈光力是 0，所以聚散度不變（L′ = L），但聚散度 = n / l。從 n = 1.333 換到 n′ = 1.000，距離必須按比例縮短：約 75 cm。</p>
+          </div>
+        </div>
+      </div>
+      <div class="observe"><h4>觀察重點</h4><ul>
+        <li>平面沒有屈光力，卻還是讓物體「看起來」變近，原因是聚散度要乘上折射率。</li>
+        <li>介質折射率越高，物體看起來越淺（鑽石中的物體只剩約 41% 深）。</li>
+        <li>臨床例子：從外面看，房水後方的虹膜與瞳孔看起來比實際位置更靠前。</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>平面沒有屈光力，所以對光完全沒有影響。</summary><div class="fix">平面不改變聚散度，但折射率改變後，相同的聚散度對應不同的距離，所以物體看起來的位置會改變（視深）。</div></details>
+      <details class="myth"><summary>L′ 越大，像越遠。</summary><div class="fix">相反。聚散度是距離的倒數，L′ 越大代表光越快會聚，像越靠近表面。</div></details>
+      <details class="myth"><summary>放大率是像距除以物距，跟折射率無關。</summary><div class="fix">兩側介質不同時，放大率應該用聚散度比 L / L′ 來算，這已經把折射率考慮進去了。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>公式補充 <span class="tag">OPTIONAL</span></h2>
+    <details class="formula"><summary>展開看公式（選讀）</summary><div>
+      <p>聚散度關係：<span class="eq">L′ = L + F</span></p>
+      <p>物、像聚散度：<span class="eq">L = n / l</span>　<span class="eq">L′ = n′ / l′</span></p>
+      <p>橫向放大率：<span class="eq">M = L / L′</span></p>
+    </div></details>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div class="terms-wrap"><table class="terms">
+      <tr><th>English</th><th>中文</th><th>一句話說明</th></tr>
+      <tr><td>object vergence (L)</td><td>物聚散度</td><td>到達光學面時的聚散度</td></tr>
+      <tr><td>image vergence (L′)</td><td>像聚散度</td><td>離開光學面時的聚散度</td></tr>
+      <tr><td>reduced vergence</td><td>約化聚散度</td><td>已乘上折射率的聚散度</td></tr>
+      <tr><td>linear sign convention</td><td>直線符號慣例</td><td>右正左負</td></tr>
+      <tr><td>lateral magnification</td><td>橫向放大率</td><td>像高 ÷ 物高</td></tr>
+      <tr><td>apparent depth</td><td>視深</td><td>經平面折射後看起來的深度</td></tr>
+      <tr><td>plane surface</td><td>平面</td><td>曲率為 0、屈光力為 0</td></tr>
+    </table></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/core.js"></script>
+<script>
+(function () {
+  const { Stage, fmt, range, seg, trace, quiz } = OL;
+
+  /* ---------- LAB 3-1 ---------- */
+  const xR = range("v-x", (v) => fmt.num(v, 0, "cm"), () => draw());
+  const FR = range("v-F", (v) => fmt.D(v), () => draw());
+  const nS = seg("v-n", () => draw());
+  const ray = new Stage("cv-ray", { xmin: -85, xmax: 85, ymin: -10, ymax: 10, aspect: 0.4, minH: 220, maxH: 340, draw: drawRay });
+  const trk = new Stage("cv-track", { xmin: -85, xmax: 85, ymin: -26, ymax: 26, aspect: 0.25, minH: 150, maxH: 220, draw: drawTrack });
+  ray.addHandle({ pos: () => [xR.value, 0], drag: (x) => { xR.value = OL.clamp(Math.round(x), -80, -4); } });
+  ray.drawFn = drawRay;
+  const origRender = ray.render.bind(ray);
+  ray.render = () => { origRender(); trk.render(); updateText(); };
+
+  function calc() {
+    const n2 = +nS.value, xo = xR.value, F = FR.value;
+    const L = 1 / (xo / 100), Lp = L + F;
+    const xi = Math.abs(Lp) < 1e-6 ? Infinity : n2 / Lp * 100;
+    return { n2, xo, F, L, Lp, xi };
+  }
+  function drawRay(s, c) {
+    const { n2, xo, F, xi } = calc();
+    const ctx = s.ctx;
+    ctx.save(); ctx.fillStyle = c.accent; ctx.globalAlpha = Math.min(0.3, (n2 - 1) * 0.5); ctx.fillRect(s.X(0), 0, s.w, s.h); ctx.restore();
+    s.axis({ label: false });
+    // 波前（螢幕空間圓弧）
+    const arcs = (cx, from, to, step, dir) => {
+      for (let x = from; dir > 0 ? x < to : x > to; x += step * dir) {
+        const R = Math.abs(s.X(x) - s.X(cx)); if (R < 6) continue;
+        const half = Math.min(1.1, Math.asin(Math.min(1, (s.h * 0.42) / R)));
+        ctx.save(); ctx.beginPath();
+        if (x > cx) ctx.arc(s.X(cx), s.Y(0), R, -half, half); else ctx.arc(s.X(cx), s.Y(0), R, Math.PI - half, Math.PI + half);
+        ctx.strokeStyle = c.accent; ctx.globalAlpha = 0.45; ctx.lineWidth = 1.2; ctx.stroke(); ctx.restore();
+      }
+    };
+    arcs(xo, xo + 8, -1, 8, 1);
+    if (isFinite(xi) && Math.abs(xi) < 400) {
+      if (xi > 0) arcs(xi, Math.max(2, xi - 8 * Math.floor((xi - 2) / 8)), Math.min(xi, 84), 8, 1);
+      else for (let x = 4; x < 84; x += 8) {
+        const R = s.X(x) - s.X(xi); const half = Math.min(1.1, Math.asin(Math.min(1, (s.h * 0.42) / R)));
+        ctx.save(); ctx.beginPath(); ctx.arc(s.X(xi), s.Y(0), R, -half, half); ctx.strokeStyle = c.accent; ctx.globalAlpha = 0.45; ctx.lineWidth = 1.2; ctx.stroke(); ctx.restore();
+      }
+    } else for (let x = 4; x < 84; x += 8) s.line(x, -9, x, 9, { color: c.accent, alpha: 0.45, w: 1.2 });
+    s.lens(0, 8.5, F, { bulge: F * 0.6 });
+    const el = [{ x: 0, F: F / 100, n2 }];
+    [-0.12, -0.06, 0.06, 0.12].forEach((sl) => {
+      const tr = trace({ x: xo, y: 0, s: sl, n: 1 }, el, s.opt.xmax);
+      s.ray(tr.pts, { color: c.ray, w: 1.6 });
+      if (isFinite(xi) && xi < 0) s.line(0, tr.pts[1][1], Math.max(xi, s.opt.xmin), tr.pts[1][1] + tr.s * Math.max(xi, s.opt.xmin), { color: c.virtual, dash: [4, 4], w: 1.1, alpha: 0.7 });
+    });
+    s.point(xo, 0, "物點", { dy: 14 });
+    if (isFinite(xi) && xi > s.opt.xmin && xi < s.opt.xmax) s.point(xi, 0, xi > 0 ? "實像點" : "虛像點", { color: c.ray2, dy: 14 });
+    s.text(`n = 1.000`, -84, 9, { align: "left", size: 11, color: c.muted });
+    s.text(`n′ = ${n2.toFixed(3)}`, 84, 9, { align: "right", size: 11, color: c.muted });
+  }
+  function drawTrack(s, c) {
+    const { n2, xo, F, xi } = calc();
+    s.line(s.opt.xmin, 0, s.opt.xmax, 0, { color: c.muted, w: 1 });
+    [-20, -10, 10, 20].forEach((v) => { s.line(s.opt.xmin, v, s.opt.xmax, v, { color: c.grid, w: 1 }); s.text(fmt.num(v, 0, "D"), s.opt.xmin, v, { align: "left", dx: 4, size: 10, color: c.muted, font: c.mono }); });
+    s.line(0, -26, 0, 26, { color: c.glassEdge, w: 1, dash: [3, 3] });
+    const lim = (v) => OL.clamp(v, -25.5, 25.5);
+    const p1 = [];
+    for (let x = xo + 0.3; x <= 0; x += 0.25) p1.push([x, lim(1 / ((xo - x) / 100))]);
+    s.poly(p1, { color: c.ray, w: 2.4 });
+    const p2 = [];
+    for (let x = 0; x <= 85; x += 0.25) {
+      if (isFinite(xi) && Math.abs(x - xi) < 0.4) break;
+      p2.push([x, lim(isFinite(xi) ? n2 / ((xi - x) / 100) : 0)]);
+    }
+    s.poly(p2, { color: c.ray2, w: 2.4 });
+    const L = 1 / (xo / 100), Lp = L + F;
+    s.line(0, lim(L), 0, lim(Lp), { color: c.accent, w: 3 });
+    s.point(0, lim(L), "", { color: c.ray, r: 4 }); s.point(0, lim(Lp), "", { color: c.ray2, r: 4 });
+    s.text("F 讓聚散度跳一下", 0, lim(Math.max(L, Lp)), { dy: -12, size: 11, color: c.accent, bg: c.bg });
+    s.text("聚散度沿光軸的變化", s.opt.xmax, 24, { align: "right", dx: -4, size: 11, color: c.muted });
+  }
+  function updateText() {
+    const { n2, F, L, Lp, xi } = calc();
+    document.getElementById("v-eqn").innerHTML =
+      `<span class="chip in"><small>入射 L</small>${fmt.D(L)}</span>+<span class="chip pw"><small>屈光力 F</small>${fmt.D(F)}</span>=<span class="chip out"><small>出射 L′</small>${fmt.D(Lp)}</span>`;
+    const v = document.getElementById("v-verdict");
+    if (!isFinite(xi)) v.innerHTML = '<span class="pill info">L′ = 0</span> 射出平行光，像在無限遠';
+    else v.innerHTML = (Lp > 0 ? '<span class="pill ok">L′ 為正 → 實像</span>' : '<span class="pill warn">L′ 為負 → 虛像</span>') + `　像距 l′ = n′/L′ = ${fmt.num(xi, 1, "cm")}`;
+  }
+  function draw() { ray.render(); }
+  draw();
+
+  /* ---------- LAB 3-2 視深 ---------- */
+  const dR = range("d-d", (v) => v + " cm", () => dp.render());
+  const dn = seg("d-n", () => dp.render());
+  const dp = new Stage("cv-depth", { xmin: -60, xmax: 60, ymin: -110, ymax: 55, aspect: 0.62, minH: 300, maxH: 460, equal: true, draw: drawDepth });
+  dp.addHandle({ pos: () => [0, -dR.value], drag: (x, y) => { dR.value = OL.clamp(Math.round(-y), 20, 100); } });
+  function drawDepth(s, c) {
+    const n = +dn.value, d = dR.value, app = d / n;
+    const ctx = s.ctx;
+    ctx.save(); ctx.fillStyle = c.accent; ctx.globalAlpha = Math.min(0.35, (n - 1) * 0.4); ctx.fillRect(0, s.Y(0), s.w, s.h); ctx.restore();
+    s.line(s.wx(0), 0, s.wx(s.w), 0, { color: c.ink, w: 1.4 });
+    s.text("空氣 n′ = 1.000", s.wx(10), 6, { align: "left", size: 12, weight: 700 });
+    s.text(`n = ${n.toFixed(3)}`, s.wx(10), -6, { align: "left", size: 12, weight: 700 });
+    // 眼睛
+    const ex = 22, ey = 46;
+    ctx.save(); ctx.beginPath(); ctx.ellipse(s.X(ex), s.Y(ey), 16, 9, -0.35, 0, Math.PI * 2); ctx.strokeStyle = c.ink; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.beginPath(); ctx.arc(s.X(ex) - 3, s.Y(ey) + 2, 4, 0, Math.PI * 2); ctx.fillStyle = c.ink; ctx.fill(); ctx.restore();
+    // 由物體到眼睛附近的兩條光線（近軸放大示意）
+    [12, 18].forEach((xs, i) => {
+      const tIn = Math.atan(xs / d);               // 水中角度
+      const sOut = n * Math.sin(tIn); if (sOut >= 1) return;
+      const tOut = Math.asin(sOut);
+      const L2 = 60; const xe = xs + Math.tan(tOut) * L2;
+      s.ray([[0, -d], [xs, 0], [xe, L2]], { color: c.ray, w: 1.8 });
+      s.line(xs, 0, xs - Math.tan(tOut) * app * 1.0, -app, { color: c.virtual, dash: [4, 4], w: 1.2, alpha: 0.8 });
+    });
+    // 法線
+    s.line(12, -16, 12, 16, { color: c.muted, w: 1, dash: [3, 3], alpha: 0.7 });
+    // 物體與像
+    const coin = (y, real) => { ctx.save(); ctx.beginPath(); ctx.ellipse(s.X(0), s.Y(y), 14, 5, 0, 0, Math.PI * 2);
+      ctx.fillStyle = real ? c.warn : "transparent"; ctx.globalAlpha = real ? 0.9 : 1; ctx.fill(); ctx.setLineDash(real ? [] : [4, 3]); ctx.strokeStyle = c.warn; ctx.lineWidth = 1.6; ctx.stroke(); ctx.restore(); };
+    coin(-d, true); coin(-app, false);
+    s.text("實際位置", 0, -d, { dx: -48, size: 11, color: c.ink, bg: c.bg });
+    s.text("看起來的位置", 0, -app, { dx: -56, size: 11, color: c.warn, bg: c.bg });
+    // 尺標
+    s.line(-40, 0, -40, -d, { color: c.ink, w: 1 }); s.text(`${d} cm`, -40, -d / 2, { dx: -4, align: "right", size: 11, font: c.mono });
+    s.line(-30, 0, -30, -app, { color: c.warn, w: 1 }); s.text(`${app.toFixed(1)} cm`, -30, -app / 2, { dx: 4, align: "left", size: 11, color: c.warn, font: c.mono });
+    document.getElementById("d-app").textContent = app.toFixed(1) + " cm";
+    document.getElementById("d-ratio").textContent = (1 / n * 100).toFixed(0) + " %";
+  }
+
+  quiz("quiz", "ch03", [
+    { q: "一個 +10.00 D 的表面，入射光聚散度為 −4.00 D，出射聚散度為：", opts: ["−14.00 D", "+6.00 D", "+14.00 D", "−6.00 D"], a: 1, exp: "L′ = L + F = −4 + 10 = +6.00 D。這是加法，不需要死背其他公式。" },
+    { q: "出射聚散度 L′ 為負值，代表：", opts: ["形成實像", "形成虛像", "像在無限遠", "沒有成像"], a: 1, exp: "L′ 為負表示離開表面的光仍然發散，只能由延長線相交形成虛像。" },
+    { q: "屈光力固定，物體越遠，像會：", opts: ["越靠近光學面", "越遠離光學面", "位置不變", "由實像變虛像"], a: 0, exp: "物體越遠 → L 越接近 0 → L′ = L + F 越大 → 像距越短。物體在無限遠時像在 F′。" },
+    { q: "沿著光軸觀察一束從物點發出的光，在到達表面之前，它的聚散度：", opts: ["保持不變", "數值越來越接近 0", "數值越來越大", "會在中途變號"], a: 1, exp: "發散光離物點越遠越平，聚散度由很大的負值逐漸接近 0。" },
+    { q: "從游泳池邊看水底，池底看起來比實際：", opts: ["深", "淺", "一樣", "看不到"], a: 1, exp: "平面屈光力為 0，聚散度不變，但 n 從 1.333 變成 1.000，對應距離縮短，所以看起來較淺。" },
+    { q: "兩側折射率不同時，計算放大率最可靠的方法是：", opts: ["像距 ÷ 物距", "物聚散度 ÷ 像聚散度", "屈光力 ÷ 物距", "像高 + 物高"], a: 1, exp: "M = L / L′。聚散度已包含折射率，因此在任何介質都適用。" },
+  ]);
+})();
+</script>
+</body>
+</html>

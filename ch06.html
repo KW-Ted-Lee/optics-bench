@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第 6 章 厚透鏡｜視光光學實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-chapter="ch06">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter 06</div>
+    <h1>厚透鏡</h1>
+    <div class="en">Thick Lenses</div>
+    <p class="lede">厚透鏡的「屈光力」不只一個答案：從後表面量、從前表面量、從主平面量，各有用途。驗度儀量的是後頂點屈光力，因為眼鏡的焦點位置是從鏡片後表面算起的。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>能區分後頂點屈光力、前頂點屈光力與等效屈光力，並說出各自的臨床用途。</li>
+      <li>理解主平面的意義：厚透鏡可以用一片放在主平面上的等效薄透鏡取代。</li>
+      <li>觀察鏡片形式（尤其新月形）如何讓主平面移到鏡片外面。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Back vertex power</span><h3>後頂點屈光力</h3><p>以後表面到 F′ 的距離定義。眼鏡處方與驗度儀都用它，因為眼睛在鏡片後方。</p></div>
+      <div class="concept"><span class="en-term">Front vertex (neutralizing) power</span><h3>前頂點屈光力</h3><p>以前表面到 F 的距離定義。雙光子片的加入度常以前頂點量測。</p></div>
+      <div class="concept"><span class="en-term">Equivalent power &amp; principal planes</span><h3>等效屈光力與主平面</h3><p>想像光線只在一個平面上「轉一次彎」。入射端的轉彎平面是 H，出射端是 H′。從主平面量的焦距對應等效屈光力。</p></div>
+      <div class="concept"><span class="en-term">Nodal points</span><h3>節點</h3><p>朝第一節點射入的光線，會從第二節點以相同角度射出。透鏡兩側都是空氣時，節點與主點重合。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 6-1</span><h3>找出主平面</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-pp" aria-label="厚透鏡主平面"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>鏡片形式範例</label>
+            <div class="seg" id="p-pre"><button data-v="20,20,12" aria-pressed="true">雙凸</button><button data-v="40,0,12">平凸</button><button data-v="40,-15,10">正新月形</button><button data-v="-10,-10,4">雙凹</button></div></div>
+          <div class="ctrl"><label for="p-1">前表面 F₁ <output id="p-1-out"></output></label><input type="range" id="p-1" min="-20" max="50" step="1" value="20"></div>
+          <div class="ctrl"><label for="p-2">後表面 F₂ <output id="p-2-out"></output></label><input type="range" id="p-2" min="-25" max="40" step="1" value="20"></div>
+          <div class="ctrl"><label for="p-t">中心厚度 <output id="p-t-out"></output></label><input type="range" id="p-t" min="1" max="25" step="0.5" value="12"></div>
+          <div class="ctrl"><label>平行光從哪邊來</label>
+            <div class="seg" id="p-dir"><button data-v="L" aria-pressed="true">左邊（找 H′、F′）</button><button data-v="R">右邊（找 H、F）</button></div></div>
+          <div class="readout">
+            <div class="row"><span>等效屈光力 Fe</span><b id="p-Fe">—</b></div>
+            <div class="row"><span>前表面 → H</span><b id="p-H">—</b></div>
+            <div class="row"><span>後表面 → H′</span><b id="p-H2">—</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="2">
+          <p class="q">把鏡片改成「正新月形」（前面很凸、後面凹），主平面會在哪裡？</p>
+          <div class="opts"><button>在鏡片正中央</button><button>在鏡片後方</button><button>往前移，甚至跑到鏡片前面</button></div>
+          <p class="why">新月形正鏡片的兩個主平面都被「拉」向凸的那一側。前面越凸、後面越凹，主平面越往前，甚至移到鏡片之外。主平面不一定在鏡片裡面。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>虛線延長：入射光與出射光的延長線，會在 H′（或 H）平面上相交，好像光只在那裡轉了一次彎。</li>
+          <li>對稱雙凸時，H 與 H′ 在鏡片內、對稱分布；平凸時，其中一個主平面剛好在凸面頂點上。</li>
+          <li>厚度變 0 時，H、H′ 都縮回同一處，就是薄透鏡。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 6-2</span><h3>四種「屈光力」比一比</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-bars" aria-label="屈光力比較長條圖"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="b-t">中心厚度 <output id="b-t-out"></output></label><input type="range" id="b-t" min="0" max="15" step="0.5" value="6"></div>
+          <div class="readout">
+            <div class="row"><span>前表面 F₁</span><b id="b-F1">+12.00 D</b></div>
+            <div class="row"><span>後表面 F₂</span><b id="b-F2">−4.00 D</b></div>
+          </div>
+          <button class="btn" id="b-flip" type="button">翻轉鏡片（前後對調）</button>
+          <div class="predict" data-answer="0">
+            <p class="q">驗度儀量的是後頂點屈光力。把這片高度數正新月鏡片「翻過來」放上驗度儀，讀數會？</p>
+            <div class="opts"><button>改變</button><button>完全一樣</button><button>變成負的</button></div>
+            <p class="why">翻轉後，原本的前頂點變成後頂點，讀數變成原來的前頂點屈光力。等效屈光力則不變。這就是為什麼量眼鏡時，鏡片的方向不能放反。</p>
+          </div>
+        </div>
+      </div>
+      <div class="observe"><h4>觀察重點</h4><ul>
+        <li>厚度為 0 時，四種屈光力都相等。</li>
+        <li>正新月形鏡片：後頂點屈光力 &gt; 等效屈光力；翻轉後兩個頂點屈光力互換，等效屈光力不變。</li>
+        <li>厚度越大差距越大，高度數正鏡片特別需要注意。</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>主平面一定在鏡片裡面。</summary><div class="fix">新月形鏡片的主平面常在鏡片之外。主平面是「等效轉彎位置」，不是實體位置。</div></details>
+      <details class="myth"><summary>眼鏡處方的度數就是等效屈光力。</summary><div class="fix">眼鏡處方是後頂點屈光力，因為矯正需要鏡片的 F′ 落在眼睛遠點上，而這個距離是從後表面量起。</div></details>
+      <details class="myth"><summary>鏡片正反面放在驗度儀上，讀數都一樣。</summary><div class="fix">厚鏡片的前、後頂點屈光力不同，放反會讀到前頂點屈光力。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>公式補充 <span class="tag">OPTIONAL</span></h2>
+    <details class="formula"><summary>展開看公式（選讀）</summary><div>
+      <p>後頂點：<span class="eq">Fv = F₁ / (1 − (t/n)F₁) + F₂</span></p>
+      <p>前頂點：<span class="eq">Fn = F₂ / (1 − (t/n)F₂) + F₁</span></p>
+      <p>等效：<span class="eq">Fe = F₁ + F₂ − (t/n)F₁F₂</span></p>
+      <p>主平面：<span class="eq">A₁H = (t/n)F₂ / Fe</span>　<span class="eq">A₂H′ = −(t/n)F₁ / Fe</span></p>
+    </div></details>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div class="terms-wrap"><table class="terms">
+      <tr><th>English</th><th>中文</th><th>一句話說明</th></tr>
+      <tr><td>back vertex power</td><td>後頂點屈光力</td><td>眼鏡處方、驗度儀讀數</td></tr>
+      <tr><td>front vertex power</td><td>前頂點屈光力</td><td>又稱 neutralizing power</td></tr>
+      <tr><td>equivalent power</td><td>等效屈光力</td><td>由主平面量的屈光力</td></tr>
+      <tr><td>principal planes (H, H′)</td><td>主平面</td><td>等效轉彎的位置</td></tr>
+      <tr><td>nodal points (N, N′)</td><td>節點</td><td>入射、出射角度相同</td></tr>
+      <tr><td>vertex</td><td>頂點</td><td>鏡面與光軸的交點</td></tr>
+      <tr><td>lensometer</td><td>驗度儀</td><td>量測後頂點屈光力</td></tr>
+    </table></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/core.js"></script>
+<script>
+(function () {
+  const { Stage, fmt, range, seg, trace, quiz } = OL;
+  const n = 1.5;
+  function powers(F1, F2, tmm) {
+    const r = tmm / 1000 / n;
+    const Fe = F1 + F2 - r * F1 * F2;
+    return { Fe, Fv: F1 / (1 - r * F1) + F2, Fn: F2 / (1 - r * F2) + F1,
+      A1H: Math.abs(Fe) < 1e-9 ? NaN : (r * F2 / Fe) * 1000, A2H2: Math.abs(Fe) < 1e-9 ? NaN : (-r * F1 / Fe) * 1000 };
+  }
+  function drawLensBody(s, c, F1, F2, t, hh) {
+    const ctx = s.ctx, X0 = s.X(0), X1 = s.X(t), yT = s.Y(hh), yB = s.Y(-hh), mid = s.Y(0);
+    const b1 = OL.clamp(F1 * 0.8, -30, 30), b2 = OL.clamp(F2 * 0.8, -30, 30);
+    ctx.save(); ctx.beginPath();
+    // 前表面（F1>0 向左凸）
+    ctx.moveTo(X0 + Math.max(0, b1) * 0.9, yT); ctx.quadraticCurveTo(X0 - b1 * 1.1, mid, X0 + Math.max(0, b1) * 0.9, yB);
+    ctx.lineTo(X1 - Math.max(0, b2) * 0.9 + Math.max(0, -b1) * 0, yB);
+    ctx.quadraticCurveTo(X1 + b2 * 1.1, mid, X1 - Math.max(0, b2) * 0.9, yT); ctx.closePath();
+    ctx.fillStyle = c.glass; ctx.fill(); ctx.strokeStyle = c.glassEdge; ctx.lineWidth = 1.5; ctx.stroke(); ctx.restore();
+  }
+
+  /* ---------- LAB 6-1 ---------- */
+  const p1 = range("p-1", (v) => fmt.D(v), () => pp.render());
+  const p2 = range("p-2", (v) => fmt.D(v), () => pp.render());
+  const pt = range("p-t", (v) => v.toFixed(1) + " mm", () => pp.render());
+  const dir = seg("p-dir", () => pp.render());
+  seg("p-pre", (v) => { const [a, b, t] = v.split(",").map(Number); p1.value = a; p2.value = b; pt.value = t; pp.render(); });
+  const pp = new Stage("cv-pp", { xmin: -75, xmax: 95, ymin: -17, ymax: 17, aspect: 0.62, minH: 300, maxH: 520, draw: drawPP });
+
+  function drawPP(s, c) {
+    const F1 = p1.value, F2 = p2.value, t = pt.value, P = powers(F1, F2, t);
+    drawLensBody(s, c, F1, F2, t, 14);
+    s.axis({ label: false });
+    const fromLeft = dir.value === "L";
+    // 從右邊來：把鏡片鏡像後追跡，再鏡像回來
+    const A = fromLeft ? F1 : F2, B = fromLeft ? F2 : F1;
+    const el = [{ x: 0, F: A / 1000, n2: n }, { x: t, F: B / 1000, n2: 1 }];
+    const mx = (x) => fromLeft ? x : t - x;
+    const Pm = powers(A, B, t);
+    const Hx = t + Pm.A2H2;  // 鏡像座標中的出射主平面
+    const fe = 1000 / Pm.Fe;
+    [-10, -5, 5, 10].forEach((y) => {
+      const xStart = fromLeft ? s.opt.xmin : -(s.opt.xmax - t);
+      const xEnd = fromLeft ? s.opt.xmax : t - s.opt.xmin;
+      const tr = trace({ x: xStart, y, s: 0 }, el, xEnd);
+      s.ray(tr.pts.map(([x, yy]) => [mx(x), yy]), { color: c.ray, w: 1.7 });
+      if (isFinite(Hx)) {
+        // 入射光延長到主平面
+        s.line(mx(0), y, mx(Hx), y, { color: c.ray, dash: [3, 4], w: 1, alpha: 0.75 });
+        // 出射光反向延長到主平面
+        const yb = tr.pts[2][1];
+        s.line(mx(t), yb, mx(Hx), yb + tr.s * (Hx - t), { color: c.ray, dash: [3, 4], w: 1, alpha: 0.75 });
+      }
+    });
+    // 主平面與焦點
+    const Hfront = P.A1H, Hback = t + P.A2H2;
+    const plane = (x, lab, on) => { if (!isFinite(x) || x < s.opt.xmin || x > s.opt.xmax) return; s.line(x, -15, x, 15, { color: on ? c.accent : c.muted, w: on ? 2.2 : 1.2, dash: on ? null : [5, 4] }); s.text(lab, x, 15, { dy: 8, size: 12, weight: 700, color: on ? c.accent : c.muted, bg: c.bg }); };
+    plane(Hfront, "H", !fromLeft);
+    plane(Hback, "H′", fromLeft);
+    if (isFinite(fe)) {
+      const F2x = Hback + 1000 / P.Fe, F1x = Hfront - 1000 / P.Fe;
+      if (F2x > s.opt.xmin && F2x < s.opt.xmax) s.point(F2x, 0, "F′", { dy: 14, color: fromLeft ? c.ray2 : c.ink });
+      if (F1x > s.opt.xmin && F1x < s.opt.xmax) s.point(F1x, 0, "F", { dy: 14, color: !fromLeft ? c.ray2 : c.ink });
+    }
+    s.text("A₁", 0, -14, { dy: 14, size: 11, color: c.muted }); s.text("A₂", t, -14, { dy: 14, size: 11, color: c.muted });
+    document.getElementById("p-Fe").textContent = fmt.D(P.Fe);
+    document.getElementById("p-H").textContent = isFinite(P.A1H) ? fmt.num(P.A1H, 1, "mm") : "—";
+    document.getElementById("p-H2").textContent = isFinite(P.A2H2) ? fmt.num(P.A2H2, 1, "mm") : "—";
+  }
+
+  /* ---------- LAB 6-2 ---------- */
+  let L1 = 12, L2 = -4;
+  const bt = range("b-t", (v) => v.toFixed(1) + " mm", () => bars.render());
+  document.getElementById("b-flip").addEventListener("click", () => { [L1, L2] = [L2, L1]; bars.render(); });
+  const bars = new Stage("cv-bars", { xmin: 0, xmax: 4, ymin: 0, ymax: 12, aspect: 0.55, minH: 260, maxH: 400, draw: drawBars });
+  function drawBars(s, c) {
+    const P = powers(L1, L2, bt.value);
+    document.getElementById("b-F1").textContent = fmt.D(L1);
+    document.getElementById("b-F2").textContent = fmt.D(L2);
+    const items = [["F₁ + F₂", "標稱", L1 + L2, c.muted], ["Fe", "等效", P.Fe, c.ray3], ["Fv", "後頂點（驗度儀）", P.Fv, c.ray], ["Fn", "前頂點", P.Fn, c.ray2]];
+    const vmax = 10, base = 1.6;
+    for (let v = 0; v <= 10; v += 2) { s.line(0.3, base + v * 0.95, 3.9, base + v * 0.95, { color: c.grid, w: 1 }); s.text(fmt.num(v, 0, "D"), 0.25, base + v * 0.95, { align: "right", size: 10, color: c.muted, font: c.mono }); }
+    items.forEach(([k, lab, v, col], i) => {
+      const x = 0.55 + i * 0.85, w = 0.55;
+      const top = base + Math.min(10.4, Math.max(0, v)) * 0.95;
+      s.poly([[x, base], [x + w, base], [x + w, top], [x, top]], { close: true, fill: col, color: col, w: 1, alpha: 0.85 });
+      s.text(fmt.D(v), x + w / 2, top, { dy: -10, size: 12, weight: 700, font: c.mono });
+      s.text(k, x + w / 2, base, { dy: 14, size: 13, weight: 700 });
+      s.text(lab, x + w / 2, base, { dy: 30, size: 11, color: c.muted });
+    });
+  }
+
+  quiz("quiz", "ch06", [
+    { q: "驗度儀（lensometer）測得的是：", opts: ["等效屈光力", "後頂點屈光力", "前頂點屈光力", "前後表面屈光力相加"], a: 1, exp: "驗度儀量測鏡片後表面到 F′ 的距離，也就是後頂點屈光力，與眼鏡處方的定義一致。" },
+    { q: "為什麼眼鏡處方使用後頂點屈光力？", opts: ["比較容易計算", "眼睛在鏡片後方，矯正取決於 F′ 與後表面的距離", "因為它永遠最小", "因為它與厚度無關"], a: 1, exp: "矯正時要讓鏡片的 F′ 落在眼睛的遠點，這個距離從鏡片後表面算起。" },
+    { q: "主平面 H′ 的意義是：", opts: ["鏡片的後表面", "入射平行光與出射光延長線相交的平面", "鏡片最厚的位置", "物體所在平面"], a: 1, exp: "厚透鏡可視為一片位於主平面的薄透鏡，光好像在那裡轉一次彎。" },
+    { q: "高度數正新月形鏡片的主平面通常：", opts: ["在鏡片中央", "偏向凸面那一側，甚至在鏡片外", "偏向凹面那一側", "不存在"], a: 1, exp: "新月形的主平面被拉向凸面，可能落在鏡片前方。" },
+    { q: "將一片厚的正新月形鏡片翻轉後量測後頂點屈光力，結果會：", opts: ["相同", "變成原本的前頂點屈光力", "變成等效屈光力", "變為零"], a: 1, exp: "翻轉後前後表面互換，量到的就是原本的前頂點屈光力；等效屈光力不受翻轉影響。" },
+    { q: "透鏡兩側都是空氣時，節點位置：", opts: ["與主點重合", "在焦點上", "在曲率中心", "在鏡片外無限遠"], a: 0, exp: "兩側介質相同時，節點與主點重合。眼睛前後介質不同，所以兩者不重合。" },
+  ]);
+})();
+</script>
+</body>
+</html>

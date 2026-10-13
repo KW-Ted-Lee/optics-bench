@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第 8 章 調節｜視光光學實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-chapter="ch08">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter 08</div>
+    <h1>調節</h1>
+    <div class="en">Accommodation</div>
+    <p class="lede">看近時水晶體變凸、屈光力增加，這就是調節。用「屈光度尺」來看距離，遠點、近點、清晰視範圍與老花的變化都會變得一目了然。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>理解調節幅度、遠點、近點與清晰視範圍之間的關係。</li>
+      <li>理解屈光不正與矯正方式（眼鏡或隱形眼鏡）會改變看近時需要的調節量。</li>
+      <li>理解老花眼的本質是調節幅度隨年齡下降，以及加入度如何把清晰視範圍拉近。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Amplitude of accommodation</span><h3>調節幅度</h3><p>眼睛最多能增加的屈光力。十歲約 12 D 以上，隨年齡逐漸下降，到七十多歲幾乎為 0。</p></div>
+      <div class="concept"><span class="en-term">Range of clear vision</span><h3>清晰視範圍</h3><p>從遠點到近點。在屈光度尺上，它的「寬度」剛好等於調節幅度。</p></div>
+      <div class="concept"><span class="en-term">Myope vs. hyperope</span><h3>屈光不正會改變看近的負擔</h3><p>未矯正近視眼本來就偏強，看近需要的調節較少；遠視眼本來就偏弱，連看遠都要調節。</p></div>
+      <div class="concept"><span class="en-term">Presbyopia &amp; add</span><h3>老花與加入度</h3><p>調節幅度不夠用時出現看近模糊與疲勞。在遠用處方上加正度數（add），整個清晰視範圍就往近處移。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 8-1</span><h3>清晰視範圍尺</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-range" aria-label="清晰視範圍屈光度尺"></canvas><span class="hint">拖曳書本</span></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="a-age">年齡 <output id="a-age-out"></output></label><input type="range" id="a-age" min="8" max="75" step="1" value="25"></div>
+          <div class="ctrl"><label for="a-K">屈光不正（未矯正） <output id="a-K-out"></output></label><input type="range" id="a-K" min="-6" max="4" step="0.25" value="0"></div>
+          <div class="ctrl"><label>矯正</label>
+            <div class="seg" id="a-corr"><button data-v="none" aria-pressed="true">不矯正</button><button data-v="full">完全矯正（隱形眼鏡）</button></div></div>
+          <div class="ctrl"><label for="a-add">近用加入度 <output id="a-add-out"></output></label><input type="range" id="a-add" min="0" max="3" step="0.25" value="0"></div>
+          <div class="ctrl"><label for="a-obj">閱讀距離 <output id="a-obj-out"></output></label><input type="range" id="a-obj" min="10" max="100" step="1" value="40"></div>
+          <div class="readout">
+            <div class="row"><span>調節幅度（平均值）</span><b id="a-amp">—</b></div>
+            <div class="row"><span>遠點</span><b id="a-fp">—</b></div>
+            <div class="row"><span>近點</span><b id="a-np">—</b></div>
+            <div class="row"><span>看這個距離需要的調節</span><b id="a-req">—</b></div>
+          </div>
+          <div class="verdict" id="a-verdict"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="1">
+          <p class="q">一位 50 歲、遠視力正常（正視）的人，40 cm 看書會怎樣？加上 +1.50 D 後呢？</p>
+          <div class="opts"><button>本來就清楚，加了反而模糊</button><button>本來模糊，加了以後近點拉近、可以看清</button><button>加多少都沒用</button></div>
+          <p class="why">50 歲平均調節幅度約 3.5 D，近點約 29 cm，雖然勉強看得到 40 cm，但要用掉大部分調節，持續閱讀會疲勞。加入 +1.50 D 後，整條清晰範圍往近處移，看書只需用少量調節，比較舒適。注意遠點也被拉近了，戴老花眼鏡看遠會模糊。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>屈光度尺（上排）上，清晰範圍的寬度永遠等於調節幅度；換成公分（下排）就變得很不均勻。</li>
+          <li>調成 −3.00 D 不矯正：遠點在 33 cm，看書幾乎不必調節，這就是近視老花「拿下眼鏡看書」的原因。</li>
+          <li>調成 +2.00 D 不矯正、年齡 50 歲：連看遠都要用掉調節，近點跑到很遠。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 8-2</span><h3>眼鏡與隱形眼鏡：看近的調節需求不同</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-acc" aria-label="不同矯正方式的調節需求"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="b-K">屈光不正（角膜面） <output id="b-K-out"></output></label><input type="range" id="b-K" min="-10" max="8" step="0.25" value="-5"></div>
+          <div class="ctrl"><label for="b-x">物體到角膜距離 <output id="b-x-out"></output></label><input type="range" id="b-x" min="10" max="100" step="1" value="10"></div>
+          <div class="ctrl"><label for="b-d">眼鏡頂點距離 <output id="b-d-out"></output></label><input type="range" id="b-d" min="8" max="20" step="1" value="15"></div>
+          <div class="readout"><div class="row"><span>眼鏡度數（完全矯正）</span><b id="b-Fs">—</b></div></div>
+          <div class="predict" data-answer="0">
+            <p class="q">一位 45 歲、戴眼鏡的高度近視者改戴隱形眼鏡後，看近會？</p>
+            <div class="opts"><button>更吃力（需要更多調節）</button><button>更輕鬆</button><button>沒有差別</button></div>
+            <p class="why">近視者戴眼鏡時，負鏡片離眼睛有一段距離，看近所需的調節比戴隱形眼鏡少。改戴隱形眼鏡（或做雷射手術）後調節需求增加，接近老花年齡的人可能突然覺得看近吃力。遠視者則相反。</p>
+          </div>
+        </div>
+      </div>
+      <div class="observe"><h4>觀察重點</h4><ul>
+        <li>未矯正近視：看近需要的調節最少；物體在遠點以內才需要調節。</li>
+        <li>隱形眼鏡完全矯正時，調節需求等於「物體距離的倒數」，和正視眼一樣。</li>
+        <li>把度數調到正值（遠視）：眼鏡反而比隱形眼鏡需要更多調節。</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>老花是因為眼睛「變遠視」了。</summary><div class="fix">老花是調節幅度下降，跟遠點位置無關。正視、近視、遠視的人都會老花。</div></details>
+      <details class="myth"><summary>近視的人不會老花。</summary><div class="fix">一樣會。只是未矯正的近視眼遠點本來就在近處，拿下眼鏡看書可以暫時解決，所以比較晚察覺。</div></details>
+      <details class="myth"><summary>加入度越高越好，看得越清楚。</summary><div class="fix">加入度把整段清晰範圍往近處搬，遠點也跟著拉近。太高的加入度會讓工作距離太近、中距離模糊。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>公式補充 <span class="tag">OPTIONAL</span></h2>
+    <details class="formula"><summary>展開看公式（選讀）</summary><div>
+      <p>調節的聚散度關係：<span class="eq">F遠點 = L + F調節</span>（皆在角膜面）</p>
+      <p>平均調節幅度（Hofstetter）：<span class="eq">18.5 − 0.3 × 年齡</span></p>
+      <p>近點聚散度 = 遠點聚散度 − 調節幅度（屈光度尺上相減即可）</p>
+    </div></details>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div class="terms-wrap"><table class="terms">
+      <tr><th>English</th><th>中文</th><th>一句話說明</th></tr>
+      <tr><td>accommodation</td><td>調節</td><td>水晶體增加屈光力</td></tr>
+      <tr><td>amplitude of accommodation</td><td>調節幅度</td><td>最大調節量</td></tr>
+      <tr><td>near point of accommodation</td><td>調節近點</td><td>最大調節時的清晰點</td></tr>
+      <tr><td>range of clear vision</td><td>清晰視範圍</td><td>遠點到近點</td></tr>
+      <tr><td>presbyopia</td><td>老花眼</td><td>調節幅度不足以應付近用</td></tr>
+      <tr><td>add</td><td>加入度</td><td>近用額外的正度數</td></tr>
+      <tr><td>asthenopia</td><td>視疲勞</td><td>持續近用的不適</td></tr>
+      <tr><td>ciliary muscle / zonules</td><td>睫狀肌／懸韌帶</td><td>控制水晶體形狀</td></tr>
+    </table></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/core.js"></script>
+<script>
+(function () {
+  const { Stage, fmt, range, seg, quiz } = OL;
+
+  /* ---------- LAB 8-1 ---------- */
+  const age = range("a-age", (v) => v + " 歲", () => st.render());
+  const K = range("a-K", (v) => fmt.D(v), () => st.render());
+  const corr = seg("a-corr", () => st.render());
+  const add = range("a-add", (v) => fmt.D(v), () => st.render());
+  const obj = range("a-obj", (v) => v + " cm", () => st.render());
+  const DMAX = 14;
+  const st = new Stage("cv-range", { xmin: -1.2, xmax: DMAX + 1.6, ymin: -6, ymax: 6, aspect: 0.5, minH: 260, maxH: 420, draw: draw });
+  st.addHandle({ pos: () => [100 / obj.value, 3.2], drag: (x) => { const D = OL.clamp(x, 1, 10); obj.value = Math.round(100 / D); } });
+  const cmLabel = (D) => D <= 0.001 ? "∞" : (100 / D).toFixed(D >= 4 ? 1 : 0);
+
+  function state() {
+    const amp = Math.max(0, 18.5 - 0.3 * age.value);
+    const Keff = (corr.value === "full" ? 0 : K.value) + add.value; // 角膜面剩餘屈光不正（加入度視為正度數）
+    const fpD = -Keff;           // 遠點聚散度（正 = 在眼前，以屈光度表示的距離）
+    const npD = fpD + amp;
+    const req = 100 / obj.value - fpD;   // 看物體需要的調節
+    return { amp, fpD, npD, req };
+  }
+  function draw(s, c) {
+    const { amp, fpD, npD, req } = state();
+    // 屈光度尺
+    const yR = 0;
+    s.line(0, yR, DMAX, yR, { color: c.ink, w: 1.5 });
+    for (let D = 0; D <= DMAX; D++) {
+      s.line(D, yR - 0.35, D, yR + 0.35, { color: c.ink, w: 1 });
+      s.text(D + "", D, yR, { dy: -14, size: 10, color: c.muted, font: c.mono });
+      if ([0, 1, 2, 2.5, 3, 4, 5, 8, 10, 14].includes(D)) s.text(cmLabel(D), D, yR, { dy: 16, size: 10, color: c.ink, font: c.mono });
+    }
+    s.text("D", DMAX, yR, { dx: 14, dy: -14, size: 10, color: c.muted, font: c.mono });
+    s.text("cm", DMAX, yR, { dx: 16, dy: 16, size: 10, color: c.muted, font: c.mono });
+    s.text("← 遠（無限遠）", 0, -5.3, { align: "left", size: 11, color: c.muted });
+    s.text("近（靠近眼睛）→", DMAX, -5.3, { align: "right", size: 11, color: c.muted });
+    // 清晰範圍帶
+    const a = Math.max(0, fpD), b = Math.min(DMAX, npD);
+    if (b > a) {
+      s.poly([[a, -2.4], [b, -2.4], [b, -1.3], [a, -1.3]], { close: true, fill: c.ok, color: c.ok, w: 1, alpha: 0.5 });
+      s.text("清晰視範圍", (a + b) / 2, -1.85, { size: 12, weight: 700, color: c.ink });
+    } else s.text("在眼前沒有任何清楚的距離", 3, -1.85, { align: "left", size: 12, weight: 700, color: c.bad });
+    // 遠點、近點
+    if (fpD >= 0 && fpD <= DMAX) { s.line(fpD, -3, fpD, 1.2, { color: c.ray2, w: 2 }); s.text("遠點", fpD, -3, { dy: 10, size: 11, weight: 700, color: c.ray2 }); }
+    else if (fpD < 0) s.text(`遠點在眼後（${fmt.D(-fpD)} 的遠視）`, 0, -3.6, { align: "left", size: 11, weight: 700, color: c.ray2 });
+    if (npD >= 0 && npD <= DMAX) { s.line(npD, -3, npD, 1.2, { color: c.ray3, w: 2 }); s.text("近點", npD, -3, { dy: 10, size: 11, weight: 700, color: c.ray3 }); }
+    else if (npD > DMAX) s.text("近點 →", DMAX, -3, { dy: 10, align: "right", size: 11, weight: 700, color: c.ray3 });
+    // 調節幅度括號
+    if (amp > 0.05 && fpD < DMAX) {
+      const x1 = Math.max(fpD, -1), x2 = Math.min(npD, DMAX);
+      s.line(x1, -4.3, x2, -4.3, { color: c.accent, w: 1.4 });
+      s.text(`調節幅度 ${amp.toFixed(1)} D`, (x1 + x2) / 2, -4.3, { dy: -9, size: 11, color: c.accent, weight: 700, bg: c.bg });
+    }
+    // 書本
+    const ox = 100 / obj.value;
+    const ok = req >= -0.01 && req <= amp + 0.01;
+    s.line(ox, 0.6, ox, 2.6, { color: ok ? c.ok : c.bad, w: 1, dash: [3, 3] });
+    const ctx = s.ctx; ctx.save(); ctx.fillStyle = ok ? c.ok : c.bad; ctx.globalAlpha = 0.9;
+    ctx.fillRect(s.X(ox) - 12, s.Y(3.2) - 9, 24, 18); ctx.restore();
+    s.text("書", ox, 3.2, { size: 11, weight: 700, color: c.surface });
+    s.text(`${obj.value} cm`, ox, 3.2, { dy: -18, size: 11, font: c.mono });
+    // 眼睛圖示（右側）
+    const ex = DMAX + 1.05;
+    ctx.save(); ctx.beginPath(); ctx.ellipse(s.X(ex), s.Y(0), 14, 18, 0, 0, Math.PI * 2); ctx.strokeStyle = c.ink; ctx.lineWidth = 1.4; ctx.stroke();
+    const bulge = 4 + Math.min(1, Math.max(0, req) / 12) * 6; ctx.beginPath(); ctx.ellipse(s.X(ex) - 6, s.Y(0), bulge, 9, 0, 0, Math.PI * 2); ctx.fillStyle = c.glass; ctx.fill(); ctx.strokeStyle = c.glassEdge; ctx.stroke(); ctx.restore();
+    // 讀數
+    const where = (D) => D > 0.01 ? "眼前 " + (100 / D).toFixed(1) + " cm" : D < -0.01 ? "眼後（虛）" : "無限遠";
+    document.getElementById("a-amp").textContent = amp.toFixed(2) + " D";
+    document.getElementById("a-fp").textContent = where(fpD);
+    document.getElementById("a-np").textContent = npD > 0.01 ? where(npD) : "不存在（眼前看不清）";
+    document.getElementById("a-req").textContent = fmt.D(req);
+    const v = document.getElementById("a-verdict");
+    if (req < -0.01) v.innerHTML = '<span class="pill bad">模糊</span> 物體在遠點之外，眼睛無法「放鬆」更多';
+    else if (req > amp + 0.01) v.innerHTML = '<span class="pill bad">模糊</span> 需要的調節超過調節幅度（比近點更近）';
+    else if (req > amp / 2) v.innerHTML = '<span class="pill warn">看得清但吃力</span> 用掉超過一半的調節幅度，持續閱讀易疲勞';
+    else v.innerHTML = '<span class="pill ok">清楚且舒適</span> 只用了不到一半的調節幅度';
+  }
+
+  /* ---------- LAB 8-2 ---------- */
+  const bK = range("b-K", (v) => fmt.D(v), () => ac.render());
+  const bx = range("b-x", (v) => v + " cm", () => ac.render());
+  const bd = range("b-d", (v) => v + " mm", () => ac.render());
+  const ac = new Stage("cv-acc", { xmin: 0, xmax: 3.4, ymin: -1, ymax: 13, aspect: 0.55, minH: 260, maxH: 400, draw: drawAcc });
+  function drawAcc(s, c) {
+    const Kc = bK.value, x = bx.value / 100, d = bd.value / 1000;
+    const Fs = Kc / (1 + d * Kc);
+    // 未矯正
+    const Lun = -1 / x, Aun = Kc - Lun;
+    // 隱形眼鏡：鏡片在角膜，矯正後遠點聚散度變 0
+    const Acl = 0 - Lun;
+    // 眼鏡：物體到鏡片距離 x − d
+    const Ls = -1 / (x - d), Lsp = Ls + Fs, Lc = Lsp / (1 - d * Lsp), Asp = Kc - Lc;
+    document.getElementById("b-Fs").textContent = fmt.D(Fs);
+    const base = 0;
+    for (let v = 0; v <= 12; v += 2) { s.line(0.35, v, 3.3, v, { color: c.grid, w: 1 }); s.text(v + " D", 0.3, v, { align: "right", size: 10, color: c.muted, font: c.mono }); }
+    [["未矯正", Aun, c.muted], ["隱形眼鏡", Acl, c.ray2], ["眼鏡", Asp, c.ray]].forEach(([lab, A, col], i) => {
+      const x0 = 0.6 + i * 0.95, w = 0.6, top = OL.clamp(A, -0.8, 12.8);
+      s.poly([[x0, 0], [x0 + w, 0], [x0 + w, top], [x0, top]], { close: true, fill: col, color: col, w: 1, alpha: 0.85 });
+      s.text(fmt.D(A), x0 + w / 2, Math.max(top, 0), { dy: -10, size: 12, weight: 700, font: c.mono });
+      s.text(lab, x0 + w / 2, -1, { dy: -8, size: 12, weight: 700 });
+    });
+    s.text("看這個距離所需的調節量", 3.3, 12.6, { align: "right", size: 11, color: c.muted });
+  }
+
+  quiz("quiz", "ch08", [
+    { q: "一位正視者的近點在 25 cm，他的調節幅度約為：", opts: ["2.50 D", "4.00 D", "25.00 D", "0.25 D"], a: 1, exp: "正視者遠點在無限遠（0 D），近點 25 cm = 4 D，兩者相差 4 D 就是調節幅度。" },
+    { q: "未矯正 −3.00 D 近視、已無調節能力的老人，看得最清楚的距離約是：", opts: ["無限遠", "33 cm", "3 m", "看不清任何距離"], a: 1, exp: "沒有調節時只能看清遠點，−3.00 D 近視的遠點在 33 cm。" },
+    { q: "老花眼的主要原因是：", opts: ["眼軸變短", "角膜變平", "調節幅度隨年齡下降", "近視度數增加"], a: 2, exp: "水晶體隨年齡失去彈性，調節幅度降低。這與屈光不正是兩回事。" },
+    { q: "加入度 +2.00 D 對清晰視範圍的影響是：", opts: ["範圍變寬", "整段範圍往近處移", "只有近點改變", "只有遠點改變"], a: 1, exp: "加入度不改變調節幅度（範圍寬度不變），而是把遠點與近點一起往近處移 2 D。" },
+    { q: "高度近視者從眼鏡改戴隱形眼鏡，看近時調節需求：", opts: ["增加", "減少", "不變", "變成 0"], a: 0, exp: "近視者戴眼鏡看近所需調節較少，改戴隱形眼鏡後需求增加，接近老花年齡的人可能更早出現看近困難。" },
+    { q: "未矯正的 +2.00 D 遠視者看遠方時：", opts: ["不需要調節", "需要約 2 D 的調節才能看清", "永遠看不清", "需要負鏡片"], a: 1, exp: "遠視眼對平行光偏弱，需要先用掉約 2 D 調節才能把遠方影像聚焦在視網膜上。" },
+  ]);
+})();
+</script>
+</body>
+</html>

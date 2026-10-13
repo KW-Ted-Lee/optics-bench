@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第 12 章 放大率與低視力輔具｜視光光學實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-chapter="ch12">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter 12</div>
+    <h1>放大率與低視力輔具</h1>
+    <div class="en">Magnification and Low Vision Devices</div>
+    <p class="lede">對低視力者來說，「放大」的本質是讓視網膜上的影像變大，也就是讓物體對眼睛張開更大的角度。拉近、用放大鏡、用望遠鏡，都是同一件事的不同做法。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>理解角放大率：比較的是物體對眼睛張開的角度，而不是物體本身大小。</li>
+      <li>理解等效視距：一片 +F 的放大鏡，相當於把物體拿到 1/F 的距離來看。</li>
+      <li>能比較伽利略式與克卜勒式望遠鏡的構造、成像方向與長度。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Relative distance magnification</span><h3>拉近就是放大</h3><p>距離減半，視角約加倍，視網膜影像也加倍。代價是需要更多調節（或需要正鏡片幫忙）。</p></div>
+      <div class="concept"><span class="en-term">Equivalent viewing distance</span><h3>等效視距（EVD）</h3><p>物體放在 +F 鏡片的焦點上時，看到的角大小等於把物體放在 1/F 處看。+10 D 放大鏡 ≈ 在 10 cm 看。</p></div>
+      <div class="concept"><span class="en-term">M = F/4</span><h3>「有效放大率」的習慣寫法</h3><p>以 25 cm（4 D）為參考距離，放大率寫成 F/4。這只是約定，參考距離不同，倍數就不同。</p></div>
+      <div class="concept"><span class="en-term">Afocal telescope</span><h3>望遠鏡是無焦系統</h3><p>平行光進、平行光出，但出射角度變大。伽利略式：正物鏡＋負目鏡，正立、較短；克卜勒式：兩片正鏡，倒立（需稜鏡轉正）、較長。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 12-1</span><h3>拉近 vs. 放大鏡：視網膜影像比一比</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-mag" aria-label="角放大率"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>方法</label>
+            <div class="seg" id="m-mode"><button data-v="near" aria-pressed="true">直接拉近</button><button data-v="lens">用放大鏡</button></div></div>
+          <div class="ctrl" id="m-near-box"><label for="m-d">觀看距離 <output id="m-d-out"></output></label><input type="range" id="m-d" min="5" max="40" step="0.5" value="25"></div>
+          <div class="ctrl" id="m-lens-box" hidden><label for="m-F">放大鏡度數 <output id="m-F-out"></output></label><input type="range" id="m-F" min="4" max="40" step="1" value="10"></div>
+          <div class="readout">
+            <div class="row"><span>視角（相對 25 cm）</span><b id="m-M">—</b></div>
+            <div class="row"><span>需要的調節</span><b id="m-acc">—</b></div>
+            <div class="row"><span>等效視距</span><b id="m-evd">—</b></div>
+          </div>
+          <div class="predict" data-answer="0">
+            <p class="q">把書從 25 cm 拉到 10 cm 看，和用 +10 D 放大鏡（書放在焦點）相比，視網膜上的字：</p>
+            <div class="opts"><button>一樣大</button><button>放大鏡比較大</button><button>拉近比較大</button></div>
+            <p class="why">兩者視角相同（都是 2.5 倍），差別在於：直接拉到 10 cm 需要 10 D 調節；放大鏡讓光變平行射出，不需要調節。這就是放大鏡對老年低視力者的意義。</p>
+          </div>
+        </div>
+      </div>
+      <div class="observe"><h4>觀察重點</h4><ul>
+        <li>左側小圖是眼睛看到的字，右側是張角示意。</li>
+        <li>用放大鏡時，字放在焦點上，射出平行光，眼睛不必調節。</li>
+        <li>等效視距的概念讓臨床上很好換算：需要 4 倍（以 25 cm 為基準）→ 等效 6.25 cm → 約 +16 D。</li>
+      </ul></div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 12-2</span><h3>伽利略式與克卜勒式望遠鏡</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-tel" aria-label="望遠鏡光路"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>類型</label>
+            <div class="seg" id="t-type"><button data-v="gal" aria-pressed="true">伽利略式</button><button data-v="kep">克卜勒式</button></div></div>
+          <div class="ctrl"><label for="t-o">物鏡 <output id="t-o-out"></output></label><input type="range" id="t-o" min="2" max="10" step="0.5" value="5"></div>
+          <div class="ctrl"><label for="t-e">目鏡度數大小 <output id="t-e-out"></output></label><input type="range" id="t-e" min="5" max="30" step="1" value="15"></div>
+          <div class="ctrl"><label for="t-a">入射角（物體方向） <output id="t-a-out"></output></label><input type="range" id="t-a" min="0" max="4" step="0.1" value="2"></div>
+          <div class="readout">
+            <div class="row"><span>角放大率</span><b id="t-M">—</b></div>
+            <div class="row"><span>鏡筒長度</span><b id="t-len">—</b></div>
+            <div class="row"><span>影像方向</span><b id="t-ori">—</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="1">
+          <p class="q">物鏡 +5 D、目鏡度數大小 15 D。換成克卜勒式（目鏡改為 +15 D），放大倍數和鏡筒長度會？</p>
+          <div class="opts"><button>倍數變大，鏡筒一樣</button><button>倍數一樣（3×），鏡筒變長、影像倒立</button><button>倍數變小，鏡筒變短</button></div>
+          <p class="why">角放大率大小只看兩片度數比（15/5 = 3×）。伽利略式鏡筒長 = 物鏡焦距 − 目鏡焦距大小（13.3 cm）；克卜勒式是兩者相加（26.7 cm），而且影像倒立。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>平行光進、平行光出：望遠鏡本身沒有屈光力（無焦）。</li>
+          <li>克卜勒式中，兩片鏡片中間有一個實像（可放十字線），伽利略式沒有。</li>
+          <li>入射角加大，出射角按倍數放大，這就是「看起來變大」。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>放大鏡上標的「倍數」是絕對的。</summary><div class="fix">倍數取決於選用的參考距離。F/4 是以 25 cm 為基準；不同廠商可能用不同公式，臨床上用屈光度（或等效視距）描述比較可靠。</div></details>
+      <details class="myth"><summary>望遠鏡把光「聚焦」到眼睛。</summary><div class="fix">對遠方物體，望遠鏡射出的是平行光，它改變的是光的角度，不是聚散度。</div></details>
+      <details class="myth"><summary>放大越多越好。</summary><div class="fix">放大越多，視野越小、工作距離越短、晃動越明顯。低視力處方要找「剛好夠用」的倍數。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>公式補充 <span class="tag">OPTIONAL</span></h2>
+    <details class="formula"><summary>展開看公式（選讀）</summary><div>
+      <p>有效放大率：<span class="eq">M = F / 4</span></p>
+      <p>望遠鏡角放大率：<span class="eq">M = −F目鏡 / F物鏡</span>（負號 = 倒立）</p>
+      <p>無焦條件：<span class="eq">鏡間距 d = f物鏡′ + f目鏡′</span></p>
+    </div></details>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div class="terms-wrap"><table class="terms">
+      <tr><th>English</th><th>中文</th><th>一句話說明</th></tr>
+      <tr><td>angular magnification</td><td>角放大率</td><td>視角的比值</td></tr>
+      <tr><td>relative distance magnification</td><td>相對距離放大</td><td>拉近物體</td></tr>
+      <tr><td>equivalent viewing distance</td><td>等效視距</td><td>1 / 鏡片度數</td></tr>
+      <tr><td>stand magnifier</td><td>座式放大鏡</td><td>固定距離的放大鏡</td></tr>
+      <tr><td>Galilean telescope</td><td>伽利略式望遠鏡</td><td>正物鏡＋負目鏡，正立</td></tr>
+      <tr><td>Keplerian telescope</td><td>克卜勒式望遠鏡</td><td>兩片正鏡，倒立</td></tr>
+      <tr><td>objective / eyepiece (ocular)</td><td>物鏡／目鏡</td><td>靠近物體／靠近眼睛</td></tr>
+      <tr><td>afocal</td><td>無焦</td><td>平行光進、平行光出</td></tr>
+      <tr><td>telemicroscope</td><td>望遠顯微鏡</td><td>望遠鏡加近用鏡片</td></tr>
+    </table></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/core.js"></script>
+<script>
+(function () {
+  const { Stage, fmt, range, seg, trace, quiz, blurText } = OL;
+
+  /* ---------- LAB 12-1 ---------- */
+  const mode = seg("m-mode", (v) => { document.getElementById("m-near-box").hidden = v !== "near"; document.getElementById("m-lens-box").hidden = v === "near"; mg.render(); });
+  const dR = range("m-d", (v) => v.toFixed(1) + " cm", () => mg.render());
+  const FR = range("m-F", (v) => fmt.D(v), () => mg.render());
+  const mg = new Stage("cv-mag", { xmin: -45, xmax: 6, ymin: -9, ymax: 9, aspect: 0.55, minH: 280, maxH: 440, draw: drawMag });
+  const H = 1.5; // 字高 cm
+  function drawMag(s, c) {
+    const lens = mode.value === "lens";
+    const d = lens ? 100 / FR.value : dR.value;   // 物體距離（cm）
+    const ang = H / d, ref = H / 25, M = ang / ref;
+    s.axis({ label: false });
+    // 眼睛（右側）
+    const ctx = s.ctx; ctx.save(); ctx.beginPath(); ctx.ellipse(s.X(2.2), s.Y(0), s.X(2.2) - s.X(0), s.Y(-1.4) - s.Y(0), 0, 0, Math.PI * 2); ctx.strokeStyle = c.ink; ctx.lineWidth = 1.4; ctx.stroke(); ctx.restore();
+    // 25 cm 參考（虛線）
+    s.line(-25, H, 0, 0, { color: c.muted, dash: [4, 4], w: 1.2 }); s.arrowObj(-25, H, { color: c.muted, dash: [4, 4] });
+    s.text("25 cm 參考位置", -25, 0, { dy: 14, size: 10, color: c.muted });
+    if (lens) {
+      // 物在焦點上：放大鏡緊貼眼前（示意放在 −1 cm），物體在其焦距處
+      const lx = -1.2, ox = lx - d;
+      s.lens(lx, 6, FR.value, { label: "放大鏡 " + fmt.D(FR.value) });
+      s.arrowObj(ox, H, { label: "字" });
+      // 光線：從字頂端經過放大鏡中心 → 平行於其他光線
+      [[0, c.ray], [-3, c.ray2], [3, c.ray3]].forEach(([y, col]) => {
+        const s0 = (y - H) / (lx - ox);
+        const tr = trace({ x: ox, y: H, s: s0 }, [{ x: lx, F: FR.value / 100 }], 0.5);
+        s.ray(tr.pts, { color: col, w: 1.5 });
+      });
+      s.text("平行光射出 → 不需調節", lx, -6, { dy: 14, size: 11, color: c.ok, weight: 700 });
+    } else {
+      s.arrowObj(-d, H, { label: "字" });
+      s.ray([[-d, H], [0, 0]], { color: c.ray, w: 1.8 });
+    }
+    // 張角弧
+    ctx.save(); ctx.beginPath(); const R = 60; ctx.arc(s.X(0), s.Y(0), R, Math.PI, Math.PI + Math.atan2(s.Y(0) - s.Y(H), s.X(0) - s.X(-d)), false); ctx.strokeStyle = c.accent; ctx.lineWidth = 2; ctx.stroke(); ctx.restore();
+    // 左上：眼睛看到的字
+    const bx = 14, by = 14, bw = Math.min(170, s.w * 0.3), bh = Math.min(120, s.h * 0.34);
+    ctx.save(); ctx.fillStyle = c.surface; ctx.fillRect(bx, by, bw, bh); ctx.strokeStyle = c.line; ctx.strokeRect(bx, by, bw, bh); ctx.restore();
+    const fs = Math.min(bh * 0.95, 18 * M);
+    blurText(ctx, "視", bx + bw / 2, by + bh / 2 + 6, `700 ${fs}px ${c.body}`, c.ink, 0);
+    s.text("眼睛看到的大小", bx + bw / 2, by + 10, { px: true, size: 10, color: c.muted });
+    document.getElementById("m-M").textContent = M.toFixed(2) + " ×";
+    document.getElementById("m-acc").textContent = lens ? "0.00 D（物在焦點）" : fmt.D(100 / d).replace("+", "");
+    document.getElementById("m-evd").textContent = d.toFixed(1) + " cm";
+  }
+
+  /* ---------- LAB 12-2 ---------- */
+  const tp = seg("t-type", () => tl.render());
+  const Fo = range("t-o", (v) => fmt.D(v), () => tl.render());
+  const Fe = range("t-e", (v) => v.toFixed(0) + " D", () => tl.render());
+  const Aa = range("t-a", (v) => v.toFixed(1) + "°", () => tl.render());
+  const tl = new Stage("cv-tel", { xmin: -12, xmax: 72, ymin: -9, ymax: 9, aspect: 0.5, minH: 260, maxH: 420, draw: drawTel });
+  function drawTel(s, c) {
+    const gal = tp.value === "gal";
+    const Po = Fo.value, Pe = gal ? -Fe.value : Fe.value;
+    const fo = 100 / Po, fe = 100 / Pe, dist = fo + fe;   // cm
+    const M = -Pe / Po;
+    s.axis({ label: false });
+    s.lens(0, 7.5, Po, { label: "物鏡" });
+    s.lens(dist, 4, Pe, { label: "目鏡" });
+    const a = Aa.value * Math.PI / 180;
+    const sl = -Math.tan(a);   // 由左上往右下射入（物體在上方）
+    const el = [{ x: 0, F: Po / 100 }, { x: dist, F: Pe / 100 }];
+    const xEnd = Math.min(s.opt.xmax, dist + 14);
+    [-1.6, 0, 1.6].forEach((y, i) => {
+      const tr = trace({ x: -12, y: y - sl * 12, s: sl }, el, xEnd);
+      s.ray(tr.pts, { color: [c.ray, c.ray2, c.ray3][i], w: 1.6 });
+    });
+    // 中間實像（克卜勒）
+    if (!gal) { const yI = fo * sl; s.point(fo, yI, "中間實像", { color: c.muted, dy: yI < 0 ? 14 : -12, size: 10 }); }
+    // 眼睛
+    const ctx = s.ctx; ctx.save(); ctx.beginPath(); ctx.ellipse(s.X(xEnd + 1.6), s.Y(0), 10, 14, 0, 0, Math.PI * 2); ctx.strokeStyle = c.ink; ctx.lineWidth = 1.4; ctx.stroke(); ctx.restore();
+    s.line(0, -8.4, dist, -8.4, { color: c.muted, w: 1 });
+    s.text(`鏡筒 ${dist.toFixed(1)} cm`, dist / 2, -8.4, { dy: -9, size: 11, color: c.muted, font: c.mono, bg: c.bg });
+    document.getElementById("t-M").textContent = fmt.num(M, 2, "×");
+    document.getElementById("t-len").textContent = dist.toFixed(1) + " cm";
+    document.getElementById("t-ori").innerHTML = M > 0 ? '<span class="pill ok">正立</span>' : '<span class="pill warn">倒立</span>';
+  }
+
+  quiz("quiz", "ch12", [
+    { q: "把閱讀材料從 40 cm 拉近到 20 cm，視網膜影像約：", opts: ["變為一半", "不變", "變為兩倍", "變為四倍"], a: 2, exp: "距離減半，視角約加倍，這是相對距離放大。" },
+    { q: "+20 D 放大鏡的等效視距是：", opts: ["20 cm", "5 cm", "2 cm", "50 cm"], a: 1, exp: "等效視距 = 1/F = 1/20 m = 5 cm。" },
+    { q: "以 25 cm 為參考，+16 D 放大鏡的「有效放大率」是：", opts: ["2×", "4×", "16×", "1.6×"], a: 1, exp: "M = F / 4 = 16 / 4 = 4×。" },
+    { q: "伽利略式望遠鏡的構造與影像為：", opts: ["兩片正鏡，倒立", "正物鏡＋負目鏡，正立", "負物鏡＋正目鏡，倒立", "單片正鏡，正立"], a: 1, exp: "伽利略式用正物鏡、負目鏡，影像正立、鏡筒較短，常用於低視力輔具。" },
+    { q: "物鏡 +4 D、目鏡 −16 D 的望遠鏡，角放大率為：", opts: ["4×", "−4×", "0.25×", "20×"], a: 0, exp: "M = −Fe/Fo = −(−16)/4 = +4×，正號表示正立。" },
+    { q: "用放大鏡時把字放在鏡片焦點上，好處是：", opts: ["影像變成實像", "射出平行光，眼睛不需調節", "視野變大", "不需要照明"], a: 1, exp: "物體在焦點時射出平行光，正視或已矯正的眼睛放鬆即可看清，適合調節力不足的長者。" },
+  ]);
+})();
+</script>
+</body>
+</html>

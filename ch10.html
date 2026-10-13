@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第 10 章 稜鏡｜視光光學實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .task { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: grid; gap: 8px; background: var(--surface-2); }
+  .task b { font-size: 15px; }
+</style>
+</head>
+<body data-chapter="ch10">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter 10</div>
+    <h1>稜鏡</h1>
+    <div class="en">Prisms</div>
+    <p class="lede">稜鏡把光「推」向基底，於是我們看到的物體往尖端偏移。任何鏡片只要不是從光學中心看出去，就同時帶有稜鏡效果。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>能判斷光線偏折方向（朝基底）與像的偏移方向（朝尖端）。</li>
+      <li>理解稜鏡度（Δ）的意義：100 公分外偏移 1 公分。</li>
+      <li>能用 Prentice 法則的觀念，判斷正、負鏡片偏心時產生的稜鏡度與基底方向。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Light → base, image → apex</span><h3>光向基底，像向尖端</h3><p>光線通過稜鏡往基底偏折；眼睛順著射入的光往回看，所以物體看起來往尖端移動。</p></div>
+      <div class="concept"><span class="en-term">Prism diopter (Δ)</span><h3>稜鏡度</h3><p>在 100 cm 處使光偏移 1 cm 的稜鏡為 1Δ。稜鏡越薄（尖端角越小）偏折越少。</p></div>
+      <div class="concept"><span class="en-term">Prentice's rule</span><h3>Prentice 法則</h3><p>稜鏡度 = 偏心距離（cm）× 鏡片度數（D）。離光學中心越遠、度數越高，稜鏡效果越大。</p></div>
+      <div class="concept"><span class="en-term">Plus vs. minus lens</span><h3>正鏡片基底朝中心</h3><p>正鏡片像兩個基底相對的稜鏡（基底朝光學中心）；負鏡片像兩個尖端相對的稜鏡（基底朝外）。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 10-1</span><h3>稜鏡讓光往哪裡偏？</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-prism" aria-label="稜鏡偏折"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="p-a">尖端角 α <output id="p-a-out"></output></label><input type="range" id="p-a" min="0" max="30" step="0.5" value="16"></div>
+          <div class="ctrl"><label>基底方向</label>
+            <div class="seg" id="p-base"><button data-v="down" aria-pressed="true">基底朝下 BD</button><button data-v="up">基底朝上 BU</button></div></div>
+          <div class="ctrl"><label>材質</label>
+            <div class="seg" id="p-n"><button data-v="1.498" aria-pressed="true">CR-39 1.498</button><button data-v="1.586">PC 1.586</button><button data-v="1.74">1.74</button></div></div>
+          <div class="readout">
+            <div class="row"><span>偏折角（薄稜鏡）</span><b id="p-d">—</b></div>
+            <div class="row"><span>稜鏡度</span><b id="p-D">—</b></div>
+          </div>
+          <div class="predict" data-answer="1">
+            <p class="q">戴上「基底朝下」的稜鏡看前方的燈，燈看起來會往哪裡移？</p>
+            <div class="opts"><button>往下（朝基底）</button><button>往上（朝尖端）</button><button>不動</button></div>
+            <p class="why">光被推向基底（往下），進入眼睛時是從下方往上射入；大腦沿著光線反向延長，認為燈在上方。像永遠往尖端偏移。</p>
+          </div>
+        </div>
+      </div>
+      <div class="observe"><h4>觀察重點</h4><ul>
+        <li>紅色實線是光真正走的路；虛線是眼睛「以為」光來自的方向。</li>
+        <li>尖端角加倍，偏折大約也加倍（薄稜鏡近似）。</li>
+        <li>折射率越高，同樣的尖端角偏折越多，所以高折射率材質可以做得更薄。</li>
+      </ul></div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 10-2</span><h3>Prentice 法則：從鏡片哪裡看出去？</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-prentice" aria-label="鏡片偏心與稜鏡效果"></canvas><span class="hint">拖曳瞳孔位置</span></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="r-F">鏡片度數 <output id="r-F-out"></output></label><input type="range" id="r-F" min="-10" max="10" step="0.25" value="5"></div>
+          <div class="readout">
+            <div class="row"><span>偏心距離</span><b id="r-c">—</b></div>
+            <div class="row"><span>水平稜鏡</span><b id="r-h">—</b></div>
+            <div class="row"><span>垂直稜鏡</span><b id="r-v">—</b></div>
+          </div>
+          <div class="task">
+            <span class="mono" style="font-size:12px;color:var(--muted)">小任務</span>
+            <b id="r-task">—</b>
+            <div class="verdict" id="r-ok"></div>
+            <button class="btn ghost" id="r-new" type="button">換一題</button>
+          </div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="0">
+          <p class="q">右眼戴 +5.00 D 鏡片，瞳孔落在光學中心的「上方」4 mm。病人感受到的稜鏡基底朝？</p>
+          <div class="opts"><button>朝下（BD），2Δ</button><button>朝上（BU），2Δ</button><button>朝下，20Δ</button></div>
+          <p class="why">正鏡片的基底朝向光學中心。瞳孔在光學中心上方，基底就朝下。稜鏡度 = 0.4 cm × 5 D = 2Δ。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>圖為從正面看病人的右眼（OD），右邊是鼻側、左邊是顳側。</li>
+          <li>正鏡片：箭頭（基底方向）指向光學中心。負鏡片：箭頭背離光學中心。</li>
+          <li>度數為 0 時，看哪裡都沒有稜鏡效果。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>稜鏡讓像往基底方向移動。</summary><div class="fix">光往基底偏，像往尖端移。記法：「光去基底，像去尖端」。</div></details>
+      <details class="myth"><summary>只有處方上寫了稜鏡的眼鏡才有稜鏡效果。</summary><div class="fix">任何有度數的鏡片，只要視線不經過光學中心，就會產生稜鏡效果。配鏡時瞳距量錯就會產生不想要的稜鏡。</div></details>
+      <details class="myth"><summary>正鏡片與負鏡片偏心的效果一樣，只是大小不同。</summary><div class="fix">方向相反：正鏡片基底朝光學中心，負鏡片基底背離光學中心。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>公式補充 <span class="tag">OPTIONAL</span></h2>
+    <details class="formula"><summary>展開看公式（選讀）</summary><div>
+      <p>薄稜鏡最小偏折角：<span class="eq">d = α (n − 1)</span></p>
+      <p>稜鏡度：<span class="eq">P = 100 × (偏移量 / 距離)</span></p>
+      <p>Prentice 法則：<span class="eq">P(Δ) = c(cm) × F(D)</span></p>
+    </div></details>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div class="terms-wrap"><table class="terms">
+      <tr><th>English</th><th>中文</th><th>一句話說明</th></tr>
+      <tr><td>prism</td><td>稜鏡</td><td>兩面不平行的透明體</td></tr>
+      <tr><td>apex / base</td><td>尖端／基底</td><td>光往基底偏</td></tr>
+      <tr><td>apical angle</td><td>尖端角</td><td>兩面的夾角</td></tr>
+      <tr><td>prism diopter (Δ)</td><td>稜鏡度</td><td>100 cm 偏移 1 cm</td></tr>
+      <tr><td>Prentice's rule</td><td>Prentice 法則</td><td>P = cF</td></tr>
+      <tr><td>decentration</td><td>偏心</td><td>光學中心與瞳孔不對齊</td></tr>
+      <tr><td>base in / out / up / down</td><td>基底朝內／外／上／下</td><td>BI、BO、BU、BD</td></tr>
+      <tr><td>optical center</td><td>光學中心</td><td>無稜鏡效果的點</td></tr>
+    </table></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/core.js"></script>
+<script>
+(function () {
+  const { Stage, fmt, range, seg, quiz } = OL;
+
+  /* ---------- LAB 10-1 ---------- */
+  const A = range("p-a", (v) => v.toFixed(1) + "°", () => pr.render());
+  const base = seg("p-base", () => pr.render());
+  const N = seg("p-n", () => pr.render());
+  const pr = new Stage("cv-prism", { xmin: -48, xmax: 48, ymin: -20, ymax: 20, aspect: 0.55, minH: 280, maxH: 460, equal: true, draw: drawPrism });
+  function drawPrism(s, c) {
+    const a = A.value * Math.PI / 180, n = +N.value, sgn = base.value === "down" ? 1 : -1;
+    const d = a * (n - 1);                       // 偏折角（rad）
+    const td = Math.tan(d);
+    // 稜鏡外形：高 24，基底寬依尖端角
+    const H = 24, w = Math.max(0.3, Math.tan(a / 2) * H);
+    const apexY = sgn * H / 2, baseY = -sgn * H / 2;
+    s.poly([[0, apexY], [w, baseY], [-w, baseY]], { close: true, fill: c.glass, color: c.glassEdge, w: 1.6 });
+    s.text("尖端", 0, apexY, { dy: sgn > 0 ? -10 : 12, size: 11, weight: 700, color: c.accent });
+    s.text("基底", 0, baseY, { dy: sgn > 0 ? 12 : -10, size: 11, weight: 700, color: c.accent });
+    s.axis({ label: false });
+    const Ox = -40, Ex = 40;
+    const s1 = -sgn * td / 2 * -1; // 入射斜率：朝尖端方向一點
+    const yP = (0 - Ox) * (sgn * td / 2);
+    const s2 = sgn * td / 2 - sgn * td;   // 朝基底偏
+    s.ray([[Ox, 0], [0, yP], [Ex, yP + s2 * Ex]], { color: c.ray, w: 2 });
+    const appY = -(Ex - Ox) * s2;         // 眼睛反向延長到物體平面
+    s.line(0, yP, Ox, appY, { color: c.ray, dash: [5, 5], w: 1.3, alpha: 0.85 });
+    s.point(Ox, 0, "物（燈）", { color: c.warn, r: 5, dy: 16 });
+    s.point(Ox, appY, "看起來的位置", { color: c.warn, r: 4, dy: sgn > 0 ? -14 : 16 });
+    // 眼睛
+    const ctx = s.ctx; ctx.save(); ctx.beginPath(); ctx.ellipse(s.X(Ex + 3), s.Y(0), 10, 14, 0, 0, Math.PI * 2); ctx.strokeStyle = c.ink; ctx.lineWidth = 1.4; ctx.stroke();
+    ctx.beginPath(); ctx.arc(s.X(Ex + 3) - 6, s.Y(0), 3.5, 0, Math.PI * 2); ctx.fillStyle = c.ink; ctx.fill(); ctx.restore();
+    const deg = d * 180 / Math.PI;
+    document.getElementById("p-d").textContent = deg.toFixed(2) + "°";
+    document.getElementById("p-D").textContent = (100 * td).toFixed(2) + " Δ";
+  }
+
+  /* ---------- LAB 10-2 ---------- */
+  const F = range("r-F", (v) => fmt.D(v), () => { pc.render(); checkTask(); });
+  let px = 0, py = 4;   // 瞳孔相對光學中心（mm）；從正面看 OD，+x = 鼻側
+  const pc = new Stage("cv-prentice", { xmin: -32, xmax: 32, ymin: -26, ymax: 26, aspect: 0.75, minH: 300, maxH: 480, equal: true, draw: drawPC });
+  pc.addHandle({ pos: () => [px, py], drag: (x, y) => { px = OL.clamp(Math.round(x * 2) / 2, -22, 22); py = OL.clamp(Math.round(y * 2) / 2, -22, 22); checkTask(); } });
+  function prism() {
+    const P = F.value;
+    // 正鏡片：基底朝光學中心 → 方向 = −(px,py)；負鏡片相反
+    const hx = (Math.abs(px) / 10) * Math.abs(P), vy = (Math.abs(py) / 10) * Math.abs(P);
+    const dirX = -Math.sign(px) * Math.sign(P), dirY = -Math.sign(py) * Math.sign(P);
+    return { hx, vy, hBase: dirX > 0 ? "BI" : dirX < 0 ? "BO" : "", vBase: dirY > 0 ? "BU" : dirY < 0 ? "BD" : "", dirX, dirY };
+  }
+  function drawPC(s, c) {
+    const P = F.value;
+    const ctx = s.ctx;
+    // 鏡框鏡片
+    ctx.save(); ctx.beginPath(); ctx.ellipse(s.X(0), s.Y(0), s.X(26) - s.X(0), s.Y(-21) - s.Y(0), 0, 0, Math.PI * 2);
+    ctx.fillStyle = c.glass; ctx.fill(); ctx.strokeStyle = c.glassEdge; ctx.lineWidth = 2; ctx.stroke(); ctx.restore();
+    // 同心圓（等稜鏡線）
+    if (Math.abs(P) > 0.01) for (let k = 1; k <= 4; k++) {
+      const r = k / Math.abs(P) * 10; if (r > 26) break;   // 每 1Δ 一圈（mm）
+      ctx.save(); ctx.beginPath(); ctx.arc(s.X(0), s.Y(0), s.X(r) - s.X(0), 0, Math.PI * 2); ctx.setLineDash([3, 4]); ctx.strokeStyle = c.muted; ctx.globalAlpha = 0.6; ctx.stroke(); ctx.restore();
+      s.text(k + "Δ", r * 0.707, r * 0.707, { size: 10, color: c.muted, font: c.mono, bg: c.glass });
+    }
+    s.line(-28, 0, 28, 0, { color: c.muted, w: 1, alpha: 0.5 }); s.line(0, -23, 0, 23, { color: c.muted, w: 1, alpha: 0.5 });
+    s.point(0, 0, "OC", { color: c.accent, dy: 14 });
+    s.text("鼻側 nasal →", 31, -24, { align: "right", size: 11, color: c.muted });
+    s.text("← 顳側 temporal", -31, -24, { align: "left", size: 11, color: c.muted });
+    s.text("從正面看病人右眼 OD", -31, 24, { align: "left", size: 11, color: c.muted });
+    // 基底方向箭頭
+    const p = prism();
+    const mag = Math.hypot(p.hx, p.vy);
+    if (mag > 0.05) {
+      const ux = (p.dirX * p.hx) / mag, uy = (p.dirY * p.vy) / mag;
+      const L = Math.min(14, 3 + mag * 2.2);
+      s.ray([[px, py], [px + ux * L, py + uy * L]], { color: c.ray, w: 3, at: 0.98 });
+      s.text(`${mag.toFixed(2)}Δ 基底方向`, px + ux * L, py + uy * L, { dy: uy > 0 ? -12 : 14, size: 11, weight: 700, color: c.ray, bg: c.bg });
+    }
+    // 瞳孔
+    ctx.save(); ctx.beginPath(); ctx.arc(s.X(px), s.Y(py), 9, 0, Math.PI * 2); ctx.fillStyle = c.ink; ctx.globalAlpha = 0.85; ctx.fill(); ctx.restore();
+    document.getElementById("r-c").textContent = `水平 ${Math.abs(px).toFixed(1)} mm${px > 0 ? " 鼻側" : px < 0 ? " 顳側" : ""}，垂直 ${Math.abs(py).toFixed(1)} mm${py > 0 ? " 上" : py < 0 ? " 下" : ""}`;
+    document.getElementById("r-h").textContent = p.hx > 0.005 ? `${p.hx.toFixed(2)} Δ ${p.hBase}` : "0";
+    document.getElementById("r-v").textContent = p.vy > 0.005 ? `${p.vy.toFixed(2)} Δ ${p.vBase}` : "0";
+  }
+  // 小任務
+  const TASKS = [
+    { F: 5, amt: 2, dir: "BU", txt: "在 +5.00 D 鏡片上，讓病人感受 2Δ 基底朝上（BU）" },
+    { F: -4, amt: 2, dir: "BI", txt: "在 −4.00 D 鏡片上，製造 2Δ 基底朝內（BI）" },
+    { F: 8, amt: 3, dir: "BO", txt: "在 +8.00 D 鏡片上，製造 3Δ 基底朝外（BO）" },
+    { F: -6, amt: 1.5, dir: "BD", txt: "在 −6.00 D 鏡片上，製造 1.5Δ 基底朝下（BD）" },
+  ];
+  let ti = 0;
+  function setTask() { const t = TASKS[ti]; F.value = t.F; document.getElementById("r-task").textContent = t.txt; pc.render(); checkTask(); }
+  function checkTask() {
+    const t = TASKS[ti], p = prism(), P = F.value;
+    const isH = t.dir === "BI" || t.dir === "BO";
+    const main = isH ? p.hx : p.vy, other = isH ? p.vy : p.hx, b = isH ? p.hBase : p.vBase;
+    const ok = Math.abs(P - t.F) < 0.01 && Math.abs(main - t.amt) <= 0.2 && other <= 0.2 && b === t.dir;
+    document.getElementById("r-ok").innerHTML = ok ? `<span class="pill ok">完成</span> 瞳孔偏心 ${(t.amt / Math.abs(t.F) * 10).toFixed(1)} mm` : '<span class="pill info">拖曳瞳孔試試看</span>';
+  }
+  document.getElementById("r-new").addEventListener("click", () => { ti = (ti + 1) % TASKS.length; setTask(); });
+  setTask();
+
+  quiz("quiz", "ch10", [
+    { q: "光線通過稜鏡後偏折的方向是：", opts: ["朝尖端", "朝基底", "不偏折", "視材質而定"], a: 1, exp: "光永遠往基底方向偏折；看到的像則往尖端移動。" },
+    { q: "1Δ 的定義是：", opts: ["偏折 1 度", "在 100 cm 處偏移 1 cm", "在 1 m 處偏移 1 mm", "尖端角為 1 度"], a: 1, exp: "稜鏡度是臨床單位：100 cm 外偏移 1 cm 為 1Δ。" },
+    { q: "+4.00 D 鏡片，視線在光學中心下方 5 mm，產生的稜鏡為：", opts: ["2Δ BU", "2Δ BD", "20Δ BU", "0.2Δ BD"], a: 0, exp: "P = 0.5 cm × 4 D = 2Δ；正鏡片基底朝光學中心，視線在下方，所以基底朝上。" },
+    { q: "負鏡片偏心時，基底方向為：", opts: ["朝向光學中心", "背離光學中心", "永遠朝下", "永遠朝內"], a: 1, exp: "負鏡片像兩個尖端相對的稜鏡，邊緣較厚，所以基底朝外、背離光學中心。" },
+    { q: "高度數鏡片的瞳距量測誤差，比低度數鏡片：", opts: ["更不重要", "產生更多不想要的稜鏡", "完全沒有影響", "只影響散光軸"], a: 1, exp: "Prentice 法則：同樣的偏心距離，度數越高稜鏡越大。" },
+    { q: "戴上基底朝外（BO）的稜鏡看遠方目標，目標看起來往哪移？", opts: ["往鼻側", "往顳側", "往上", "不動"], a: 0, exp: "像往尖端移動；基底朝外時尖端朝內（鼻側），所以目標看起來往鼻側移。" },
+  ]);
+})();
+</script>
+</body>
+</html>

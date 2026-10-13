@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第 1 章 基本名詞與觀念｜視光光學實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-chapter="ch01">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter 01</div>
+    <h1>基本名詞與觀念</h1>
+    <div class="en">Basic Terms and Concepts</div>
+    <p class="lede">整本光學的共同語言只有一個：<b>聚散度（vergence）</b>。這一章先建立「光線、光束、波前」的圖像，再看光在兩種介質交界處怎麼轉彎。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>能分辨發散、會聚、平行三種光束，並說出它們聚散度的正負號。</li>
+      <li>理解聚散度描述的是「波前有多彎」，而且會隨光行進的距離改變。</li>
+      <li>能用折射率高低判斷光線偏向或偏離法線，並說明全內反射發生的條件。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Ray · Pencil · Wavefront</span><h3>光線、光束與波前</h3><p>點光源向四面八方發出光，同時往外推進的「等相位面」就是波前。光線是垂直於波前的箭頭，一小束光線稱為光束（pencil）。</p></div>
+      <div class="concept"><span class="en-term">Vergence</span><h3>聚散度＝波前的彎曲程度</h3><p>離點光源越近，波前越彎；越遠，越平。聚散度就是到焦點距離（公尺）的倒數，單位是屈光度 D。</p></div>
+      <div class="concept"><span class="en-term">Sign</span><h3>正負號代表方向，不代表強弱</h3><p>發散光為負，會聚光為正，平行光為零。−5 D 和 +5 D 彎曲程度相同，只是方向相反。</p></div>
+      <div class="concept"><span class="en-term">Refraction</span><h3>折射：速度改變造成轉彎</h3><p>折射率 n＝真空光速 ÷ 介質中光速。光從低 n 進入高 n 會偏向法線；從高 n 進入低 n 會偏離法線。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+    <p class="sub">先作答「預測」，再動手操作驗證。數字只是輔助，重點是看懂圖形怎麼變。</p>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 1-1</span><h3>聚散度探索器</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-verg" aria-label="波前與聚散度模擬"></canvas><canvas id="cv-vgraph" aria-label="聚散度隨距離變化圖"></canvas><span class="hint">拖曳虛線（觀察面）</span></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>光束類型</label>
+            <div class="seg" id="v-mode"><button data-v="div" aria-pressed="true">發散</button><button data-v="conv">會聚</button><button data-v="par">平行</button></div></div>
+          <div class="ctrl"><label for="v-d">觀察面到光源（或像點）的距離 <output id="v-d-out"></output></label><input type="range" id="v-d" min="5" max="100" step="1" value="25"></div>
+          <div class="readout">
+            <div class="row"><span>聚散度</span><b id="v-L">—</b></div>
+            <div class="row"><span>波前形狀</span><b id="v-shape">—</b></div>
+          </div>
+          <div class="predict" data-answer="1">
+            <p class="q">觀察面從 25 cm 移到 50 cm（距離加倍），聚散度大小會怎樣？</p>
+            <div class="opts"><button>也加倍</button><button>變成一半</button><button>不變</button></div>
+            <p class="why">聚散度是距離的倒數。距離加倍，波前變平一半：−4.00 D → −2.00 D。拉到 100 cm 再看看，曲線越來越平緩，這就是為什麼 6 公尺外就可以視為「光學無限遠」。</p>
+          </div>
+        </div>
+      </div>
+      <div class="observe"><h4>觀察重點</h4><ul>
+        <li>靠近光源時，稍微移動一點點，聚散度就大幅變化（下方曲線很陡）；遠離光源後幾乎不變。</li>
+        <li>切到「會聚」：光束朝像點收斂，聚散度為正，越接近像點數值越大。</li>
+        <li>切到「平行」：波前是直線，聚散度為 0，與距離無關。</li>
+      </ul></div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 1-2</span><h3>斯涅爾定律與全內反射</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-snell" aria-label="折射模擬"></canvas><span class="hint">拖曳光源圓點改變入射角</span></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="s-n1">上方介質（入射側）</label>
+            <select id="s-n1" class="chapter-select"></select></div>
+          <div class="ctrl"><label for="s-n2">下方介質（折射側）</label>
+            <select id="s-n2" class="chapter-select"></select></div>
+          <div class="ctrl"><label for="s-a">入射角 θ <output id="s-a-out"></output></label><input type="range" id="s-a" min="0" max="89" step="0.5" value="30"></div>
+          <button class="btn ghost" id="s-swap" type="button">交換兩種介質</button>
+          <div class="readout">
+            <div class="row"><span>折射角 θ′</span><b id="s-r">—</b></div>
+            <div class="row"><span>臨界角</span><b id="s-c">—</b></div>
+            <div class="row"><span>光速比（下/上）</span><b id="s-v">—</b></div>
+          </div>
+          <div class="verdict" id="s-verdict"></div>
+          <div class="predict" data-answer="2">
+            <p class="q">光從鑽石（n = 2.42）射向空氣，入射角 30°，會發生什麼？</p>
+            <div class="opts"><button>偏向法線</button><button>偏離法線並射出</button><button>完全反射回鑽石</button></div>
+            <p class="why">鑽石對空氣的臨界角只有約 24.4°。入射角 30° 已超過臨界角，光無法射出，全部反射回鑽石內。這正是鑽石閃亮的原因。請把上方設為鑽石、下方設為空氣驗證。</p>
+          </div>
+        </div>
+      </div>
+      <div class="observe"><h4>觀察重點</h4><ul>
+        <li>入射角 0°（沿法線入射）時，光線不轉彎，只有速度改變。</li>
+        <li>低 n → 高 n：折射光偏向法線。高 n → 低 n：偏離法線，入射角再加大就會全內反射。</li>
+        <li>兩種介質折射率差越大，轉彎越明顯；折射率相同時完全不轉彎。</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>聚散度越大，代表光越亮。</summary><div class="fix">聚散度只描述波前彎曲的程度和方向，和亮度無關。一盞很亮的燈放在 2 公尺外，聚散度只有 −0.50 D。</div></details>
+      <details class="myth"><summary>負的聚散度代表光比較「弱」。</summary><div class="fix">正負號只代表方向：負＝發散，正＝會聚。−5.00 D 的發散光和 +5.00 D 的會聚光彎曲程度一樣大。</div></details>
+      <details class="myth"><summary>光進入高折射率的材料一定會轉彎。</summary><div class="fix">沿法線（入射角 0°）進入時不會轉彎，只是速度變慢。轉彎需要「斜著」通過界面。</div></details>
+      <details class="myth"><summary>從 6 公尺外來的光聚散度一定是 0。</summary><div class="fix">嚴格說是 −0.17 D，只是非常小，臨床上把 6 m（20 ft）當作光學無限遠。真正的 0 D 只有無限遠的物體才有。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>公式補充 <span class="tag">OPTIONAL</span></h2>
+    <details class="formula"><summary>展開看公式（選讀，理解觀念後再看）</summary><div>
+      <p>聚散度：<span class="eq">L = n / l</span>　l 是到點光源或像點的距離（公尺），n 是光所在介質的折射率。</p>
+      <p>折射率：<span class="eq">n = c / v</span></p>
+      <p>斯涅爾定律：<span class="eq">n sin θ = n′ sin θ′</span></p>
+      <p>臨界角：<span class="eq">sin θc = n′ / n</span>（只在 n &gt; n′ 時存在）</p>
+    </div></details>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <p class="sub">不用計算機，靠觀念就能回答。完成後成績會記在這台裝置的首頁進度上。</p>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div class="terms-wrap"><table class="terms">
+      <tr><th>English</th><th>中文</th><th>一句話說明</th></tr>
+      <tr><td>vergence</td><td>聚散度</td><td>波前彎曲程度，單位 D</td></tr>
+      <tr><td>diverging / converging</td><td>發散／會聚</td><td>聚散度為負／正</td></tr>
+      <tr><td>pencil (of light)</td><td>光束</td><td>一小束來自同一點的光線</td></tr>
+      <tr><td>wavefront</td><td>波前</td><td>同相位的面，與光線垂直</td></tr>
+      <tr><td>diopter (D)</td><td>屈光度</td><td>公尺的倒數</td></tr>
+      <tr><td>index of refraction</td><td>折射率</td><td>c / v</td></tr>
+      <tr><td>normal</td><td>法線</td><td>垂直於界面的參考線</td></tr>
+      <tr><td>critical angle</td><td>臨界角</td><td>折射角恰為 90° 時的入射角</td></tr>
+      <tr><td>total internal reflection</td><td>全內反射</td><td>超過臨界角時光全部反射</td></tr>
+      <tr><td>optical infinity</td><td>光學無限遠</td><td>臨床上取 6 m（20 ft）</td></tr>
+    </table></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/core.js"></script>
+<script>
+(function () {
+  const { Stage, fmt, range, seg, quiz } = OL;
+
+  /* ---------- LAB 1-1 聚散度 ---------- */
+  const mode = seg("v-mode", () => { draw(); });
+  const dR = range("v-d", (v) => v + " cm", () => draw());
+  const SRC = 0, IMG = 105;
+  function obsX() { return mode.value === "conv" ? IMG - dR.value : SRC + dR.value; }
+  const st = new Stage("cv-verg", { xmin: -6, xmax: 110, ymin: -26, ymax: 26, aspect: 0.42, minH: 220, maxH: 380, equal: true, draw: drawWaves });
+  st.addHandle({ pos: () => [obsX(), 0], drag: (x) => { dR.value = mode.value === "conv" ? Math.round(OL.clamp(IMG - x, 5, 100)) : Math.round(OL.clamp(x - SRC, 5, 100)); draw(); } });
+  const gr = new Stage("cv-vgraph", { xmin: 0, xmax: 105, ymin: -1.5, ymax: 22, aspect: 0.2, minH: 120, maxH: 170, draw: drawGraph });
+
+  function vergence() {
+    const d = dR.value;
+    if (mode.value === "par") return 0;
+    return mode.value === "div" ? -100 / d : 100 / d;
+  }
+  function drawWaves(s, c) {
+    const m = mode.value, ox = obsX();
+    const ctx = s.ctx;
+    s.axis({ label: false });
+    const yMax = s.opt.ymax;
+    // 光線
+    if (m === "par") {
+      for (let y = -20; y <= 20; y += 8) s.ray([[s.opt.xmin, y], [s.opt.xmax, y]], { color: c.ray, w: 1.2, alpha: 0.55 });
+      for (let x = 2; x < 108; x += 7) s.line(x, -yMax, x, yMax, { color: c.accent, w: 1.4, alpha: x < ox ? 0.85 : 0.35 });
+      s.line(ox, -yMax, ox, yMax, { color: c.ray, w: 3 });
+    } else {
+      const cx = m === "div" ? SRC : IMG;
+      const angs = [-0.5, -0.3, -0.12, 0.12, 0.3, 0.5];
+      angs.forEach((a) => {
+        const dir = m === "div" ? 1 : -1;
+        const x0 = cx + dir * 0, len = 120;
+        if (m === "div") s.ray([[cx, 0], [cx + Math.cos(a) * len, Math.sin(a) * len]], { color: c.ray, w: 1.2, alpha: 0.55 });
+        else s.ray([[cx - Math.cos(a) * len, Math.sin(a) * len], [cx, 0]], { color: c.ray, w: 1.2, alpha: 0.55 });
+      });
+      // 波前
+      for (let r = 7; r < 110; r += 7) {
+        ctx.save(); ctx.beginPath();
+        const R = r * s.sx; const half = Math.min(Math.PI / 2.2, Math.asin(Math.min(1, yMax / r)));
+        if (m === "div") ctx.arc(s.X(cx), s.Y(0), R, -half, half);
+        else ctx.arc(s.X(cx), s.Y(0), R, Math.PI - half, Math.PI + half);
+        const inside = m === "div" ? r < dR.value : r > dR.value;
+        ctx.strokeStyle = c.accent; ctx.globalAlpha = inside ? 0.85 : 0.35; ctx.lineWidth = 1.4; ctx.stroke(); ctx.restore();
+      }
+      // 觀察面上的波前
+      const r = dR.value; ctx.save(); ctx.beginPath();
+      const half = Math.min(Math.PI / 2.2, Math.asin(Math.min(1, yMax / r)));
+      if (m === "div") ctx.arc(s.X(cx), s.Y(0), r * s.sx, -half, half); else ctx.arc(s.X(cx), s.Y(0), r * s.sx, Math.PI - half, Math.PI + half);
+      ctx.strokeStyle = c.ray; ctx.lineWidth = 3.2; ctx.stroke(); ctx.restore();
+      s.point(cx, 0, m === "div" ? "點光源" : "像點", { color: c.ink, dy: 16 });
+    }
+    s.line(ox, -yMax, ox, yMax, { color: c.ink, w: 1, dash: [4, 4], alpha: 0.7 });
+    s.text("觀察面", ox, yMax, { dy: 10, size: 11, color: c.muted, bg: c.bg });
+    s.text(fmt.D(vergence()), ox, -yMax, { dy: -12, size: 13, weight: 700, color: c.ray, font: c.mono, bg: c.bg });
+  }
+  function drawGraph(s, c) {
+    const m = mode.value;
+    s.line(0, 0, 105, 0, { color: c.muted, w: 1 });
+    [0, 5, 10, 15, 20].forEach((v) => s.text(v + " D", 0, v, { px: false, align: "left", dx: 4, size: 10, color: c.muted, font: c.mono }));
+    [25, 50, 75, 100].forEach((x) => { s.line(x, -1.5, x, 22, { color: c.grid, w: 1 }); s.text(x + " cm", x, -1.5, { dy: -8, size: 10, color: c.muted, font: c.mono }); });
+    const pts = [];
+    if (m !== "par") for (let d = 4.6; d <= 105; d += 0.5) pts.push([d, 100 / d]);
+    else pts.push([0, 0], [105, 0]);
+    s.poly(pts, { color: c.accent, w: 2 });
+    const d = dR.value, v = m === "par" ? 0 : 100 / d;
+    s.point(d, v, "", { color: c.ray, r: 5 });
+    s.text("|聚散度|", 105, 21, { align: "right", size: 11, color: c.muted });
+  }
+  function draw() {
+    const v = vergence();
+    document.getElementById("v-L").textContent = fmt.D(v);
+    document.getElementById("v-shape").textContent = mode.value === "par" ? "平面（不彎）" : Math.abs(v) > 8 ? "非常彎" : Math.abs(v) > 2.5 ? "中等彎曲" : "接近平面";
+    st.render(); gr.render();
+  }
+  draw();
+
+  /* ---------- LAB 1-2 斯涅爾 ---------- */
+  const MEDIA = [["空氣", 1.0], ["水", 1.333], ["房水（aqueous）", 1.336], ["角膜", 1.376], ["CR-39 樹脂", 1.498], ["冕牌玻璃", 1.523], ["聚碳酸酯 PC", 1.586], ["鑽石", 2.42]];
+  const s1 = document.getElementById("s-n1"), s2 = document.getElementById("s-n2");
+  MEDIA.forEach(([n, v], i) => { s1.add(new Option(`${n}　n = ${v.toFixed(3)}`, i)); s2.add(new Option(`${n}　n = ${v.toFixed(3)}`, i)); });
+  s1.value = 0; s2.value = 5;
+  const aR = range("s-a", (v) => v.toFixed(1) + "°", () => sn.render());
+  s1.addEventListener("change", () => sn.render()); s2.addEventListener("change", () => sn.render());
+  document.getElementById("s-swap").addEventListener("click", () => { const t = s1.value; s1.value = s2.value; s2.value = t; sn.render(); });
+  const sn = new Stage("cv-snell", { xmin: -10, xmax: 10, ymin: -7, ymax: 7, aspect: 0.62, minH: 260, maxH: 420, equal: true, draw: drawSnell });
+  sn.addHandle({ pos: () => { const a = aR.value * Math.PI / 180; return [-Math.sin(a) * 6.5, Math.cos(a) * 6.5]; },
+    drag: (x, y) => { let a = Math.atan2(-x, Math.max(0.01, y)) * 180 / Math.PI; aR.value = OL.clamp(Math.round(a * 2) / 2, 0, 89); }, color: "" });
+
+  function drawSnell(s, c) {
+    const n1 = MEDIA[s1.value][1], n2 = MEDIA[s2.value][1];
+    const a = aR.value * Math.PI / 180;
+    const ctx = s.ctx;
+    // 介質底色（折射率越高越深）
+    const shade = (n) => Math.min(0.42, (n - 1) * 0.35);
+    ctx.save(); ctx.fillStyle = c.accent;
+    ctx.globalAlpha = shade(n1); ctx.fillRect(0, 0, s.w, s.Y(0));
+    ctx.globalAlpha = shade(n2); ctx.fillRect(0, s.Y(0), s.w, s.h - s.Y(0)); ctx.restore();
+    s.line(s.wx(0), 0, s.wx(s.w), 0, { color: c.ink, w: 1.5 });
+    s.line(0, s.wy(s.h), 0, s.wy(0), { color: c.muted, w: 1, dash: [5, 4] });
+    s.text("法線", 0, 6.6, { dx: 18, size: 11, color: c.muted });
+    s.text(`${MEDIA[s1.value][0]}  n=${n1.toFixed(3)}`, -9.6, 6.4, { align: "left", size: 12, weight: 700 });
+    s.text(`${MEDIA[s2.value][0]}  n=${n2.toFixed(3)}`, -9.6, -6.4, { align: "left", size: 12, weight: 700 });
+    const R = 6.5;
+    const sx = -Math.sin(a) * R, sy = Math.cos(a) * R;
+    const sinT = n1 * Math.sin(a) / n2;
+    const tir = sinT > 1;
+    s.ray([[sx, sy], [0, 0]], { color: c.ray, w: 2.6 });
+    // 反射光（部分反射）
+    s.ray([[0, 0], [Math.sin(a) * R, Math.cos(a) * R]], { color: c.ray, w: tir ? 2.6 : 1.2, alpha: tir ? 1 : 0.3 });
+    let t = 0;
+    if (!tir) { t = Math.asin(sinT); s.ray([[0, 0], [Math.sin(t) * R * 1.1, -Math.cos(t) * R * 1.1]], { color: c.ray, w: 2.6 }); }
+    // 角度弧
+    ctx.save(); ctx.strokeStyle = c.ink; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(s.X(0), s.Y(0), 34, -Math.PI / 2 - a, -Math.PI / 2, false); ctx.stroke();
+    if (!tir && t > 0.01) { ctx.beginPath(); ctx.arc(s.X(0), s.Y(0), 40, Math.PI / 2, Math.PI / 2 - t, true); ctx.stroke(); }
+    ctx.restore();
+    s.text("θ", -0.9, 2.6, { size: 13, weight: 700 });
+    if (!tir && t > 0.02) s.text("θ′", 1.0, -3.1, { size: 13, weight: 700 });
+    // 讀數
+    document.getElementById("s-r").textContent = tir ? "—（無折射光）" : (t * 180 / Math.PI).toFixed(1) + "°";
+    document.getElementById("s-c").textContent = n1 > n2 ? (Math.asin(n2 / n1) * 180 / Math.PI).toFixed(1) + "°" : "不存在（n 由低到高）";
+    document.getElementById("s-v").textContent = (n1 / n2).toFixed(3) + " 倍";
+    const v = document.getElementById("s-verdict");
+    if (tir) v.innerHTML = '<span class="pill bad">全內反射</span> 入射角超過臨界角，光全部反射回上方介質。';
+    else if (aR.value === 0) v.innerHTML = '<span class="pill info">不偏折</span> 沿法線入射，方向不變，只有速度改變。';
+    else if (n2 > n1) v.innerHTML = '<span class="pill ok">偏向法線</span> 進入較高折射率（較慢）的介質。';
+    else if (n2 < n1) v.innerHTML = '<span class="pill warn">偏離法線</span> 進入較低折射率（較快）的介質。';
+    else v.innerHTML = '<span class="pill info">不偏折</span> 兩種介質折射率相同。';
+  }
+
+  /* ---------- 測驗 ---------- */
+  quiz("quiz", "ch01", [
+    { q: "一個點光源發出的光，在離光源 1 公尺處與 2 公尺處相比，2 公尺處的波前：", opts: ["比較彎", "比較平", "一樣彎", "變成會聚"], a: 1, exp: "離光源越遠，波前半徑越大、越平，聚散度大小越小（−1.00 D → −0.50 D）。" },
+    { q: "下列哪一種光束的聚散度為正值？", opts: ["從燈泡發出的光", "從無限遠星星來的光", "經過放大鏡後朝一點收斂的光", "從近處書本反射的光"], a: 2, exp: "朝一點收斂的光是會聚光，聚散度為正。燈泡與書本發出的是發散光（負），星光是平行光（0）。" },
+    { q: "光從空氣斜射入水中，折射光會：", opts: ["偏向法線", "偏離法線", "沿原方向前進", "全部反射"], a: 0, exp: "水的折射率較高，光變慢，因此偏向法線。" },
+    { q: "下列哪個情況「不可能」發生全內反射？", opts: ["光由玻璃射向空氣", "光由水射向空氣", "光由空氣射向玻璃", "光由鑽石射向水"], a: 2, exp: "全內反射只會在光由高折射率射向低折射率時發生。空氣→玻璃是低到高，沒有臨界角。" },
+    { q: "−3.00 D 與 +3.00 D 的光束相比：", opts: ["−3.00 D 較弱", "+3.00 D 較彎", "彎曲程度相同，方向相反", "兩者都是平行光"], a: 2, exp: "大小相同代表彎曲程度相同；負號是發散，正號是會聚。" },
+    { q: "為什麼臨床上把 6 公尺當作光學無限遠？", opts: ["6 公尺外的光聚散度剛好是 0", "6 公尺處的聚散度只有約 −0.17 D，小到可以忽略", "因為眼睛看不到 6 公尺以外", "因為檢查室規定"], a: 1, exp: "1 ÷ 6 ≈ 0.17 D，對大多數臨床判斷而言可忽略，因此視為平行光。" },
+  ]);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第 2 章 球面折射｜視光光學實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-chapter="ch02">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter 02</div>
+    <h1>球面折射</h1>
+    <div class="en">Refraction at Spherical Surfaces</div>
+    <p class="lede">角膜就是一個會聚的球面。一個彎曲的界面會讓不同高度的光線轉不同角度，於是平行光被聚到一點（或看起來從一點發出）。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>能從「形狀」與「兩側折射率」一起判斷球面是會聚還是發散。</li>
+      <li>能說出第一焦點 F 與第二焦點 F′ 的定義，並理解兩者到表面的距離不必相等。</li>
+      <li>能用光線追跡判斷像是實像或虛像、正立或倒立。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Converging vs. Diverging</span><h3>會聚或發散，要看兩件事</h3><p>表面凸向哪一邊，加上光是從低折射率進入高折射率，還是反過來。凸面不一定會聚！</p></div>
+      <div class="concept"><span class="en-term">Secondary focal point F′</span><h3>第二焦點 F′</h3><p>平行光（來自無限遠）經過表面後聚焦的點；發散面則是平行光「看起來」發出的點。</p></div>
+      <div class="concept"><span class="en-term">Primary focal point F</span><h3>第一焦點 F</h3><p>從 F 發出（或朝向 F）的光，經過表面後變成平行光。F 與 F′ 的距離不同，因為兩側折射率不同。</p></div>
+      <div class="concept"><span class="en-term">Real vs. Virtual image</span><h3>實像與虛像</h3><p>由會聚光形成的是實像，倒立、可投影在屏幕上；由發散光「延長線」形成的是虛像，正立、看得到但投影不出來。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 2-1</span><h3>這個球面會聚還是發散？</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-surf" aria-label="球面折射模擬"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>表面形狀（面向入射光）</label>
+            <div class="seg" id="f-shape"><button data-v="1" aria-pressed="true">凸面</button><button data-v="-1">凹面</button></div></div>
+          <div class="ctrl"><label for="f-r">曲率半徑大小 <output id="f-r-out"></output></label><input type="range" id="f-r" min="3" max="25" step="0.5" value="10"></div>
+          <div class="ctrl"><label for="f-n1">左側介質 n</label><select id="f-n1" class="chapter-select"></select></div>
+          <div class="ctrl"><label for="f-n2">右側介質 n′</label><select id="f-n2" class="chapter-select"></select></div>
+          <div class="ctrl"><label>入射光</label>
+            <div class="seg" id="f-mode"><button data-v="par" aria-pressed="true">平行光（找 F′）</button><button data-v="foc">由 F 出發（找 F）</button></div></div>
+          <div class="readout">
+            <div class="row"><span>表面屈光力</span><b id="f-P">—</b></div>
+            <div class="row"><span>第一焦距 f</span><b id="f-f">—</b></div>
+            <div class="row"><span>第二焦距 f′</span><b id="f-f2">—</b></div>
+          </div>
+          <div class="verdict" id="f-verdict"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="1">
+          <p class="q">一個「凸面」，左邊是水（1.333）、右邊是空氣（1.000）。平行光由左射入，它會？</p>
+          <div class="opts"><button>會聚</button><button>發散</button><button>不偏折</button></div>
+          <p class="why">光從高折射率進入低折射率，凸面反而讓光發散。把左側設為「水」、右側設為「空氣」驗證看看。會聚或發散不能只看形狀。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>半徑越小（越彎），屈光力越強，F′ 越靠近表面。</li>
+          <li>兩側折射率相同時屈光力為 0：再彎的表面也不會折射光。</li>
+          <li>F 與 F′ 在表面兩側，距離不相等；右側折射率較高時，F′ 比 F 遠。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 2-2</span><h3>球面成像：實像還是虛像？</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-img" aria-label="球面成像模擬"></canvas><span class="hint">拖曳物體箭頭的頂端</span></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="i-x">物距 <output id="i-x-out"></output></label><input type="range" id="i-x" min="-60" max="-4" step="0.5" value="-40"></div>
+          <div class="ctrl"><label>顯示的主要光線</label>
+            <label class="check"><input type="checkbox" id="i-r1" checked> ① 平行於光軸 → 通過 F′</label>
+            <label class="check"><input type="checkbox" id="i-r2" checked> ② 通過曲率中心 C → 不偏折</label>
+            <label class="check"><input type="checkbox" id="i-r3"> ③ 通過 F → 平行射出</label></div>
+          <div class="readout">
+            <div class="row"><span>像的位置</span><b id="i-l2">—</b></div>
+            <div class="row"><span>橫向放大率</span><b id="i-m">—</b></div>
+          </div>
+          <div class="verdict" id="i-verdict"></div>
+          <div class="predict" data-answer="2">
+            <p class="q">物體越來越靠近表面、越過第一焦點 F 之後，像會變成？</p>
+            <div class="opts"><button>更大的實像</button><button>消失</button><button>正立的虛像</button></div>
+            <p class="why">物體在 F 以內時，折射後的光仍然發散，只能往回延長相交，形成正立、放大的虛像。物體剛好在 F 上時，射出的是平行光，像在無限遠。</p>
+          </div>
+        </div>
+      </div>
+      <div class="observe"><h4>觀察重點</h4><ul>
+        <li>這裡使用 n = 1.000 → 1.500、半徑 +10 cm 的會聚面（+5.00 D）。</li>
+        <li>實像一定在表面右側（光真的到那裡）；虛像在左側，用虛線表示光的延長線。</li>
+        <li>物體靠近 F 時，像會跑得非常遠、非常大。</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>凸面一定會聚，凹面一定發散。</summary><div class="fix">還要看折射率：光由高 n 進入低 n 時（例如由水進入空氣），凸面會發散、凹面會會聚。屈光力的正負同時由 (n′ − n) 和 r 決定。</div></details>
+      <details class="myth"><summary>F 和 F′ 一定在表面兩邊相同距離的位置。</summary><div class="fix">只有兩側是同一種介質（例如空氣中的薄透鏡）才會相等。單一球面兩側折射率不同，焦距也不同。</div></details>
+      <details class="myth"><summary>虛像是「看不到」的像。</summary><div class="fix">虛像看得到（放大鏡裡的字、鏡子裡的自己），只是不能投影在屏幕上，因為光線並沒有真的在那裡相交。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>公式補充 <span class="tag">OPTIONAL</span></h2>
+    <details class="formula"><summary>展開看公式（選讀）</summary><div>
+      <p>表面屈光力：<span class="eq">F = (n′ − n) / r</span>（r 以公尺計，曲率中心在右側為正）</p>
+      <p>焦距：<span class="eq">f′ = n′ / F</span>　<span class="eq">f = −n / F</span></p>
+    </div></details>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div class="terms-wrap"><table class="terms">
+      <tr><th>English</th><th>中文</th><th>一句話說明</th></tr>
+      <tr><td>spherical surface</td><td>球面</td><td>曲率處處相同的面</td></tr>
+      <tr><td>radius of curvature</td><td>曲率半徑</td><td>r，越小越彎</td></tr>
+      <tr><td>center of curvature</td><td>曲率中心</td><td>C，通過它的光不偏折</td></tr>
+      <tr><td>surface power</td><td>表面屈光力</td><td>(n′ − n) / r</td></tr>
+      <tr><td>primary focal point</td><td>第一焦點</td><td>F，出射光平行</td></tr>
+      <tr><td>secondary focal point</td><td>第二焦點</td><td>F′，入射光平行</td></tr>
+      <tr><td>real / virtual image</td><td>實像／虛像</td><td>會聚光／延長線形成</td></tr>
+      <tr><td>erect / inverted</td><td>正立／倒立</td><td>與物體同向／反向</td></tr>
+    </table></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/core.js"></script>
+<script>
+(function () {
+  const { Stage, fmt, range, seg, check, trace, quiz } = OL;
+  const MEDIA = [["空氣", 1.0], ["水", 1.333], ["角膜", 1.376], ["樹脂 1.50", 1.5], ["冕牌玻璃", 1.523], ["高折射 1.74", 1.74]];
+
+  /* 畫一個示意球面（螢幕座標的彎度） */
+  function drawSurface(s, c, x, rSign, rAbs, hh) {
+    const ctx = s.ctx, X = s.X(x), y1 = s.Y(hh), y2 = s.Y(-hh), H = (y2 - y1) / 2;
+    const bend = rSign * Math.min(34, 260 / rAbs);  // 越彎越明顯
+    ctx.save(); ctx.beginPath();
+    for (let i = 0; i <= 40; i++) {
+      const t = -1 + i / 20, py = s.Y(0) + t * H, px = X + bend * t * t;
+      i ? ctx.lineTo(px, py) : ctx.moveTo(px, py);
+    }
+    ctx.strokeStyle = c.glassEdge; ctx.lineWidth = 2.2; ctx.stroke(); ctx.restore();
+  }
+  function shadeMedia(s, c, n1, n2, x) {
+    const ctx = s.ctx, sh = (n) => Math.min(0.36, (n - 1) * 0.42);
+    ctx.save(); ctx.fillStyle = c.accent;
+    ctx.globalAlpha = sh(n1); ctx.fillRect(0, 0, s.X(x), s.h);
+    ctx.globalAlpha = sh(n2); ctx.fillRect(s.X(x), 0, s.w - s.X(x), s.h); ctx.restore();
+  }
+
+  /* ---------- LAB 2-1 ---------- */
+  const shape = seg("f-shape", () => st.render());
+  const mode = seg("f-mode", () => st.render());
+  const rR = range("f-r", (v) => v.toFixed(1) + " cm", () => st.render());
+  const n1s = document.getElementById("f-n1"), n2s = document.getElementById("f-n2");
+  MEDIA.forEach(([n, v], i) => { n1s.add(new Option(`${n}　${v.toFixed(3)}`, i)); n2s.add(new Option(`${n}　${v.toFixed(3)}`, i)); });
+  n1s.value = 0; n2s.value = 3;
+  n1s.addEventListener("change", () => st.render()); n2s.addEventListener("change", () => st.render());
+  const st = new Stage("cv-surf", { xmin: -45, xmax: 65, ymin: -10, ymax: 10, aspect: 0.62, minH: 300, maxH: 520, draw: drawA });
+
+  function drawA(s, c) {
+    const n1 = MEDIA[n1s.value][1], n2 = MEDIA[n2s.value][1];
+    const r = +shape.value * rR.value;              // cm
+    const P = (n2 - n1) / (r / 100);                 // D
+    const f2 = P === 0 ? Infinity : n2 / P * 100;    // cm
+    const f1 = P === 0 ? Infinity : -n1 / P * 100;
+    shadeMedia(s, c, n1, n2, 0);
+    s.axis();
+    drawSurface(s, c, 0, +shape.value, rR.value, 8.5);
+    s.text(`n = ${n1.toFixed(3)}`, -44, 9, { align: "left", weight: 700 });
+    s.text(`n′ = ${n2.toFixed(3)}`, 64, 9, { align: "right", weight: 700 });
+    const ys = [-6, -3.6, -1.2, 1.2, 3.6, 6];
+    const el = [{ x: 0, F: P / 100, n2 }];
+    ys.forEach((y) => {
+      let start;
+      if (mode.value === "par" || P === 0) start = { x: s.opt.xmin, y, s: 0, n: n1 };
+      else { const sl = -y / f1; start = { x: s.opt.xmin, y: y - sl * (0 - s.opt.xmin), s: sl, n: n1 }; }
+      const tr = trace(start, el, s.opt.xmax);
+      s.ray(tr.pts, { color: c.ray, w: 1.6 });
+      // 虛線延長
+      if (mode.value === "par" && P < 0) s.line(0, y, f2, 0, { color: c.virtual, dash: [4, 4], w: 1.2, alpha: 0.8 });
+      if (mode.value === "foc" && P < 0) s.line(0, y, f1, 0, { color: c.virtual, dash: [4, 4], w: 1.2, alpha: 0.8 });
+    });
+    if (P !== 0) {
+      const inView = (x) => x > s.opt.xmin && x < s.opt.xmax;
+      if (inView(f2)) s.point(f2, 0, "F′", { color: mode.value === "par" ? c.ray : c.ink, dy: -14 });
+      if (inView(f1)) s.point(f1, 0, "F", { color: mode.value === "foc" ? c.ray : c.ink, dy: -14 });
+      if (inView(r)) s.point(r, 0, "C", { color: c.muted, dy: 14 });
+    }
+    document.getElementById("f-P").textContent = fmt.D(P);
+    document.getElementById("f-f").textContent = P === 0 ? "∞" : fmt.num(f1, 1, "cm");
+    document.getElementById("f-f2").textContent = P === 0 ? "∞" : fmt.num(f2, 1, "cm");
+    const v = document.getElementById("f-verdict");
+    const dir = n2 > n1 ? "低 n → 高 n" : n2 < n1 ? "高 n → 低 n" : "折射率相同";
+    v.innerHTML = P > 0.001 ? `<span class="pill ok">會聚面</span> ${shape.value === "1" ? "凸面" : "凹面"}，${dir}` :
+      P < -0.001 ? `<span class="pill warn">發散面</span> ${shape.value === "1" ? "凸面" : "凹面"}，${dir}` : `<span class="pill info">無屈光力</span> 兩側折射率相同，光不偏折`;
+  }
+
+  /* ---------- LAB 2-2 ---------- */
+  const N1 = 1.0, N2 = 1.5, R = 10, P2 = (N2 - N1) / (R / 100); // +5 D
+  const F2 = N2 / P2 * 100, F1 = -N1 / P2 * 100;                 // +30, −20 cm
+  const xR = range("i-x", (v) => fmt.num(v, 1, "cm"), () => im.render());
+  let objH = 3;
+  const r1 = check("i-r1", () => im.render()), r2 = check("i-r2", () => im.render()), r3 = check("i-r3", () => im.render());
+  const im = new Stage("cv-img", { xmin: -65, xmax: 95, ymin: -12, ymax: 12, aspect: 0.6, minH: 300, maxH: 520, draw: drawB });
+  im.addHandle({ pos: () => [xR.value, objH], drag: (x, y) => { xR.value = OL.clamp(Math.round(x * 2) / 2, -60, -4); objH = OL.clamp(y, 1, 6); } });
+
+  function drawB(s, c) {
+    const xo = xR.value, h = objH;
+    shadeMedia(s, c, N1, N2, 0);
+    s.axis();
+    drawSurface(s, c, 0, 1, R, 10.5);
+    s.point(F1, 0, "F", { dy: 14 }); s.point(F2, 0, "F′", { dy: 14 }); s.point(R, 0, "C", { color: c.muted, dy: 14 });
+    const L = N1 / (xo / 100), Lp = L + P2;
+    const xi = Math.abs(Lp) < 1e-6 ? Infinity : N2 / Lp * 100;
+    const m = L / Lp, hi = m * h;
+    const real = xi > 0 && isFinite(xi);
+    const el = [{ x: 0, F: P2 / 100, n2: N2 }];
+    const rays = [];
+    if (r1.value) rays.push({ s: 0, col: c.ray });
+    if (r2.value) rays.push({ s: (0 - h) / (R - xo), col: c.ray2 });
+    if (r3.value && Math.abs(F1 - xo) > 0.3) rays.push({ s: (0 - h) / (F1 - xo), col: c.ray3 });
+    rays.forEach((rr) => {
+      const tr = trace({ x: xo, y: h, s: rr.s, n: N1 }, el, s.opt.xmax);
+      s.ray(tr.pts, { color: rr.col, w: 1.8 });
+      if (r3.value && rr.col === c.ray3 && xo > F1) s.line(xo, h, F1, 0, { color: rr.col, dash: [3, 4], w: 1, alpha: 0.7 });
+      if (!real && isFinite(xi)) { const yS = tr.pts[1][1]; s.line(0, yS, xi, yS + tr.s * xi, { color: rr.col, dash: [5, 5], w: 1.2, alpha: 0.85 }); }
+    });
+    s.arrowObj(xo, h, { color: c.ink, label: "物" });
+    if (isFinite(xi) && xi > s.opt.xmin && xi < s.opt.xmax && Math.abs(hi) < 30)
+      s.arrowObj(xi, hi, { color: c.accent, dash: real ? null : [5, 4], label: real ? "實像" : "虛像" });
+    document.getElementById("i-l2").textContent = isFinite(xi) ? fmt.num(xi, 1, "cm") + (xi > 0 ? "（右側）" : "（左側）") : "無限遠";
+    document.getElementById("i-m").textContent = isFinite(m) ? fmt.num(m, 2, "×") : "—";
+    const v = document.getElementById("i-verdict");
+    if (!isFinite(xi)) v.innerHTML = '<span class="pill info">像在無限遠</span> 物體在第一焦點上，射出平行光';
+    else v.innerHTML = (real ? '<span class="pill ok">實像</span> ' : '<span class="pill warn">虛像</span> ') +
+      (m < 0 ? "倒立" : "正立") + "、" + (Math.abs(m) > 1.02 ? "放大" : Math.abs(m) < 0.98 ? "縮小" : "等大");
+  }
+
+  quiz("quiz", "ch02", [
+    { q: "決定一個球面是會聚還是發散的因素是：", opts: ["只有表面形狀", "只有折射率", "表面形狀與兩側折射率的高低關係", "物體距離"], a: 2, exp: "屈光力 F = (n′ − n)/r，正負同時取決於折射率差與曲率方向。" },
+    { q: "平行光經過一個會聚球面後聚焦的點稱為：", opts: ["第一焦點 F", "第二焦點 F′", "曲率中心 C", "節點"], a: 1, exp: "入射平行光聚焦於第二焦點 F′；從第一焦點 F 發出的光，射出後為平行光。" },
+    { q: "從空氣看角膜（n = 1.376）的前表面，它是凸面，因此對進入眼睛的光是：", opts: ["會聚", "發散", "無作用", "視瞳孔大小而定"], a: 0, exp: "凸面、低 n → 高 n，屈光力為正，是會聚面。" },
+    { q: "通過曲率中心 C 的光線，經過球面時會：", opts: ["偏向光軸", "偏離光軸", "不偏折", "被反射"], a: 2, exp: "通過曲率中心的光線沿著表面的法線入射，入射角為 0，因此不偏折。" },
+    { q: "以下關於實像的敘述何者正確？", opts: ["一定是正立的", "可以投影在屏幕上", "由光線延長線相交形成", "只有發散面才能形成"], a: 1, exp: "實像由真正會聚的光線形成，可以投影；單一球面或透鏡形成的實像為倒立。" },
+    { q: "一個會聚面的物體放在第一焦點與表面之間，會形成：", opts: ["倒立實像", "正立虛像", "像在無限遠", "沒有像"], a: 1, exp: "物體在 F 以內，折射後的光仍發散，延長線相交成正立、放大的虛像。" },
+  ]);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第 5 章 多面光學系統｜視光光學實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .ledger { display: grid; gap: 4px; font-size: 13px; }
+  .ledger .st { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding: 4px 8px; border-radius: 6px; background: var(--surface-2); }
+  .ledger .st b { font-family: var(--font-mono); font-weight: 500; }
+  .ledger .st.jump { border-left: 3px solid var(--accent); }
+  .ledger .st.travel { border-left: 3px dashed var(--muted); }
+</style>
+</head>
+<body data-chapter="ch05">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter 05</div>
+    <h1>多面光學系統</h1>
+    <div class="en">Optical Systems with Multiple Surfaces</div>
+    <p class="lede">眼睛、厚鏡片、望遠鏡，都是好幾個光學面排在一起。方法只有一個：<b>一面一面來</b>，前一面的像，就是下一面的物。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>理解「前一個光學面的像 = 下一個光學面的物」的接力原則。</li>
+      <li>理解光在兩個光學面之間行進時，聚散度會改變。</li>
+      <li>能辨認虛物（virtual object）：還沒會聚完成就被下一面攔截的光。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Step by step</span><h3>接力成像</h3><p>第一面產生中間像，它就變成第二面的物。每一面都用 L′ = L + F。</p></div>
+      <div class="concept"><span class="en-term">Vergence changes with distance</span><h3>走一段路，聚散度就變</h3><p>第一面射出的聚散度，走到第二面時已經不一樣了。會聚光越走越會聚，發散光越走越平。</p></div>
+      <div class="concept"><span class="en-term">Virtual object</span><h3>虛物</h3><p>會聚光在形成像之前就碰到下一面，這個「本來要形成的像」就是虛物，入射聚散度為正。</p></div>
+      <div class="concept"><span class="en-term">Total magnification</span><h3>總放大率相乘</h3><p>系統總放大率等於每一面放大率相乘。兩次倒立就變回正立。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 5-1</span><h3>雙透鏡接力成像</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-two" aria-label="雙透鏡系統"></canvas><canvas id="cv-two-track" aria-label="聚散度軌跡"></canvas><span class="hint">拖曳物體或第二片透鏡</span></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="w-x">物距（到第一片） <output id="w-x-out"></output></label><input type="range" id="w-x" min="-70" max="-5" step="1" value="-40"></div>
+          <div class="ctrl"><label for="w-P1">第一片 F₁ <output id="w-P1-out"></output></label><input type="range" id="w-P1" min="-10" max="12" step="0.5" value="5"></div>
+          <div class="ctrl"><label for="w-P2">第二片 F₂ <output id="w-P2-out"></output></label><input type="range" id="w-P2" min="-10" max="12" step="0.5" value="5"></div>
+          <div class="ctrl"><label for="w-d">兩片間距 d <output id="w-d-out"></output></label><input type="range" id="w-d" min="5" max="80" step="1" value="70"></div>
+          <div class="ledger" id="w-ledger"></div>
+          <div class="verdict" id="w-verdict"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="1">
+          <p class="q">把兩片間距縮小到 20 cm，讓第二片透鏡擋在中間像「之前」。第二片透鏡收到的光是？</p>
+          <div class="opts"><button>發散光（實物）</button><button>會聚光（虛物）</button><button>平行光</button></div>
+          <p class="why">光還在會聚途中就被第二片攔截，入射聚散度為正。中間像沒有真正形成，它是第二片透鏡的「虛物」，位在第二片的右側。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>聚散度帳本：「跳」是透鏡加上屈光力，「走」是光在空氣中行進造成的變化。</li>
+          <li>下方軌跡圖中，兩片透鏡之間的線段會一路改變，不是一個固定值。</li>
+          <li>兩片正透鏡各成一次倒立實像，最後的像會變回正立。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 5-2</span><h3>厚度會改變焦點位置</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-thick" aria-label="厚透鏡平行光聚焦"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="k-1">前表面 F₁ <output id="k-1-out"></output></label><input type="range" id="k-1" min="5" max="30" step="1" value="20"></div>
+          <div class="ctrl"><label for="k-2">後表面 F₂ <output id="k-2-out"></output></label><input type="range" id="k-2" min="-10" max="30" step="1" value="20"></div>
+          <div class="ctrl"><label for="k-t">中心厚度 t <output id="k-t-out"></output></label><input type="range" id="k-t" min="0" max="30" step="0.5" value="15"></div>
+          <div class="readout">
+            <div class="row"><span>F₁ + F₂</span><b id="k-thin">—</b></div>
+            <div class="row"><span>依此預測的後焦距</span><b id="k-pred">—</b></div>
+            <div class="row"><span>實際後焦距</span><b id="k-bfl">—</b></div>
+          </div>
+          <div class="predict" data-answer="0">
+            <p class="q">兩面都是正的，鏡片變厚後，平行光的焦點會比薄透鏡預測的？</p>
+            <div class="opts"><button>更靠近後表面</button><button>更遠</button><button>一樣</button></div>
+            <p class="why">光在玻璃內已經在會聚，走過厚度 t 之後聚散度變得更大，再加上後表面的屈光力，總效果更強，焦點更靠近。</p>
+          </div>
+        </div>
+      </div>
+      <div class="observe"><h4>觀察重點</h4><ul>
+        <li>t = 0 時實際焦點與薄透鏡預測重合；厚度越大，兩者差距越明顯。</li>
+        <li>玻璃中的光線（n = 1.5）在兩面之間是會聚的，這段路讓聚散度改變。</li>
+        <li>這就是第 6 章「後頂點屈光力」與「等效屈光力」的由來。</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>兩片透鏡貼在一起或分開一點，屈光力都是相加。</summary><div class="fix">只有貼在一起（間距為 0）時才能直接相加。分開後，光在中間行進時聚散度會變，總效果也跟著改變。</div></details>
+      <details class="myth"><summary>虛物就是虛像。</summary><div class="fix">虛物是「射向下一面的會聚光原本要形成的點」，在該面的右側；虛像則是射出光的延長線交點。兩者都不是光真的抵達的地方，但角色不同。</div></details>
+      <details class="myth"><summary>光在玻璃裡的聚散度只要用距離倒數就好。</summary><div class="fix">在折射率 n 的介質中，聚散度 = n / 距離。計算行進時要用「約化距離」t / n。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>公式補充 <span class="tag">OPTIONAL</span></h2>
+    <details class="formula"><summary>展開看公式（選讀）</summary><div>
+      <p>每一面：<span class="eq">L′ = L + F</span></p>
+      <p>光走過距離 d（介質 n）後：<span class="eq">L₂ = L₁′ / (1 − (d/n)·L₁′)</span></p>
+      <p>總放大率：<span class="eq">M = M₁ × M₂</span></p>
+    </div></details>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div class="terms-wrap"><table class="terms">
+      <tr><th>English</th><th>中文</th><th>一句話說明</th></tr>
+      <tr><td>intermediate image</td><td>中間像</td><td>前一面形成、交給下一面當物</td></tr>
+      <tr><td>virtual object</td><td>虛物</td><td>會聚光入射，物在光學面右側</td></tr>
+      <tr><td>surface-by-surface</td><td>逐面計算</td><td>每一面套用一次聚散度關係</td></tr>
+      <tr><td>reduced distance</td><td>約化距離</td><td>t / n</td></tr>
+      <tr><td>thick lens</td><td>厚透鏡</td><td>厚度不可忽略的透鏡</td></tr>
+      <tr><td>back focal length</td><td>後焦距</td><td>後表面到 F′ 的距離</td></tr>
+    </table></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/core.js"></script>
+<script>
+(function () {
+  const { Stage, fmt, range, trace, quiz } = OL;
+
+  /* ---------- LAB 5-1 ---------- */
+  const xR = range("w-x", (v) => fmt.num(v, 0, "cm"), () => all());
+  const P1 = range("w-P1", (v) => fmt.D(v), () => all());
+  const P2 = range("w-P2", (v) => fmt.D(v), () => all());
+  const dR = range("w-d", (v) => v + " cm", () => all());
+  let h = 4;
+  const st = new Stage("cv-two", { xmin: -75, xmax: 170, ymin: -14, ymax: 14, aspect: 0.48, minH: 260, maxH: 420, draw: drawTwo });
+  const tk = new Stage("cv-two-track", { xmin: -75, xmax: 170, ymin: -22, ymax: 22, aspect: 0.2, minH: 130, maxH: 180, draw: drawTrack });
+  st.addHandle({ pos: () => [xR.value, h], drag: (x, y) => { xR.value = OL.clamp(Math.round(x), -70, -5); h = OL.clamp(y, 1.5, 8); all(); } });
+  st.addHandle({ pos: () => [dR.value, -12], drag: (x) => { dR.value = OL.clamp(Math.round(x), 5, 80); all(); }, color: "" });
+
+  function calc() {
+    const xo = xR.value, F1 = P1.value, F2 = P2.value, d = dR.value;
+    const L1 = 100 / xo, L1p = L1 + F1;
+    const x1 = Math.abs(L1p) < 1e-6 ? Infinity : 100 / L1p;       // 中間像位置（由第一片量）
+    const L2 = isFinite(x1) ? 100 / (x1 - d) : 0;                 // 到達第二片的聚散度
+    const L2p = L2 + F2;
+    const x2 = Math.abs(L2p) < 1e-6 ? Infinity : d + 100 / L2p;   // 最終像位置（絕對座標）
+    const m1 = L1 / L1p, m2 = L2 / L2p;
+    return { xo, F1, F2, d, L1, L1p, x1, L2, L2p, x2, m1, m2 };
+  }
+  function drawTwo(s, c) {
+    const k = calc();
+    s.axis();
+    s.lens(0, 12, k.F1, { label: "透鏡 1" });
+    s.lens(k.d, 12, k.F2, { label: "透鏡 2" });
+    const el = [{ x: 0, F: k.F1 / 100 }, { x: k.d, F: k.F2 / 100 }];
+    const rays = [{ s: 0, col: c.ray }, { s: -h / (0 - k.xo), col: c.ray2 }];
+    rays.forEach((r) => {
+      const tr = trace({ x: k.xo, y: h, s: r.s }, el, s.opt.xmax);
+      s.ray(tr.pts, { color: r.col, w: 1.8 });
+      // 最終虛像的延長線
+      if (isFinite(k.x2) && k.x2 < k.d) { const yb = tr.pts[2][1]; s.line(k.d, yb, Math.max(k.x2, s.opt.xmin), yb + tr.s * (Math.max(k.x2, s.opt.xmin) - k.d), { color: r.col, dash: [5, 5], w: 1.1, alpha: 0.8 }); }
+    });
+    // 中間像
+    const h1 = k.m1 * h;
+    if (isFinite(k.x1) && k.x1 > s.opt.xmin && k.x1 < s.opt.xmax && Math.abs(h1) < 40) {
+      const virtObj = k.x1 > k.d;
+      s.arrowObj(k.x1, h1, { color: c.muted, dash: [4, 4], label: virtObj ? "中間像（虛物）" : "中間像" });
+      if (virtObj) {
+        // 第一片射出的會聚光原本會到達的位置：從第一片畫虛線到 x1
+        const tr = trace({ x: k.xo, y: h, s: 0 }, [{ x: 0, F: k.F1 / 100 }], k.x1);
+        s.line(k.d, tr.pts[1][1] + tr.s * k.d, k.x1, h1, { color: c.muted, dash: [3, 4], w: 1, alpha: 0.8 });
+        const tr2 = trace({ x: k.xo, y: h, s: -h / (0 - k.xo) }, [{ x: 0, F: k.F1 / 100 }], k.x1);
+        s.line(k.d, tr2.pts[1][1] + tr2.s * k.d, k.x1, h1, { color: c.muted, dash: [3, 4], w: 1, alpha: 0.8 });
+      }
+    }
+    s.arrowObj(k.xo, h, { label: "物" });
+    const h2 = k.m1 * k.m2 * h;
+    if (isFinite(k.x2) && k.x2 > s.opt.xmin && k.x2 < s.opt.xmax && Math.abs(h2) < 40)
+      s.arrowObj(k.x2, h2, { color: c.accent, dash: k.x2 > k.d ? null : [5, 4], label: "最終像" });
+    s.text("拖曳", k.d, -12, { dy: 16, size: 10, color: c.muted });
+  }
+  function drawTrack(s, c) {
+    const k = calc();
+    s.line(s.opt.xmin, 0, s.opt.xmax, 0, { color: c.muted, w: 1 });
+    [-20, -10, 10, 20].forEach((v) => { s.line(s.opt.xmin, v, s.opt.xmax, v, { color: c.grid, w: 1 }); s.text(fmt.num(v, 0, "D"), s.opt.xmin, v, { align: "left", dx: 4, size: 10, color: c.muted, font: c.mono }); });
+    s.line(0, -22, 0, 22, { color: c.glassEdge, w: 1, dash: [3, 3] });
+    s.line(k.d, -22, k.d, 22, { color: c.glassEdge, w: 1, dash: [3, 3] });
+    const lim = (v) => OL.clamp(v, -21.5, 21.5);
+    const seg = (x0, x1, fn, col) => { const p = []; let prev = null; for (let x = x0; x <= x1; x += 0.25) { const v = fn(x); if (!isFinite(v) || (prev != null && Math.abs(v - prev) > 30)) { s.poly(p.splice(0), { color: col, w: 2.2 }); prev = null; continue; } p.push([x, lim(v)]); prev = v; } s.poly(p, { color: col, w: 2.2 }); };
+    seg(k.xo + 0.4, 0, (x) => 100 / (k.xo - x), c.ray);
+    seg(0, k.d, (x) => isFinite(k.x1) ? 100 / (k.x1 - x) : 0, c.ray3);
+    seg(k.d, 170, (x) => isFinite(k.x2) ? 100 / (k.x2 - x) : 0, c.ray2);
+    s.text("聚散度軌跡", 168, 20, { align: "right", size: 11, color: c.muted });
+  }
+  function all() {
+    st.render(); tk.render();
+    const k = calc();
+    const row = (cls, a, b) => `<div class="st ${cls}"><span>${a}</span><b>${b}</b></div>`;
+    document.getElementById("w-ledger").innerHTML =
+      row("", "到達透鏡 1：L₁", fmt.D(k.L1)) +
+      row("jump", "跳：+ F₁", fmt.D(k.F1)) +
+      row("", "離開透鏡 1：L₁′", fmt.D(k.L1p)) +
+      row("travel", `走 ${k.d} cm 後：L₂`, fmt.D(k.L2)) +
+      row("jump", "跳：+ F₂", fmt.D(k.F2)) +
+      row("", "離開透鏡 2：L₂′", fmt.D(k.L2p));
+    const v = document.getElementById("w-verdict");
+    const virtObj = isFinite(k.x1) && k.x1 > k.d;
+    const M = k.m1 * k.m2;
+    v.innerHTML = (virtObj ? '<span class="pill warn">透鏡 2 的物是虛物</span><br>' : "") +
+      (!isFinite(k.x2) ? '<span class="pill info">最終像在無限遠</span>' :
+        (k.x2 > k.d ? '<span class="pill ok">最終為實像</span> ' : '<span class="pill warn">最終為虛像</span> ') + (M < 0 ? "倒立" : "正立") + `　<span class="mono">M = ${fmt.num(M, 2, "×")}</span>`);
+  }
+  all();
+
+  /* ---------- LAB 5-2 ---------- */
+  const k1 = range("k-1", (v) => fmt.D(v), () => th.render());
+  const k2 = range("k-2", (v) => fmt.D(v), () => th.render());
+  const kt = range("k-t", (v) => v.toFixed(1) + " mm", () => th.render());
+  const th = new Stage("cv-thick", { xmin: -25, xmax: 110, ymin: -16, ymax: 16, aspect: 0.55, minH: 280, maxH: 460, draw: drawThick });
+  const n = 1.5;
+  function drawThick(s, c) {
+    const F1 = k1.value, F2 = k2.value, t = kt.value;
+    const ctx = s.ctx;
+    // 玻璃
+    const bend = (F, side) => Math.min(30, Math.abs(F) * 1.1) * Math.sign(F) * side;
+    const X0 = s.X(0), X1 = s.X(t), yT = s.Y(13), yB = s.Y(-13), mid = s.Y(0);
+    ctx.save(); ctx.beginPath();
+    ctx.moveTo(X0, yT); ctx.quadraticCurveTo(X0 - bend(F1, 1) * 1.6, mid, X0, yB);
+    ctx.lineTo(X1, yB); ctx.quadraticCurveTo(X1 + bend(F2, 1) * 1.6, mid, X1, yT); ctx.closePath();
+    ctx.fillStyle = c.glass; ctx.fill(); ctx.strokeStyle = c.glassEdge; ctx.lineWidth = 1.5; ctx.stroke(); ctx.restore();
+    s.axis({ label: false });
+    const el = [{ x: 0, F: F1 / 1000, n2: n }, { x: t, F: F2 / 1000, n2: 1 }];
+    [-10, -6, -2, 2, 6, 10].forEach((y) => { const tr = trace({ x: s.opt.xmin, y, s: 0, n: 1 }, el, s.opt.xmax); s.ray(tr.pts, { color: c.ray, w: 1.5 }); });
+    const thin = F1 + F2;
+    const bvp = F1 / (1 - (t / 1000 / n) * F1) + F2;
+    const bfl = 1000 / bvp; // mm 由後表面
+    const fThin = 1000 / thin; // 由透鏡中心（薄透鏡）
+    if (thin > 0 && fThin + t < s.opt.xmax) { s.line(t + fThin, -14, t + fThin, 14, { color: c.muted, dash: [4, 4], w: 1.2 }); s.text("用 F₁+F₂ 預測的焦點", t + fThin, 14, { dy: 8, size: 11, color: c.muted, bg: c.bg }); }
+    if (bvp > 0 && t + bfl < s.opt.xmax) s.point(t + bfl, 0, "實際 F′", { color: c.ray2, dy: -14 });
+    s.text(`n = ${n}`, t / 2, -13, { dy: 14, size: 11, color: c.accent, font: c.mono });
+    document.getElementById("k-thin").textContent = fmt.D(thin);
+    document.getElementById("k-pred").textContent = thin > 0 ? fThin.toFixed(1) + " mm" : "—";
+    document.getElementById("k-bfl").textContent = bvp > 0 ? bfl.toFixed(1) + " mm" : "發散（虛焦點）";
+  }
+
+  quiz("quiz", "ch05", [
+    { q: "雙透鏡系統中，第二片透鏡的「物」是：", opts: ["原本的物體", "第一片透鏡形成的像", "第二片透鏡的焦點", "眼睛的遠點"], a: 1, exp: "逐面成像：前一面的像就是下一面的物。" },
+    { q: "第一片透鏡射出 +5.00 D 的會聚光，往前走一段距離後到達第二片，此時聚散度：", opts: ["仍是 +5.00 D", "大於 +5.00 D", "小於 +5.00 D", "變成負值"], a: 1, exp: "會聚光越走越接近像點，波前越來越彎，聚散度變大。" },
+    { q: "什麼情況下第二片透鏡的物是「虛物」？", opts: ["第一片形成虛像", "第一片射出的會聚光在成像前就遇到第二片", "第二片是負透鏡", "物體在無限遠"], a: 1, exp: "會聚光在中間像形成之前被第二片攔截，第二片收到正的入射聚散度，物在它右側，是虛物。" },
+    { q: "兩片 +5.00 D 透鏡相距 20 cm，系統總效果與一片 +10.00 D 相比：", opts: ["完全相同", "不同，因為光在兩片之間行進時聚散度改變", "一定比較弱", "無法成像"], a: 1, exp: "只有貼合（間距 0）時屈光力才能直接相加。" },
+    { q: "厚透鏡的兩面都是正屈光力，與相同 F₁ + F₂ 的薄透鏡相比，焦點離後表面：", opts: ["較近", "較遠", "相同", "視物體距離而定"], a: 0, exp: "光在玻璃內已經會聚，走過厚度後聚散度增加，總會聚效果更強，後焦距變短。" },
+    { q: "兩片正透鏡各形成一次倒立實像，最終像是：", opts: ["倒立", "正立", "一定是虛像", "無法判斷正倒"], a: 1, exp: "總放大率 = M₁ × M₂，兩個負號相乘為正，所以變回正立。" },
+  ]);
+})();
+</script>
+</body>
+</html>

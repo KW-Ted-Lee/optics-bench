@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第 7 章 屈光不正｜視光光學實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-chapter="ch07">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter 07</div>
+    <h1>屈光不正</h1>
+    <div class="en">Ametropia</div>
+    <p class="lede">正視眼的屈光力剛好配得上眼軸長度。近視是「太強或太長」，遠視是「太弱或太短」。矯正的關鍵只有一句：<b>讓鏡片的 F′ 落在眼睛的遠點上。</b></p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>能說明近視、遠視的成因（軸性或屈光性），以及平行光在眼內聚焦的位置。</li>
+      <li>理解遠點（far point）：與視網膜共軛的那一點，近視在眼前、遠視在眼後。</li>
+      <li>理解鏡片有效度：同一隻眼睛，眼鏡與隱形眼鏡所需度數不同，且方向可以預測。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Reduced eye</span><h3>簡化眼</h3><p>把整個眼睛簡化成一個 +60.00 D 的折射面，後方是 n = 1.333 的介質，眼軸 22.22 mm。這是正視眼的基準。</p></div>
+      <div class="concept"><span class="en-term">Axial vs. refractive</span><h3>軸性與屈光性</h3><p>屈光力與眼軸不匹配就是屈光不正。眼軸太長／太短是軸性；屈光力太強／太弱是屈光性。</p></div>
+      <div class="concept"><span class="en-term">Far point</span><h3>遠點</h3><p>不調節時，能清楚成像在視網膜上的物點。近視：在眼前有限距離；遠視：在眼後（虛的）；正視：無限遠。</p></div>
+      <div class="concept"><span class="en-term">Lens effectivity</span><h3>鏡片有效度</h3><p>鏡片離眼睛越遠，正鏡片效果越強、負鏡片效果越弱。所以近視的隱形眼鏡度數比眼鏡低，遠視的隱形眼鏡度數比眼鏡高。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 7-1</span><h3>屈光不正模擬眼</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-eye" aria-label="簡化眼屈光不正"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>原因</label>
+            <div class="seg" id="e-type"><button data-v="axial" aria-pressed="true">軸性（改眼軸）</button><button data-v="ref">屈光性（改屈光力）</button></div></div>
+          <div class="ctrl" id="e-axial-box"><label for="e-L">眼軸長 <output id="e-L-out"></output></label><input type="range" id="e-L" min="19.5" max="26" step="0.1" value="23.5"></div>
+          <div class="ctrl" id="e-ref-box" hidden><label for="e-F">眼屈光力 <output id="e-F-out"></output></label><input type="range" id="e-F" min="52" max="68" step="0.25" value="63"></div>
+          <div class="ctrl"><label>入射光</label>
+            <div class="seg" id="e-src"><button data-v="inf" aria-pressed="true">來自無限遠</button><button data-v="fp">來自遠點</button></div></div>
+          <div class="readout">
+            <div class="row"><span>屈光狀態（角膜面）</span><b id="e-K">—</b></div>
+            <div class="row"><span>遠點位置</span><b id="e-fp">—</b></div>
+          </div>
+          <div class="verdict" id="e-verdict"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="1">
+          <p class="q">一隻遠視眼，什麼樣的光才能在「不調節」的狀態下聚焦在視網膜上？</p>
+          <div class="opts"><button>從眼前近處發出的發散光</button><button>朝眼睛後方某點會聚的光</button><button>平行光</button></div>
+          <p class="why">遠視眼太弱，平行光都聚焦在視網膜後面。只有本來就在會聚、朝眼後遠點前進的光，才能剛好落在視網膜。這也是為什麼要用正鏡片：它把平行光變成會聚光。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>近視：平行光聚焦在視網膜前，到達視網膜時已散開成模糊圈。</li>
+          <li>切換「來自遠點」：不論近視或遠視，從遠點來的光都剛好聚焦在視網膜上。</li>
+          <li>眼軸只差 1 mm，大約就是 2.5–3 D 的屈光不正。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 7-2</span><h3>矯正鏡片與頂點距離</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-corr" aria-label="矯正鏡片與鏡片有效度"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="c-K">眼睛的屈光不正（角膜面） <output id="c-K-out"></output></label><input type="range" id="c-K" min="-10" max="10" step="0.25" value="-6"></div>
+          <div class="ctrl"><label for="c-d">鏡片到角膜距離 <output id="c-d-out"></output></label><input type="range" id="c-d" min="0" max="30" step="1" value="12"></div>
+          <div class="readout">
+            <div class="row"><span>隱形眼鏡（0 mm）</span><b id="c-cl">—</b></div>
+            <div class="row"><span>此距離所需度數</span><b id="c-sp">—</b></div>
+            <div class="row"><span>差異</span><b id="c-diff">—</b></div>
+          </div>
+          <div class="predict" data-answer="0">
+            <p class="q">這隻眼睛戴隱形眼鏡需要 −6.00 D。改戴眼鏡（頂點距離 12 mm），度數應該？</p>
+            <div class="opts"><button>更多負度數（約 −6.5 D）</button><button>較少負度數（約 −5.6 D）</button><button>一樣 −6.00 D</button></div>
+            <p class="why">負鏡片離眼睛越遠，效果越弱，需要更多負度數才能讓 F′ 落在同一個遠點上。把距離從 0 mm 慢慢拉到 20 mm 看看。反過來說，戴 −6.00 D 眼鏡的人，隱形眼鏡大約只要 −5.6 D。遠視則方向相反。</p>
+          </div>
+        </div>
+      </div>
+      <div class="observe"><h4>觀察重點</h4><ul>
+        <li>矯正條件：鏡片的 F′ 必須和遠點重合（圖中綠點與虛線）。</li>
+        <li>度數越高，頂點距離造成的差異越大；±4.00 D 以下差異通常很小。</li>
+        <li>正鏡片往外移（遠離眼睛）會變得「更有效」，所以老花眼鏡滑到鼻尖時看近比較清楚。</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>遠視就是「看得遠、看不近」，看遠一定清楚。</summary><div class="fix">遠視眼看遠也需要調節才能清楚。年輕人靠調節可以補償，所以看遠清楚；但度數高或年紀大時，遠近都可能模糊。</div></details>
+      <details class="myth"><summary>遠視的遠點在很遠的地方。</summary><div class="fix">遠視的遠點在眼睛「後方」，是虛的點。它不是一個可以放物體的位置。</div></details>
+      <details class="myth"><summary>隱形眼鏡度數和眼鏡度數一樣。</summary><div class="fix">度數高時明顯不同。近視：隱形眼鏡負度數較少；遠視：隱形眼鏡正度數較多。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>公式補充 <span class="tag">OPTIONAL</span></h2>
+    <details class="formula"><summary>展開看公式（選讀）</summary><div>
+      <p>簡化眼：<span class="eq">F = +60.00 D，n′ = 1.333，軸長 = 1.333 / 60 = 22.22 mm</span></p>
+      <p>屈光不正（遠點聚散度）：<span class="eq">K = n′ / 軸長 − F眼</span></p>
+      <p>鏡片有效度：<span class="eq">F眼鏡 = K / (1 + d·K)</span>（d 為頂點距離，公尺）</p>
+    </div></details>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div class="terms-wrap"><table class="terms">
+      <tr><th>English</th><th>中文</th><th>一句話說明</th></tr>
+      <tr><td>emmetropia</td><td>正視</td><td>平行光聚焦在視網膜</td></tr>
+      <tr><td>ametropia</td><td>屈光不正</td><td>屈光力與眼軸不匹配</td></tr>
+      <tr><td>myopia</td><td>近視</td><td>聚焦於視網膜前</td></tr>
+      <tr><td>hyperopia</td><td>遠視</td><td>聚焦於視網膜後</td></tr>
+      <tr><td>axial / refractive</td><td>軸性／屈光性</td><td>屈光不正的成因</td></tr>
+      <tr><td>far point</td><td>遠點</td><td>與視網膜共軛的物點</td></tr>
+      <tr><td>vertex distance</td><td>頂點距離</td><td>鏡片後表面到角膜</td></tr>
+      <tr><td>lens effectivity</td><td>鏡片有效度</td><td>位置改變，所需度數改變</td></tr>
+      <tr><td>reduced eye</td><td>簡化眼</td><td>單一折射面的眼睛模型</td></tr>
+    </table></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/core.js"></script>
+<script src="assets/eye.js"></script>
+<script>
+(function () {
+  const { Stage, fmt, range, seg, trace, quiz } = OL;
+  const { EYE, drawEye } = OLEye;
+
+  /* ---------- LAB 7-1 ---------- */
+  const type = seg("e-type", (v) => { document.getElementById("e-axial-box").hidden = v !== "axial"; document.getElementById("e-ref-box").hidden = v === "axial"; st.render(); });
+  const src = seg("e-src", () => st.render());
+  const Lr = range("e-L", (v) => v.toFixed(1) + " mm", () => st.render());
+  const Fr = range("e-F", (v) => fmt.D(v), () => st.render());
+  const st = new Stage("cv-eye", { xmin: -32, xmax: 46, ymin: -16, ymax: 16, aspect: 0.55, minH: 280, maxH: 460, equal: true, draw: drawA });
+
+  function eyeState() {
+    const axial = type.value === "axial";
+    const L = axial ? Lr.value : EYE.L, F = axial ? EYE.F : Fr.value;
+    const K = EYE.n / (L / 1000) - F;          // 遠點聚散度（角膜面）
+    return { L, F, K, focus: EYE.n / F * 1000 };
+  }
+  function drawA(s, c) {
+    const { L, F, K, focus } = eyeState();
+    drawEye(s, c, 0, L, 12.5);
+    s.axis({ label: false });
+    // 正視參考線
+    s.line(EYE.L, -9, EYE.L, 9, { color: c.muted, dash: [2, 4], w: 1, alpha: 0.7 });
+    s.text("正視眼的視網膜", EYE.L, -9, { dy: 10, size: 10, color: c.muted });
+    const el = [{ x: 0, F: F / 1000, n2: EYE.n }];
+    const fromFP = src.value === "fp";
+    [-7, -3.5, 3.5, 7].forEach((y) => {
+      const sl = fromFP ? -(y / 1000) * K : 0;   // 角膜處聚散度 K 的光
+      const x0 = s.opt.xmin;
+      const tr = trace({ x: x0, y: y - sl * (0 - x0), s: sl, n: 1 }, el, L);
+      s.ray(tr.pts, { color: c.ray, w: 1.7 });
+      // 視網膜後的焦點（遠視）用虛線延伸
+      const fx = fromFP ? L : focus;
+      if (fx > L + 0.05) s.line(L, tr.y, fx, 0, { color: c.ray, dash: [3, 4], w: 1.1, alpha: 0.7 });
+      // 遠點延長線
+      if (fromFP && Math.abs(K) > 0.05) {
+        const fp = 1000 / K; // mm（負=眼前）
+        if (K < 0) s.line(Math.max(fp, x0), y - sl * (0 - Math.max(fp, x0)), x0, y - sl * (0 - x0), { color: c.ray, dash: [3, 4], w: 1, alpha: 0.6 });
+        else s.line(0, y, Math.min(fp, s.opt.xmax), y + sl * Math.min(fp, s.opt.xmax), { color: c.ray, dash: [3, 4], w: 1, alpha: 0.45 });
+      }
+    });
+    if (!fromFP) {
+      if (focus < L - 0.05) s.point(focus, 0, "焦點", { color: c.ray, dy: -12 });
+      else if (focus > L + 0.05 && focus < s.opt.xmax) s.point(focus, 0, "焦點", { color: c.ray, dy: -12 });
+    }
+    // 遠點標記
+    const fpmm = Math.abs(K) < 0.05 ? Infinity : 1000 / K;
+    if (isFinite(fpmm) && fpmm > s.opt.xmin && fpmm < s.opt.xmax) s.point(fpmm, 0, "遠點", { color: c.ray2, dy: 14 });
+    else if (isFinite(fpmm)) s.text(K < 0 ? "← 遠點在眼前 " + fmt.plain(-1 / K * 100, 1, "cm") : "遠點在眼後 " + fmt.plain(1 / K * 100, 1, "cm") + " →", K < 0 ? s.opt.xmin : s.opt.xmax, -14, { align: K < 0 ? "left" : "right", dx: K < 0 ? 4 : -4, size: 12, weight: 700, color: c.ray2 });
+    s.text(fromFP ? "光來自遠點" : "平行光（無限遠）", s.opt.xmin, 14, { align: "left", dx: 4, size: 12, color: c.muted });
+    // 讀數
+    document.getElementById("e-K").textContent = fmt.D(K);
+    document.getElementById("e-fp").textContent = Math.abs(K) < 0.125 ? "無限遠" : K < 0 ? "眼前 " + fmt.plain(-100 / K, 1, "cm") : "眼後 " + fmt.plain(100 / K, 1, "cm") + "（虛）";
+    const v = document.getElementById("e-verdict");
+    const cause = type.value === "axial" ? (L > EYE.L ? "眼軸太長" : "眼軸太短") : (F > EYE.F ? "屈光力太強" : "屈光力太弱");
+    if (Math.abs(K) < 0.125) v.innerHTML = '<span class="pill ok">正視</span> 平行光剛好聚焦在視網膜';
+    else if (K < 0) v.innerHTML = `<span class="pill warn">${type.value === "axial" ? "軸性" : "屈光性"}近視</span> ${cause}，平行光聚焦在視網膜前`;
+    else v.innerHTML = `<span class="pill warn">${type.value === "axial" ? "軸性" : "屈光性"}遠視</span> ${cause}，平行光聚焦在視網膜後`;
+  }
+
+  /* ---------- LAB 7-2 ---------- */
+  const Kr = range("c-K", (v) => fmt.D(v), () => view());
+  const dr = range("c-d", (v) => v + " mm", () => cr.render());
+  const cr = new Stage("cv-corr", { xmin: -45, xmax: 10, ymin: -5, ymax: 5, aspect: 0.5, minH: 260, maxH: 420, draw: drawB });
+  function view() { if (Kr.value < 0) cr.setView({ xmin: -45, xmax: 10 }); else cr.setView({ xmin: -12, xmax: 43 }); }
+  function drawB(s, c) {
+    let K = Kr.value; if (Math.abs(K) < 0.25) K = K < 0 ? -0.25 : 0.25;
+    const d = dr.value / 10;                       // cm
+    const Fs = K / (1 + (d / 100) * K);           // 所需鏡片度數
+    const Leye = EYE.n / (EYE.F + K) * 100;       // 軸性：眼軸（cm）
+    drawEye(s, c, 0, Leye, 1.2, { label: false });
+    s.axis({ label: false });
+    const fp = 100 / K;                            // cm，角膜到遠點
+    const lx = -d;                                 // 鏡片位置
+    s.lens(lx, 3.6, Fs, { label: fmt.D(Fs) });
+    const el = [{ x: lx, F: Fs / 100 }, { x: 0, F: EYE.F / 100, n2: EYE.n }];
+    [-2.4, -1.2, 1.2, 2.4].forEach((y) => {
+      const tr = trace({ x: s.opt.xmin, y, s: 0 }, el, Leye);
+      s.ray(tr.pts, { color: c.ray, w: 1.6 });
+      // 鏡片射出光指向（或來自）遠點
+      if (K < 0) s.line(lx, y, Math.max(fp, s.opt.xmin), y + (y / (lx - fp)) * (Math.max(fp, s.opt.xmin) - lx), { color: c.ray2, dash: [4, 4], w: 1.1, alpha: 0.8 });
+      else s.line(0, tr.pts[2] ? tr.pts[2][1] : y, Math.min(fp, s.opt.xmax), 0, { color: c.ray2, dash: [4, 4], w: 1.1, alpha: 0.6 });
+    });
+    if (fp > s.opt.xmin && fp < s.opt.xmax) s.point(fp, 0, "遠點 = 鏡片 F′", { color: c.ray2, dy: 14 });
+    else s.text(K < 0 ? "← 遠點在更左邊" : "遠點在更右邊 →", K < 0 ? s.opt.xmin : s.opt.xmax, -4.4, { align: K < 0 ? "left" : "right", dx: K < 0 ? 4 : -4, size: 12, weight: 700, color: c.ray2 });
+    s.text("角膜", 0, -4.4, { size: 11, color: c.muted });
+    if (d > 0) { s.line(lx, -3.9, 0, -3.9, { color: c.muted, w: 1 }); s.text(`${dr.value} mm`, lx / 2, -3.9, { dy: 10, size: 10, color: c.muted, font: c.mono }); }
+    document.getElementById("c-cl").textContent = fmt.D(K);
+    document.getElementById("c-sp").textContent = fmt.D(Fs);
+    const diff = Fs - K;
+    document.getElementById("c-diff").textContent = Math.abs(diff) < 0.005 ? "0.00 D" : fmt.num(diff, 2, "D");
+  }
+
+  quiz("quiz", "ch07", [
+    { q: "未矯正的近視眼看遠方物體時，平行光聚焦在：", opts: ["視網膜上", "視網膜前方", "視網膜後方", "角膜上"], a: 1, exp: "近視眼相對眼軸太強（或眼軸太長），平行光提早聚焦。" },
+    { q: "遠視眼的遠點位於：", opts: ["眼前有限距離", "無限遠", "眼睛後方（虛的）", "角膜上"], a: 2, exp: "只有朝眼後某點會聚的光能落在遠視眼的視網膜上，這個點就是遠點，在眼後。" },
+    { q: "矯正屈光不正的原則是：", opts: ["鏡片度數等於眼屈光力", "鏡片的第二焦點 F′ 與眼睛遠點重合", "鏡片的第一焦點與視網膜重合", "讓眼睛不需要調節看近"], a: 1, exp: "鏡片把平行光變成好像來自（或朝向）遠點的光，眼睛就能清楚成像。" },
+    { q: "眼軸比正視眼長，但屈光力正常，這是：", opts: ["軸性近視", "屈光性近視", "軸性遠視", "屈光性遠視"], a: 0, exp: "屈光力正常而眼軸太長，屬於軸性近視。" },
+    { q: "一位 +8.00 D 眼鏡的遠視者改戴隱形眼鏡，度數應：", opts: ["降低", "提高", "不變", "改成負度數"], a: 1, exp: "正鏡片越靠近眼睛效果越弱，所以隱形眼鏡需要更多正度數。" },
+    { q: "老花眼鏡滑到鼻尖（離眼睛更遠）時，看近反而更清楚，原因是：", opts: ["正鏡片離眼睛越遠，有效屈光力越強", "鏡片變薄了", "眼睛自動調節", "像差減少"], a: 0, exp: "這是鏡片有效度：正鏡片外移，有效度數增加。" },
+  ]);
+})();
+</script>
+</body>
+</html>
