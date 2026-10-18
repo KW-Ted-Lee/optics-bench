@@ -398,6 +398,7 @@
         const prev = p[chapterId];
         if (!prev || correct >= prev.correct) p[chapterId] = { correct, total: items.length, t: Date.now() };
         store.set(PROG_KEY, p);
+        if (window.labTrack) labTrack("quiz_complete", { chapter: chapterId, correct: correct, total: items.length, score: Math.round(correct / items.length * 100) });
         const pct = correct / items.length;
         scoreEl.innerHTML += pct >= 0.8 ? ' <span class="pill ok">觀念掌握良好</span>' : ' <span class="pill warn">建議回到互動實驗再操作一次</span>';
         const again = document.createElement("button"); again.className = "btn ghost"; again.type = "button"; again.textContent = "重新作答";

@@ -99,6 +99,7 @@
         w.dataset.ans = ansTxt;
       });
       const res = box.querySelector(".prob-result");
+      if (window.labTrack) labTrack("practice_check", { chapter: ch, problem: t.id || idx + 1, problem_title: String(t.title || "").replace(/<[^>]+>/g, ""), correct: ok, total: data.parts.length, all_correct: ok === data.parts.length });
       res.innerHTML = ok === data.parts.length ? '<span class="pill ok">全部正確</span>' : `答對 ${ok} / ${data.parts.length}　<button type="button" class="linkish">顯示正確答案</button>`;
       const lk = res.querySelector(".linkish");
       if (lk) lk.onclick = () => box.querySelectorAll(".prob-part").forEach((w) => { w.querySelector(".mark").innerHTML += ` <span class="ans">答案：${w.dataset.ans}</span>`; });
