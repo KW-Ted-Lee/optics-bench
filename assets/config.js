@@ -1,6 +1,6 @@
 /* 網站設定：開發者名單與版權宣告集中在這裡修改，所有頁面會自動帶入 */
 window.OB_CONFIG = {
-  siteName: "視光光學實驗台",
+  siteName: "幾何光學實驗台",
   copyright: {
     year: 2026,
     holder: "Kuan-Wei Lee（李冠緯）",

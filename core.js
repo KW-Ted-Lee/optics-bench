@@ -1,4 +1,4 @@
-/* 視光光學實驗台 — 共用程式
+/* 幾何光學實驗台 — 共用程式
    提供：章節清單、導覽列、主題切換、Stage（光學台畫布）、近軸光線追跡、控制元件、預測題、測驗、學習進度。
    純 JavaScript，無外部相依，可直接放在 GitHub Pages。 */
 (function () {
@@ -61,7 +61,7 @@
       header.className = "topbar";
       const opts = CHAPTERS.map((c) => `<option value="${c.id}" ${c.id === currentId ? "selected" : ""}>第 ${c.no} 章　${c.zh}</option>`).join("");
       header.innerHTML = `<div class="topbar-inner">
-        <a class="brand" href="index.html">${LOGO}<span>視光光學實驗台<small>GEOMETRICAL &amp; VISUAL OPTICS LAB</small></span></a>
+        <a class="brand" href="index.html">${LOGO}<span>幾何光學實驗台<small>GEOMETRIC OPTICS BENCH</small></span></a>
         <div class="spacer"></div>
         <select class="chapter-select" id="chapter-jump" aria-label="跳至章節"><option value="index">— 章節目錄 —</option>${opts}</select>
         <button class="theme-btn" id="theme-btn" type="button"></button>
